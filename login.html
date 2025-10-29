@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(180deg, #ffffff, #fffbea);
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* === اللوجو === */
+    .logo {
+      width: 160px;
+      margin-bottom: 25px;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 2;
+    }
+
+    /* === الكلام === */
+    .text {
+      font-size: 18px;
+      font-weight: 500;
+      color: #00b85c;
+      margin-bottom: 40px;
+      text-align: center;
+      opacity: 0.9;
+      animation: slideIn 1.5s ease-in-out;
+      z-index: 2;
+    }
+
+    /* === الدائرة المتحركة === */
+    .loader {
+      width: 100px;
+      height: 100px;
+      border: 5px solid #eee;
+      border-top: 5px solid #00ff6a;
+      border-right: 5px solid #ffd500;
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+      margin-bottom: 40px;
+      opacity: 0.8;
+      z-index: 2;
+    }
+
+    /* === مكان كود التسجيل === */
+    .login-area {
+      background: #f8f8f8;
+      border: 2px solid #cceeaa;
+      border-radius: 20px;
+      padding: 25px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
+      transition: 0.3s ease;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 2;
+    }
+
+    .login-area:hover {
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .login-area h3 {
+      color: #00b85c;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .placeholder {
+      color: #aaa;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    /* === تأثير الورق الطاير === */
+    .leaf {
+      position: absolute;
+      top: -10%;
+      width: 25px;
+      height: 25px;
+      background: rgba(154, 255, 100, 0.9);
+      border-radius: 50% 50% 0 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    .leaf:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; transform: rotate(20deg); background: #b2ff59; }
+    .leaf:nth-child(2) { left: 30%; animation-duration: 10s; animation-delay: 2s; background: #c6ff00; }
+    .leaf:nth-child(3) { left: 50%; animation-duration: 9s; animation-delay: 1s; background: #76ff03; }
+    .leaf:nth-child(4) { left: 70%; animation-duration: 11s; animation-delay: 0.5s; background: #eeff41; }
+    .leaf:nth-child(5) { left: 85%; animation-duration: 12s; animation-delay: 3s; background: #ccff90; }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* === أنيميشنات عامة === */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ورق طاير -->
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+
+  <!-- اللوجو -->
+  <img src="img/t.webp" alt="Logo" class="logo">
+
+  <!-- الكلام -->
+  <div class="text">
+    <p>مرحبًا بك 🌿 خُذ نفسًا عميقًا وابدأ يومك بهدوء</p>
+  </div>
+
+  <!-- الدائرة المتحركة -->
+  <div class="loader"></div>
+
+  <!-- مكان الكود -->
+  <div class="login-area">
+    <h3>تسجيل الدخول</h3>
+    <div class="placeholder">هنا تضيف كود التسجيل الخاص بك</div>
+  </div>
+
+</body>
+</html>

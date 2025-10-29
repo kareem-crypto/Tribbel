@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Manifesto — Tribbel</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --card:#6ae44d;
+      --accent:#6ae44d;
+      --muted:#383838;
+      --text:#000000;
+      --maxw:880px;
+      --pad:28px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(103,232,249,0.06), transparent 10%),
+        radial-gradient(1000px 500px at 90% 90%, rgba(103,232,249,0.03), transparent 10%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* Card */
+    .wrap{
+      width:100%;
+      max-width:calc(var(--maxw) + 320px);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:32px;
+      align-items:start;
+      padding:32px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:40px;
+      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      backdrop-filter: blur(6px);
+      overflow:auto;
+      max-height: calc(100vh - 80px);
+      animation: fadeUp .55s ease both;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0; transform: translateY(10px)}
+      to{opacity:1; transform: translateY(0)}
+    }
+
+    header.manifesto-head{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-bottom:26px;
+    }
+    .logo-mark{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(103,232,249,0.18), rgba(103,232,249,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(103,232,249,0.12);
+      font-family: "Playfair Display", serif;
+      font-weight:700;
+      color:var(--accent);
+      font-size:20px;
+      flex-shrink:0;
+    }
+    h1.title{
+      margin:0;
+      font-family: "Playfair Display", serif;
+      font-size:30px;
+      line-height:1.05;
+      color:var(--text);
+      letter-spacing:-0.4px;
+    }
+    .meta{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:500;
+    }
+
+    /* manifesto text */
+    .manifesto {
+      font-size:18px;
+      color:var(--text);
+      line-height:1.75;
+      white-space:pre-line; /* preserve line breaks */
+    }
+    .manifesto p{
+      margin:0 0 18px 0;
+    }
+
+    /* Right column (sidebar/visual) */
+    .side {
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:flex-end;
+    }
+    .side-card{
+      width:320px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.5);
+    }
+    .side-card h3{
+      margin:0 0 8px 0;
+      font-size:16px;
+      color:var(--accent);
+      font-weight:700;
+      font-family: "Playfair Display", serif;
+    }
+    .side-card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.4 }
+
+    /* decorative line */
+    .accent-line{
+      height:2px;
+      width:80%;
+      background:linear-gradient(90deg,var(--accent), rgba(103,232,249,0.15));
+      border-radius:3px;
+    }
+
+    /* small screens */
+    @media (max-width:1000px){
+      .wrap{ grid-template-columns: 1fr; max-width:var(--maxw); padding:20px; gap:18px }
+      .side{ align-items:center }
+      .side-card{ width:100% }
+    }
+    @media (max-width:520px){
+      body{ padding:22px 14px }
+      .card{ padding:20px; max-height: none }
+      .manifesto{ font-size:17px }
+      h1.title{ font-size:24px }
+    }
+
+    /* subtle drop cap for first paragraph */
+    .manifesto p:first-of-type::first-letter{
+      float:left;
+      font-size:48px;
+      line-height:0.8;
+      margin-right:12px;
+      font-family: "Playfair Display", serif;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    /* readable scrollbar for long content */
+    .card::-webkit-scrollbar{ width:8px }
+    .card::-webkit-scrollbar-track{ background:transparent }
+    .card::-webkit-scrollbar-thumb{ background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06)); border-radius:8px }
+
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <!-- main manifesto card -->
+    <article class="card" aria-labelledby="manifesto-title">
+      <header class="manifesto-head">
+        <div class="logo-mark">Tribe</div>
+        <div>
+          <h1 id="manifesto-title" class="title">Manifesto</h1>
+          <div class="meta">For a more humane way to meet & connect — Tribbel</div>
+        </div>
+      </header>
+
+      <section class="manifesto" role="article">
+They preyed on our attention.
+Made money from our distraction.
+Weaponized our desire for connection against us.
+Made us addicts, staring at our screens.
+Sucking our souls, stealing our attention—
+These platforms weren’t built for us, and we weren’t built for them.
+They claimed to connect us but look how isolated we are.
+
+It is time to revolt.
+It is time for change.
+It is time for real genuine connection, without addictive design.
+It is time for social, without the media.
+It is time to claim our lives back, living it fully, presently, actively.
+Instead of watching people’s lives, it is time to actually live.
+Instead of spending countless hours on screens,
+it is time for us to create meaningful experiences IRL.
+
+Instead of watching people do, it is time to do.
+And this time, not alone— but together.
+Imagine a world without a loneliness pandemic,
+where you can find your people anywhere and everywhere.
+Not just find them, but maintain a healthy connection,
+regardless where they are.
+
+Imagine finding people to paint, workout, dance, code, read, play chess, hike with
+Spending less time on your phone, and feeling more connected.
+Love and belonging is an essential need for humans and without this psychological pillar, the hits of life hit stronger and cut deeper.
+The quality of life is contingent on the quality of our connections.
+Our mental health.
+Our ability to solve problems.
+To experience and share happiness.
+To grow.
+Together.
+
+We believe that the era for social media is almost over.
+And we want to be the last nail in its coffin.
+It’s time to kill social media as we know it.
+Building something more humane than the attention economy.
+It’s time for finding real connections, your tribes where you belong.
+We don’t need another dating app.
+We don’t need mindless scrolling or psychologically exploiting platforms.
+We need a tool built to empower humans to find like-minded people and groups.
+For community builders to strengthen and grow their community.
+A connection network, that doesn’t make money by gluing us to the screen.
+To let you out in this world— to find activities, adventures, and connections.
+We are bringing this imagination to reality.
+
+We commit to what “The Social Network” has failed to do…
+To connect people— genuinely.
+It’s time for Tribbel.
+      </section>
+    </article>
+
+    <!-- right column / visual & notes -->
+    <aside class="side" aria-label="About Tribbel">
+      <div class="side-card">
+        <h3>Why this matters</h3>
+        <p>Connection is a human need. We design for presence, not for attention. Healthy communities empower better lives.</p>
+      </div>
+
+      <div class="side-card" style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong style="color:var(--text)">Our promise</strong>
+          <span style="color:var(--muted);font-size:13px">No attention traps</span>
+        </div>
+        <div class="accent-line" aria-hidden="true"></div>
+        <p style="margin-top:6px;color:var(--muted)">We will build with humane defaults — privacy, discoverability for activities, and tools that move people offline into real life.</p>
+      </div>
+
+      <div class="side-card">
+        <h3>Get involved</h3>
+        <p>Want to help build? Join early testers, host community events, or give feedback — together we can make something better.</p>
+      </div>
+    </aside>
+  </main>
+
+</body>
+</html>

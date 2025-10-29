@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إعدادات الحساب</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  margin-bottom: 15px;
+}
+button {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  transform: scale(1.03);
+}
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #6a11cb;
+  display: block;
+  margin: 0 auto 15px;
+  object-fit: cover;
+}
+a {
+  display: block;
+  text-align: center;
+  color: #ddd;
+  margin-top: 15px;
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2><i class="fa-solid fa-user-gear"></i> إعدادات الحساب</h2>
+  
+  <img id="preview" src="https://i.postimg.cc/tRhD6Gk8/user.png" alt="صورة المستخدم">
+
+  <label>تغيير الصورة الشخصية</label>
+  <input type="file" id="profilePicInput" accept="image/*">
+
+  <label>اسم المستخدم</label>
+  <input type="text" id="username" placeholder="أدخل اسمك">
+
+  <label>البريد الإلكتروني</label>
+  <input type="email" id="email" placeholder="example@email.com">
+
+  <label>اللغة</label>
+  <select id="language">
+    <option>العربية</option>
+    <option>English</option>
+    <option>Français</option>
+  </select>
+
+  <button id="saveBtn"><i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات</button>
+
+  <a href="index.html"><i class="fa-solid fa-arrow-right"></i> الرجوع إلى الرئيسية</a>
+</div>
+
+<script>
+const saveBtn = document.getElementById("saveBtn");
+const profileInput = document.getElementById("profilePicInput");
+const preview = document.getElementById("preview");
+
+// عرض الصورة قبل الحفظ
+profileInput.addEventListener("change", () => {
+  const file = profileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      preview.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+saveBtn.addEventListener("click", () => {
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const lang = document.getElementById("language").value;
+  const imgSrc = preview.src;
+
+  localStorage.setItem("username", username);
+  localStorage.setItem("email", email);
+  localStorage.setItem("language", lang);
+  localStorage.setItem("profilePic", imgSrc);
+
+  alert("✅ تم حفظ الإعدادات بنجاح!");
+});
+</script>
+
+</body>
+</html>

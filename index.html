@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toribble | Find Your Tribe Anywhere</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/logo.png" type="image/x-icon">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+/* ===== Navbar ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo img {
+  width: 130px;
+}
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: #6ae44d;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.join {
+  color: #6ae44d;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login {
+  background: linear-gradient(90deg,#6ae44d,#b2ff59);
+  color: white;
+  padding: 8px 22px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.login:hover {
+  transform: scale(1.05);
+}
+.menu-btn {
+  display: none;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+  gap: 60px;
+}
+.hero-text {
+  flex: 1;
+  max-width: 480px;
+}
+.beta {
+  display: inline-block;
+  background: linear-gradient(90deg,#fff176,#fbc02d);
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+.beta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80px;
+  width: 60px; height: 100%;
+  background: #ffffff99;
+  transform: skewX(-20deg);
+  animation: shine 2.5s infinite linear;
+}
+@keyframes shine {
+  0% { left: -80px; }
+  100% { left: 120%; }
+}
+.hero h1 {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: #17223b;
+}
+.hero p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-buttons .btn {
+  padding: 14px 36px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-green { background: #6ae44d; color: #fff; }
+.btn-yellow { background: #ffb300; color: #fff; }
+.btn-outline { border: 2px solid #6ae44d; color: #6ae44d; background: transparent; }
+.btn:hover { transform: scale(1.05); }
+.hero-image { flex: 1; max-width: 520px; }
+.hero-image img { width: 100%; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+/* ===== How It Works Section ===== */
+section {
+  padding: 80px 5%;
+  text-align: center;
+}
+h2 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 60px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 25px;
+  justify-content: center;
+}
+.cards .tall-card {
+  grid-row: span 2; /* يجعل الكارد الثالث بطول صفين */
+}
+.card {
+  background: #b7b7d1;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  padding: 25px;
+  transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-8px); }
+.icon { font-size: 40px; color: #4CAF50; margin-bottom: 15px; }
+.card h3 { font-size: 22px; margin-bottom: 10px; color: #333; }
+.card p { font-size: 15px; color: #666; line-height: 1.6; }
+.interests { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+.interest { display: flex; align-items: center; background: #eafbea; border-radius: 20px; padding: 6px 12px; gap: 6px; }
+.interest span { color: #222; font-weight: 500; }
+.check { color: #4CAF50; font-size: 16px; }
+.map-box { background: url('https://cdn.pixabay.com/photo/2016/03/09/15/10/map-1245954_960_720.jpg') no-repeat center/cover; border-radius: 12px; height: 150px; margin-bottom: 15px; }
+
+/* ===== Footer ===== */
+footer { background: #f5f5f5; padding: 40px 5%; }
+footer img { width: 120px; margin-bottom: 15px; }
+footer p, footer a { color: #333; text-decoration: none; font-size: 14px; }
+footer a:hover { text-decoration: underline; }
+.footer-links ul { list-style: none; margin-top: 10px; padding: 0; }
+.footer-links li { margin-bottom: 8px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  nav { padding: 18px 25px; }
+  .nav-links { display: none; flex-direction: column; background: white; position: absolute; top: 70px; left: 0; width: 100%; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  .nav-links.active { display: flex; }
+  .menu-btn { display: block; }
+  .hero { flex-direction: column; text-align: center; padding: 40px 25px; }
+  .hero-image { order: 1; width: 100%; }
+  .hero-text { order: 2; width: 100%; }
+  .hero h1 { font-size: 40px; }
+  .hero-buttons { justify-content: center; }
+  .cards {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .cards .tall-card {
+    grid-row: auto;
+  }
+}
+
+<!-- Beta Popup -->
+<div id="betaPopup">
+  <div class="popup-content">
+    <h2>⚠️ Beta Version (V0.1)</h2>
+    <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+
+<style>
+#betaPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.6s ease;
+  backdrop-filter: blur(6px);
+}
+.popup-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: popIn 0.6s ease;
+  max-width: 350px;
+  border: 3px solid #6ae44d;
+}
+.popup-content h2 {
+  color: #6ae44d;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+.popup-content p {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.popup-content button {
+  background: linear-gradient(90deg, #6ae44d, #ffeb3b);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.popup-content button:hover {
+  transform: scale(1.05);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+<script>
+const popup = document.getElementById("betaPopup");
+const closeBtn = document.getElementById("closePopup");
+
+closeBtn.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+setTimeout(() => {
+  popup.style.display = "none";
+}, 10000);
+</script>
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo"><img src="img/tribbel.5d54508c.svg" alt="logo"></div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#">Get The App</a></li>
+    <li><a href="manifesto.html">Manifesto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="login.html" class="join">Join Waitlist</a>
+    <button class="login">Login</button>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="beta">Beta release V0.1</div>
+    <h1>Find Your<br>Tribe<br>Anywhere</h1>
+    <p>Find community and the people you click with closest to you.<br>Your next magical connection is just a click away.</p>
+    <div class="hero-buttons">
+      <button class="btn btn-green">Login</button>
+      <button class="btn btn-yellow">Join Waitlist</button>
+      <button class="btn btn-outline" style="color: #3ca023;">Got An Invitation Code?</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="img/hero-image-base.webp" alt="friends having dinner">
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<!-- ===== How It Works Section ===== -->
+<section id="how">
+  <h2>How Does It Work?</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="map-box"></div>
+      <h3>Join Tribbel</h3>
+      <p>Sign up to unlock a world of meaningful connections</p>
+    </div>
+
+    <div class="card">
+      <div class="icon" style="color: black; background: gray; border-radius: 50px; margin: 20px;">2</div>
+      <h3>Fill in your interests</h3>
+      <p>Tell us what you love, and we'll do the rest.</p>
+      <div class="interests">
+        <div class="interest">➕<span>Music</span></div>
+        <div class="interest">➕<span>Sports</span></div>
+        <div class="interest">➕<span>Gaming</span></div>
+        <div class="interest">➕<span>Traveling</span></div>
+        <div class="interest">➕<span>Photography</span></div>
+        <div class="interest"><span>Painting</span> ✅</div>
+        <div class="interest"><span>Writing</span> ✅</div>
+      </div>
+    </div>
+
+    <div class="card tall-card">
+      <div class="icon" style="color: black; background: gray; border-radius: 50px; margin: 20px;">3</div>
+      <h3>Get Recommendations</h3>
+      <p>Tribbel AI will suggest communities to join and activities to enjoy in person</p>
+      <img src="img/card3-recommendations.4b3e9862.svg" alt="Events" style="width: 100%; margin-top: 10px;">
+    </div>
+
+    <div class="card">
+      <div class="icon" style="color: black; background: gray; border-radius: 50px; margin: 20px;">4</div>
+      <h3>Meet IRL</h3>
+      <p>Go out and connect with people we're sure you'll click with.</p>
+    </div>
+
+    <div class="card" id="rating-card">
+      <div class="icon" style="color: black; background: gray; border-radius: 50px; margin: 20px;">5</div>
+      <h3>Rate your Experience</h3>
+      <p>Help Tribbel AI improve its recommendations and make every connection even better.</p>
+      <div class="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      <p id="rating-text" style="margin-top:10px;color:gray;">Click a star to rate!</p>
+    </div>
+  </div>
+</section>
+
+<style>
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 25px;
+  justify-content: center;
+}
+
+.cards .tall-card {
+  grid-row: span 2; /* يجعل الكارد الثالث بطول صفين */
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* النجوم */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.star {
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.star.active,
+.star:hover,
+.star:hover ~ .star {
+  color: gold;
+}
+</style>
+
+<script>
+const stars = document.querySelectorAll('.star');
+const ratingText = document.getElementById('rating-text');
+
+stars.forEach((star, index) => {
+  star.addEventListener('click', () => {
+    stars.forEach(s => s.classList.remove('active'));
+    for (let i = 0; i <= index; i++) {
+      stars[i].classList.add('active');
+    }
+    ratingText.textContent = `You rated ${index + 1} star${index ? 's' : ''}!`;
+    ratingText.style.color = 'gold';
+  });
+});
+</script>
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">
+    <img src="img/tribbel.5d54508c.svg" alt="Tribbel logo">
+  </div>
+  <p>Your tribe is closer than you think</p>
+  <div class="footer-links">
+    <ul>
+      <li><a href="manifesto.html">Our Manifesto</a></li>
+      <li><a href="https://wa.me/01207771639?text=what are you looking for">Contact</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+  </div>
+  <p>&copy; 2025 Tribbel, all rights reserved</p>
+  <div class="footer-legal">
+    <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.querySelector(".menu-btn");
+const navLinks = document.querySelector(".nav-links");
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  menuBtn.innerHTML = navLinks.classList.contains("active") 
+    ? '<i class="fas fa-times"></i>' 
+    : '<i class="fas fa-bars"></i>';
+});
+</script>
+</body>
+</html>
