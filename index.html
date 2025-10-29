@@ -482,5 +482,30 @@ menuBtn.addEventListener("click", () => {
     : '<i class="fas fa-bars"></i>';
 });
 </script>
+<script>
+let lastScrollTop = 0;
+const navbar = document.querySelector("nav");
+
+window.addEventListener("scroll", function() {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop) {
+    // لو نازل لتحت يخفي النافبار
+    navbar.style.top = "-80px";
+  } else {
+    // لو طالع لفوق يظهر النافبار
+    navbar.style.top = "0";
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, false);
+</script>
+
+<style>
+nav {
+  transition: top 0.4s ease-in-out;
+}
+</style>
+
 </body>
 </html>
