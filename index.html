@@ -45,8 +45,19 @@ section{padding:80px 5%;text-align:center}
 h2{font-size:45px;font-weight:700;color:#111;margin-bottom:60px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:25px;justify-content:center}
 .cards .tall-card{grid-row:span 2}
-.card{background:#fff;border-radius:15px;padding:20px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:.3s}
-.card:hover{transform:translateY(-5px)}
+.card{background:#fff;border-radius:15px;padding:20px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:.3s;opacity:0;transform:translateX(50px);animation:slideInCard 0.8s forwards}
+.cards .card:nth-child(1) { animation-delay: 0.2s; }
+.cards .card:nth-child(2) { animation-delay: 0.4s; }
+.cards .card:nth-child(3) { animation-delay: 0.6s; }
+.cards .card:nth-child(4) { animation-delay: 0.8s; }
+.cards .card:nth-child(5) { animation-delay: 1s; }
+
+@keyframes slideInCard {
+  0% { opacity: 0; transform: translateX(50px) rotateY(-10deg); }
+  60% { opacity: 1; transform: translateX(-10px) rotateY(5deg); }
+  100% { opacity: 1; transform: translateX(0) rotateY(0deg); }
+}
+
 .icon{font-size:40px;color:#4CAF50;margin-bottom:15px}
 .card h3{font-size:22px;margin-bottom:10px;color:#ffffff}
 .card p{font-size:15px;color:#666;line-height:1.6}
@@ -90,84 +101,10 @@ footer a:hover{text-decoration:underline}
 }
 
 /* ===== كود يجعل الموقع متجاوب مع أي شاشة ===== */
-
-/* أساسيات عامة */
-* {
-  box-sizing: border-box;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* تعديل النصوص والصور */
-img, video {
-  max-width: 100%;
-  height: auto;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* تنسيق عام للعناصر */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* الكروت */
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-.card {
-  background: #111;
-  color: white;
-  border-radius: 15px;
-  flex: 1 1 300px;
-  max-width: 350px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* النافبار */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #000;
-  padding: 15px 30px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  transition: top 0.4s ease-in-out;
-}
-
-/* ميديا كويري لتعديل الشكل على الموبايل */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-  }
-}
-
+* { box-sizing: border-box; max-width: 100%; overflow-x: hidden; }
+img, video { max-width: 100%; height: auto; }
+body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+.container { width: 90%; max-width: 1200px; margin: auto; }
 </style>
 </head>
 <body>
@@ -285,10 +222,8 @@ nav {
 <script>
 const menuBtn=document.querySelector(".menu-btn");
 const navLinks=document.querySelector(".nav-links");
-menuBtn.addEventListener("click",()=>{
-navLinks.classList.toggle("active");
-menuBtn.innerHTML=navLinks.classList.contains("active")?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';
-});
+menuBtn.addEventListener("click",()=>{navLinks.classList.toggle("active");
+menuBtn.innerHTML=navLinks.classList.contains("active")?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
 
 let lastScrollTop=0;
 const navbar=document.querySelector("nav");
