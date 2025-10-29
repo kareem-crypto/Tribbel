@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>about | Tribbel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* ===== Body & Background ===== */
+body {
+    background: linear-gradient(135deg, #6ae44d, #b2ff59);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* ===== Message Box ===== */
+.update-box {
+    background: #fff;
+    padding: 40px 60px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeInScale 1s ease forwards;
+    max-width: 90%;
+}
+
+/* ===== Message Text ===== */
+.update-box h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    animation: slideIn 1s ease forwards;
+}
+
+.update-box p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.5;
+    animation: slideIn 1.2s ease forwards;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeInScale {
+    0% {opacity: 0; transform: scale(0.8);}
+    100% {opacity: 1; transform: scale(1);}
+}
+
+@keyframes slideIn {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .update-box {
+        padding: 25px 20px;
+    }
+    .update-box h1 {
+        font-size: 24px;
+    }
+    .update-box p {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="update-box">
+    <h1>الصفحة تحت التحديث 🚀</h1>
+    <p>صفحة "حول Tribbel" ما زالت في مرحلة التطوير، وسنقوم بإضافة تحديثات ومميزات جديدة قريبًا.<br>شكرًا لصبرك واهتمامك ❤️</p>
+</div>
+
+</body>
+</html>
