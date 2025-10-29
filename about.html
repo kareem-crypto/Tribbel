@@ -49,6 +49,28 @@ body {
     animation: slideIn 1.2s ease forwards;
 }
 
+/* ===== Back Button ===== */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    color: #333;
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 999;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+    background: #6ae44d;
+    color: white;
+}
+
 /* ===== Animation ===== */
 @keyframes fadeInScale {
     0% {opacity: 0; transform: scale(0.8);}
@@ -76,6 +98,10 @@ body {
 </head>
 <body>
 
+<!-- Back Button -->
+<a href="javascript:history.back()" class="back-btn">⬅ رجوع</a>
+
+<!-- Update Message -->
 <div class="update-box">
     <h1>الصفحة تحت التحديث 🚀</h1>
     <p>صفحة "حول Tribbel" ما زالت في مرحلة التطوير، وسنقوم بإضافة تحديثات ومميزات جديدة قريبًا.<br>شكرًا لصبرك واهتمامك ❤️</p>
