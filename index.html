@@ -216,16 +216,6 @@ footer a:hover { text-decoration: underline; }
   }
 }
 
-<!-- Beta Popup -->
-<div id="betaPopup">
-  <div class="popup-content">
-    <h2>⚠️ Beta Version (V0.1)</h2>
-    <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
-    <button id="closePopup">OK</button>
-  </div>
-</div>
-
-<style>
 #betaPopup {
   position: fixed;
   top: 0;
@@ -284,6 +274,15 @@ footer a:hover { text-decoration: underline; }
 }
 </style>
 
+<!-- Beta Popup -->
+<div id="betaPopup">
+  <div class="popup-content">
+    <h2>Beta Version (V0.1)</h2>
+    <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+
 <script>
 const popup = document.getElementById("betaPopup");
 const closeBtn = document.getElementById("closePopup");
@@ -305,8 +304,8 @@ setTimeout(() => {
 <nav>
   <div class="logo"><img src="img/tribbel.5d54508c.svg" alt="logo"></div>
   <ul class="nav-links">
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#about">About</a></li>
+    <li><a href="#howitworks">How It Works</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#">Get The App</a></li>
     <li><a href="manifesto.html">Manifesto</a></li>
   </ul>
@@ -459,7 +458,7 @@ stars.forEach((star, index) => {
   <div class="footer-logo">
     <img src="img/tribbel.5d54508c.svg" alt="Tribbel logo">
   </div>
-  <p>Your tribe is closer than you think</p>
+  <p style="color: gray; font-weight: bold;">Your tribe is</p><p style="color: black; font-weight: bolder;">closer than you think</p>
   <div class="footer-links">
     <ul>
       <li><a href="manifesto.html">Our Manifesto</a></li>
