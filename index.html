@@ -183,6 +183,7 @@
             border: none;
             cursor: pointer;
             color: var(--text-color);
+            z-index: 1001;
         }
 
         /* ===== Hero Section ===== */
@@ -553,23 +554,33 @@
             }
             
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
-                background: var(--white);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 1.25rem;
-                box-shadow: 0 0.3125rem 0.9375rem rgba(0,0,0,0.1);
+                justify-content: flex-start;
+                align-items: center;
+                gap: 2rem;
+                padding-top: 6rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
             
             .nav-links.active {
-                display: flex;
+                right: 0;
             }
             
             .menu-btn {
                 display: block;
+            }
+            
+            .nav-actions .login,
+            .nav-actions .join {
+                display: none;
             }
             
             .hero {
@@ -637,6 +648,10 @@
                 padding: 1.25rem;
                 margin: 0 1.25rem;
             }
+            
+            .nav-links {
+                width: 85%;
+            }
         }
 
         @media (max-width: 400px) {
@@ -651,6 +666,10 @@
             
             .interest {
                 font-size: 0.875rem;
+            }
+            
+            .nav-links {
+                width: 100%;
             }
         }
     </style>
@@ -676,6 +695,12 @@
             <li><a href="about.html">About</a></li>
             <li><a href="#">Get The App</a></li>
             <li><a href="manifesto.html">Manifesto</a></li>
+            <li class="mobile-only" style="margin-top: 2rem;">
+                <a href="login.html" class="join">Join Waitlist</a>
+            </li>
+            <li class="mobile-only">
+                <button class="login">Login</button>
+            </li>
         </ul>
 
         <div class="nav-actions">
@@ -792,6 +817,14 @@
             navLinks.classList.toggle("active");
             menuBtn.innerHTML = navLinks.classList.contains("active") ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
         });
 
         // Navbar Hide/Show on Scroll
