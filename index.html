@@ -157,7 +157,7 @@ body{margin:0;padding:0;font-family:'Poppins',sans-serif}
 <!-- Banner -->
 <div id="workBanner">
   <span>عايزين ناس تشتغل معايا! </span>
-  <a href="mailto:youremail@example.com">راسلنا على الإيميل</a>
+  <a href="mailto:ibrahemkareem043@gmail.com">راسلنا على الإيميل</a>
   <span id="closeBanner">&times;</span>
 </div>
 
@@ -308,5 +308,23 @@ const closeBanner=document.getElementById("closeBanner");
 setTimeout(()=>workBanner.classList.add("show"),2000);
 closeBanner.addEventListener("click",()=>workBanner.style.display="none");
 </script>
+<script>
+  // استبدل اللينك ده برابط Google Script بتاعك
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyExample12345/exec";
+
+  const data = {
+    device: navigator.userAgent.includes("Mobile") ? "Mobile" : "Desktop",
+    browser: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    page: window.location.href
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  }).catch(err => console.log("Error:", err));
+</script>
+
 </body>
 </html>
