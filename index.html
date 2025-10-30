@@ -144,6 +144,97 @@ footer a:hover{text-decoration:underline}
   #workBanner a{font-size:14px}
   #closeBanner{font-size:18px;right:10px}
 }
+/* ===== Recruitment Section (Fancy Mobile Version) ===== */
+#recruit {
+  background: linear-gradient(135deg, #f6fff4, #e9ffe0);
+  padding: 80px 6%;
+  text-align: center;
+  border-top: 4px solid #6ae44d;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 1.2s ease-in-out;
+}
+
+#recruit h2 {
+  font-size: 36px;
+  color: #111;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+#recruit p {
+  font-size: 18px;
+  color: #333;
+  max-width: 700px;
+  margin: 0 auto 35px;
+  line-height: 1.6;
+}
+
+.recruit-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.recruit-buttons .btn {
+  display: inline-block;
+  padding: 14px 35px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  transform: scale(1);
+}
+
+.btn.email {
+  background: linear-gradient(45deg, #6ae44d, #58c63b);
+}
+.btn.whatsapp {
+  background: linear-gradient(45deg, #25d366, #1ebe5a);
+}
+.btn.instagram {
+  background: linear-gradient(45deg, #e4405f, #c13584);
+}
+
+.recruit-buttons .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Mobile Design ===== */
+@media (max-width: 600px) {
+  #recruit {
+    padding: 60px 8%;
+  }
+  #recruit h2 {
+    font-size: 26px;
+  }
+  #recruit p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  .recruit-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .recruit-buttons .btn {
+    width: 100%;
+    font-size: 17px;
+    padding: 14px 0;
+  }
+}
+
 
 /* ===== كود يجعل الموقع متجاوب مع أي شاشة ===== */
 *{box-sizing:border-box;max-width:100%;overflow-x:hidden}
@@ -254,6 +345,21 @@ body{margin:0;padding:0;font-family:'Poppins',sans-serif}
     </div>
   </div>
 </section>
+
+<!-- Recruitment Section -->
+<section id="recruit">
+  <div class="recruit-content">
+    <h2>✅ عايزين ناس تشتغل معايا!</h2>
+    <p>لو شايف نفسك مبدع، أو عندك شغف تشتغل معانا في الفريق — ابعتلنا دلوقتي!</p>
+    <div class="recruit-buttons">
+      <a href="mailto:ibrahemkareem043@gmail.com" class="btn email">📧 إيميل</a>
+      <a href="https://wa.me/201207771639?text=أهلا، حابب أقدم أشتغل معاكم" target="_blank" class="btn whatsapp">💬 واتساب</a>
+      <a href="https://www.instagram.com/" target="_blank" class="btn instagram">📸 إنستجرام</a>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- Footer -->
 <footer>
