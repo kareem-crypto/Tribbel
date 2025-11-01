@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل الدخول | Tribble</title>
-   <link rel="icon" href="img/logo.png" type="image/x-icon">
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
     body {
-      background: linear-gradient(180deg, #ffffff, #fffbea);
       font-family: 'Cairo', sans-serif;
       display: flex;
       flex-direction: column;
@@ -18,228 +18,282 @@
       overflow: hidden;
       position: relative;
       padding: 20px;
+      transition: background 0.5s, color 0.5s;
     }
-    .logo { width: 160px; margin-bottom: 25px; animation: fadeIn 2s ease-in-out; }
+
+    /* 🌤 الوضع النهاري */
+    body.day {
+      background: linear-gradient(135deg, #f9fff1, #fffbea);
+      color: #000;
+    }
+
+    /* 🌙 الوضع الليلي */
+    body.night {
+      background: linear-gradient(135deg, #0b0b0b, #1c1c1c);
+      color: #fff;
+    }
+
+    /* 🍃 أوراق الشجر */
+    .leaves {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 40px; height: 40px;
+      background: url('https://images.icon-icons.com/1238/PNG/512/treeleaf_83777.png') no-repeat center/contain;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10%) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    .logo {
+      width: 140px;
+      margin-bottom: 20px;
+      animation: fadeIn 1.8s ease-in-out;
+      z-index: 1;
+    }
+
     .text {
-      font-size: 18px; font-weight: 500; color: #00b85c;
-      margin-bottom: 40px; text-align: center; opacity: 0.9;
+      font-size: 18px;
+      font-weight: 500;
+      color: #00b85c;
+      margin-bottom: 25px;
+      text-align: center;
+      opacity: 0.9;
       animation: slideIn 1.5s ease-in-out;
+      z-index: 1;
     }
-    .loader {
-      width: 100px; height: 100px;
-      border: 5px solid #cecece;
-      border-top: 5px solid #00ff6a;
-      border-right: 5px solid #ffd500;
-      border-left: 5px solid #c8ff9b;
-      border-radius: 50%;
-      animation: spin 3s linear infinite;
-      margin-bottom: 40px; opacity: 0.8;
-    }
+
     .beta {
       display: inline-block;
-      background: linear-gradient(90deg, #a0802e, #ffd569);
-      color: #222; font-size: 0.875rem; font-weight: 600;
-      padding: 0.375rem 1.125rem; border-radius: 1.25rem;
-      margin-bottom: 1.5625rem; position: relative; overflow: hidden;
+      background: linear-gradient(90deg, #b8860b, #ffd569);
+      color: #222;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.375rem 1.125rem;
+      border-radius: 1.25rem;
+      margin-bottom: 1.5625rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
+
     .beta::before {
-      content: ''; position: absolute; top: 0; left: -5rem; width: 3.75rem; height: 100%;
-      background: rgba(255,255,255,0.6); transform: skewX(-20deg);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -5rem;
+      width: 3.75rem;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      transform: skewX(-20deg);
       animation: shine 2.5s infinite linear;
     }
 
-    .type {
-      background: #f8f8f8; border: 2px solid #cceeaa; border-radius: 70px;
-      padding: 20px; width: 450px; max-width: 90%; text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1); font-size: 16px; transition: 0.3s;
+    @keyframes shine {
+      0% { left: -5rem; }
+      100% { left: 120%; }
     }
-    .type:focus { outline: none; border-color: #00b85c; box-shadow: 0 0 10px rgba(0,184,92,0.3); }
 
-    .type-btn {
-      background: #000000; color: white; border: 2px solid #cceeaa;
-      border-radius: 70px; padding: 18px; width: 250px; max-width: 80%;
-      text-align: center; box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
-      transition: 0.3s ease; cursor: pointer; font-size: 16px;
+    .loader {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      border: 6px solid #e0e0e0;
+      border-top: 6px solid #00ff6a;
+      border-right: 6px solid #ffd500;
+      animation: spin 2s linear infinite;
+      margin-bottom: 30px;
+      z-index: 1;
     }
-    .type-btn:hover { box-shadow: 0 0 25px rgb(0,0,0); transform: translateY(-3px); }
 
-    .error { color: red; font-size: 14px; margin-top: 15px; font-weight: bold; display: none; }
-
-    .back-btn {
-      position: fixed; top: 20px; left: 20px; background: #fff; color: #000000;
-      padding: 10px 18px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      text-decoration: none; font-weight: bold; transition: transform 0.2s ease, background 0.2s ease;
-      z-index: 999;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-    .back-btn:hover { transform: scale(1.1); background: #97ff7d; color: rgb(0,0,0); }
 
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes shine { 0% { left: -5rem; } 100% { left: 110%; } }
-
-    /* ===== Beta Popup ===== */
-    #betaPopup {
-      position: fixed;
-      inset: 0;
-      display: none; /* يظهر فقط لو localStorage مش مخزن */
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.45);
-      z-index: 10000;
-      padding: 20px;
-      backdrop-filter: blur(4px);
-    }
-    .popup-card {
-      background: #fff;
-      border-radius: 16px;
-      max-width: 560px;
-      width: 100%;
-      padding: 22px;
+    input {
+      background: #f8f8f8;
+      border: 2px solid #cceeaa;
+      border-radius: 70px;
+      padding: 18px;
+      width: 400px;
+      max-width: 90%;
       text-align: center;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      transform: translateY(20px);
-      animation: popIn 0.45s ease forwards;
+      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
+      font-size: 16px;
+      transition: 0.3s;
+      z-index: 1;
       position: relative;
     }
-    .popup-card h2 { color: #006b2f; margin-bottom: 8px; font-size: 20px; }
-    .popup-card p { color: #333; margin-bottom: 18px; line-height: 1.5; }
-    .popup-card .popup-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .popup-card .btn-ok {
-      background: linear-gradient(90deg,#6ae44d,#00b85c);
-      color:#fff; padding:10px 18px; border-radius:12px; border:none; cursor:pointer; font-weight:700;
-    }
-    .popup-card .btn-later {
-      background:transparent; color:#333; padding:10px 18px; border-radius:12px; border:2px solid #eee; cursor:pointer; font-weight:700;
-    }
-    .popup-close {
-      position:absolute; top:12px; left:12px; background:#f3f3f3; border-radius:8px; width:34px; height:34px;
-      display:flex; align-items:center; justify-content:center; cursor:pointer; border:none; font-size:16px;
-    }
-    @keyframes popIn { from { opacity:0; transform: translateY(25px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
 
-    /* 🌐 استجابة للشاشات الصغيرة */
+    input:focus {
+      outline: none;
+      border-color: #00b85c;
+      box-shadow: 0 0 10px rgba(0, 184, 92, 0.3);
+    }
+
+    .btn {
+      background: #000;
+      color: white;
+      border: 2px solid #cceeaa;
+      border-radius: 70px;
+      padding: 16px;
+      width: 250px;
+      max-width: 80%;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn:hover {
+      background: #00b85c;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .toggle-mode {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #00b85c;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      z-index: 10;
+    }
+
+    .toggle-mode:hover {
+      transform: rotate(20deg);
+      background: #009c4e;
+    }
+
+    .error {
+      color: red;
+      font-size: 15px;
+      margin-top: 15px;
+      display: none;
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 768px) {
       .logo { width: 120px; }
-      .text { font-size: 16px; margin-bottom: 25px; }
-      .loader { width: 70px; height: 70px; margin-bottom: 25px; }
-      .type { width: 90%; padding: 18px; font-size: 15px; }
-      .type-btn { width: 80%; padding: 15px; font-size: 15px; }
-      .back-btn { top: 10px; left: 10px; padding: 8px 14px; font-size: 14px; }
-      .popup-card { padding: 16px; max-width: 92%; }
+      input { width: 90%; font-size: 15px; padding: 15px; }
+      .btn { width: 85%; font-size: 15px; padding: 14px; }
+      .toggle-mode { width: 50px; height: 50px; font-size: 20px; bottom: 20px; right: 20px; }
     }
   </style>
 </head>
-<body>
+<body class="day">
 
-  <!-- Beta Popup -->
-  <div id="betaPopup" aria-hidden="true">
-    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
-      <button class="popup-close" id="closeBetaBtn" aria-label="اغلاق">✕</button>
-      <h2 id="betaTitle">نسخة تجريبية — Beta V0.2</h2>
-      <p>مرحبًا بك في نسخة Tribbel التجريبية. قد تكون بعض الميزات قيد التطوير أو التجربة. لو حابب تختبر كل حاجة الآن اضغط "جرب الآن"، أو لو تحب ترجع بعدين اضغط "مش دلوقتي".</p>
-      <div class="popup-actions">
-        <button class="btn-ok" id="betaOk">جرب الآن</button>
-        <button class="btn-later" id="betaLater">مش دلوقتي</button>
-      </div>
-    </div>
-  </div>
+  <!-- 🍃 أوراق الشجر -->
+  <div class="leaves" id="leaves"></div>
 
-  <a href="index.html" class="back-btn">⬅</a>
-
-  <img src="img/t.webp" alt="Logo" class="logo">
-
-  <div class="text">
-    <p>meetlike - minded people nearby IRL</p>
-  </div>
-  <div class="beta">Beta V0.2</div>
-
+  <img src="img/t.webp" class="logo" alt="Logo">
+  <div class="text">meet like-minded people nearby IRL</div>
+  <div class="beta">Beta V0.3.1</div>
   <div class="loader"></div>
 
-  <input type="text" id="codeInput" placeholder="Pin or Invitation code" class="type"><br><br>
+  <input type="text" id="codeInput" placeholder="Pin or Invitation code">
+  <button class="btn" onclick="checkCode()">دخول</button>
 
-  <input type="button" value="دخول" class="type-btn" onclick="checkCode()">
+  <div id="error" class="error">❌ الكود غير صحيح</div>
 
-  <div id="error" class="error">❌ الكود غير صحيح، حاول مرة أخرى</div>
+  <button class="toggle-mode" onclick="toggleMode()">☀️</button>
 
   <script>
-    // ===== Beta popup logic =====
-    const betaPopup = document.getElementById('betaPopup');
-    const closeBetaBtn = document.getElementById('closeBetaBtn');
-    const betaOk = document.getElementById('betaOk');
-    const betaLater = document.getElementById('betaLater');
+    const validCodes = {
+      "kareem2025": "كريم",
+      "team2025": "فريق Tribble",
+      "tribble2025": "عضو Tribble",
+      "developer15": "مطور Tribble",
+      "khaled_awad5": "خالد",
+      "user2025": "مستخدم",
+      "abdo_rady0": "عبدو",
+      "ahmed_samir19": "أحمد سمير"
+    };
 
-    // Show popup only if user didn't close it before
-    const betaClosed = localStorage.getItem('betaClosed'); // "true" لو قفله قبل كده
-    if (!betaClosed) {
-      // عرض بعد 300ms عشان لا يتصادم مع أي أنيميشن بداية
-      setTimeout(() => {
-        betaPopup.style.display = 'flex';
-        betaPopup.setAttribute('aria-hidden', 'false');
-      }, 300);
-    }
+    // 🌿 إنشاء أوراق الشجر + تحميل الوضع المحفوظ
+    window.onload = function() {
+      const savedUser = localStorage.getItem("tribble_user");
+      if (savedUser) {
+        alert(`👋 أهلاً يا ${savedUser}!`);
+        window.location.href = "index.html";
+      }
 
-    function closeBeta(save = true) {
-      betaPopup.style.display = 'none';
-      betaPopup.setAttribute('aria-hidden', 'true');
-      if (save) localStorage.setItem('betaClosed', 'true'); // متخزن لو ضغط "مش دلوقتي" أو أغلق
-    }
+      const savedMode = localStorage.getItem("mode");
+      if (savedMode === "night") toggleMode(true);
 
-    closeBetaBtn.addEventListener('click', () => closeBeta(true));
-    betaLater.addEventListener('click', () => closeBeta(true));
+      const leavesContainer = document.getElementById('leaves');
+      for (let i = 0; i < 12; i++) {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        leaf.style.left = Math.random() * 100 + '%';
+        leaf.style.animationDuration = 6 + Math.random() * 5 + 's';
+        leaf.style.animationDelay = Math.random() * 5 + 's';
+        leaf.style.opacity = Math.random() * 0.8 + 0.2;
+        leavesContainer.appendChild(leaf);
+      }
+    };
 
-    // لو ضغط "جرب الآن" هنغلق النافذة ونخليها مخزنة كأن المستخدم قبل التجربة كمان
-    betaOk.addEventListener('click', () => {
-      closeBeta(true);
-      // ممكن تضيف هنا أكشن إضافي لو حببت (مثلاً فتح صفحة مميزات أو تشغيل تجربة)
-      // window.location.href = 'features.html';
-    });
-
-    // اغلاق بالـ Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeBeta(true);
-    });
-
-    // اغلاق لو ضغط بره الصندوق
-    betaPopup.addEventListener('click', (e) => {
-      if (e.target === betaPopup) closeBeta(true);
-    });
-
-    // اختياري: اختفي تلقائيًا بعد 12 ثانية لو مستخدم سابها
-    setTimeout(() => {
-      if (betaPopup.style.display === 'flex') closeBeta(false); // لو فرضًا ما ضغطش، نخفيها مؤقتًا بس من غير حفظ
-    }, 12000);
-
-    // ===== Existing code: check invitation codes =====
     function checkCode() {
       const input = document.getElementById("codeInput").value.trim().toLowerCase();
       const error = document.getElementById("error");
 
-      // ✅ الأكواد المسموح بها
-      const validCodes = [
-        "tribble2025","kareem2025","team2025","developer15",
-        "kareem_ibrahem11","user2025","ahmed_samir19",
-        "abdo_rady0","khaled_awad5"
-      ];
-
-      if (validCodes.includes(input)) {
-        // لو الكود صح — نوديه للصفحة الرئيسية
-        // لو عايز نحفظ حالة الدخول عشان ما يرجعش لتاني، شغّل السطر اللي تحته
-        // localStorage.setItem("loggedIn", "true");
+      if (validCodes[input]) {
+        const username = validCodes[input];
+        localStorage.setItem("tribble_user", username);
+        alert(`🌿 أهلاً يا ${username}!`);
         window.location.href = "index.html";
       } else {
-        // لو الكود غلط
         error.style.display = "block";
-        setTimeout(() => { error.style.display = "none"; }, 3000);
+        setTimeout(() => error.style.display = "none", 2500);
       }
     }
 
-    // لو حابب: لو المستخدم مسجل دخول مسبقًا (uncomment السطرين دول لو مستخدم محفوظ)
-    // if (localStorage.getItem("loggedIn") === "true") {
-    //   window.location.href = "index.html";
-    // }
+    function toggleMode(init = false) {
+      const body = document.body;
+      const button = document.querySelector('.toggle-mode');
 
+      if (body.classList.contains("day") && !init) {
+        body.classList.replace("day", "night");
+        button.textContent = "🌙";
+        localStorage.setItem("mode", "night");
+      } else {
+        body.classList.replace("night", "day");
+        button.textContent = "☀️";
+        localStorage.setItem("mode", "day");
+      }
+    }
   </script>
-
 </body>
 </html>
