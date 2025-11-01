@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل الدخول | Tribble</title>
+   <link rel="icon" href="img/logo.png" type="image/x-icon">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: linear-gradient(180deg, #ffffff, #fffbea);
       font-family: 'Cairo', sans-serif;
@@ -23,118 +19,104 @@
       position: relative;
       padding: 20px;
     }
-
-    .logo {
-      width: 160px;
-      margin-bottom: 25px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
+    .logo { width: 160px; margin-bottom: 25px; animation: fadeIn 2s ease-in-out; }
     .text {
-      font-size: 18px;
-      font-weight: 500;
-      color: #00b85c;
-      margin-bottom: 40px;
-      text-align: center;
-      opacity: 0.9;
+      font-size: 18px; font-weight: 500; color: #00b85c;
+      margin-bottom: 40px; text-align: center; opacity: 0.9;
       animation: slideIn 1.5s ease-in-out;
     }
-
     .loader {
-      width: 100px;
-      height: 100px;
+      width: 100px; height: 100px;
       border: 5px solid #cecece;
       border-top: 5px solid #00ff6a;
       border-right: 5px solid #ffd500;
       border-left: 5px solid #c8ff9b;
       border-radius: 50%;
       animation: spin 3s linear infinite;
-      margin-bottom: 40px;
-      opacity: 0.8;
+      margin-bottom: 40px; opacity: 0.8;
+    }
+    .beta {
+      display: inline-block;
+      background: linear-gradient(90deg, #a0802e, #ffd569);
+      color: #222; font-size: 0.875rem; font-weight: 600;
+      padding: 0.375rem 1.125rem; border-radius: 1.25rem;
+      margin-bottom: 1.5625rem; position: relative; overflow: hidden;
+    }
+    .beta::before {
+      content: ''; position: absolute; top: 0; left: -5rem; width: 3.75rem; height: 100%;
+      background: rgba(255,255,255,0.6); transform: skewX(-20deg);
+      animation: shine 2.5s infinite linear;
     }
 
     .type {
-      background: #f8f8f8;
-      border: 2px solid #cceeaa;
-      border-radius: 70px;
-      padding: 20px;
-      width: 450px;
-      max-width: 90%;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
-      font-size: 16px;
-      transition: 0.3s;
+      background: #f8f8f8; border: 2px solid #cceeaa; border-radius: 70px;
+      padding: 20px; width: 450px; max-width: 90%; text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1); font-size: 16px; transition: 0.3s;
     }
-
-    .type:focus {
-      outline: none;
-      border-color: #00b85c;
-      box-shadow: 0 0 10px rgba(0, 184, 92, 0.3);
-    }
+    .type:focus { outline: none; border-color: #00b85c; box-shadow: 0 0 10px rgba(0,184,92,0.3); }
 
     .type-btn {
-      background: #000000;
-      color: white;
-      border: 2px solid #cceeaa;
-      border-radius: 70px;
-      padding: 18px;
-      width: 250px;
-      max-width: 80%;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
-      transition: 0.3s ease;
-      cursor: pointer;
-      font-size: 16px;
+      background: #000000; color: white; border: 2px solid #cceeaa;
+      border-radius: 70px; padding: 18px; width: 250px; max-width: 80%;
+      text-align: center; box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
+      transition: 0.3s ease; cursor: pointer; font-size: 16px;
     }
+    .type-btn:hover { box-shadow: 0 0 25px rgb(0,0,0); transform: translateY(-3px); }
 
-    .type-btn:hover {
-      box-shadow: 0 0 25px rgb(0, 0, 0);
-      transform: translateY(-3px);
-    }
-
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: 15px;
-      font-weight: bold;
-      display: none;
-    }
+    .error { color: red; font-size: 14px; margin-top: 15px; font-weight: bold; display: none; }
 
     .back-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background: #fff;
-      color: #000000;
-      padding: 10px 18px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.2s ease, background 0.2s ease;
+      position: fixed; top: 20px; left: 20px; background: #fff; color: #000000;
+      padding: 10px 18px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-decoration: none; font-weight: bold; transition: transform 0.2s ease, background 0.2s ease;
       z-index: 999;
     }
+    .back-btn:hover { transform: scale(1.1); background: #97ff7d; color: rgb(0,0,0); }
 
-    .back-btn:hover {
-      transform: scale(1.1);
-      background: #97ff7d;
-      color: rgb(0, 0, 0);
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shine { 0% { left: -5rem; } 100% { left: 110%; } }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    /* ===== Beta Popup ===== */
+    #betaPopup {
+      position: fixed;
+      inset: 0;
+      display: none; /* يظهر فقط لو localStorage مش مخزن */
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.45);
+      z-index: 10000;
+      padding: 20px;
+      backdrop-filter: blur(4px);
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .popup-card {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 560px;
+      width: 100%;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      transform: translateY(20px);
+      animation: popIn 0.45s ease forwards;
+      position: relative;
     }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .popup-card h2 { color: #006b2f; margin-bottom: 8px; font-size: 20px; }
+    .popup-card p { color: #333; margin-bottom: 18px; line-height: 1.5; }
+    .popup-card .popup-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .popup-card .btn-ok {
+      background: linear-gradient(90deg,#6ae44d,#00b85c);
+      color:#fff; padding:10px 18px; border-radius:12px; border:none; cursor:pointer; font-weight:700;
     }
+    .popup-card .btn-later {
+      background:transparent; color:#333; padding:10px 18px; border-radius:12px; border:2px solid #eee; cursor:pointer; font-weight:700;
+    }
+    .popup-close {
+      position:absolute; top:12px; left:12px; background:#f3f3f3; border-radius:8px; width:34px; height:34px;
+      display:flex; align-items:center; justify-content:center; cursor:pointer; border:none; font-size:16px;
+    }
+    @keyframes popIn { from { opacity:0; transform: translateY(25px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
 
     /* 🌐 استجابة للشاشات الصغيرة */
     @media (max-width: 768px) {
@@ -144,10 +126,24 @@
       .type { width: 90%; padding: 18px; font-size: 15px; }
       .type-btn { width: 80%; padding: 15px; font-size: 15px; }
       .back-btn { top: 10px; left: 10px; padding: 8px 14px; font-size: 14px; }
+      .popup-card { padding: 16px; max-width: 92%; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Beta Popup -->
+  <div id="betaPopup" aria-hidden="true">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
+      <button class="popup-close" id="closeBetaBtn" aria-label="اغلاق">✕</button>
+      <h2 id="betaTitle">نسخة تجريبية — Beta V0.2</h2>
+      <p>مرحبًا بك في نسخة Tribbel التجريبية. قد تكون بعض الميزات قيد التطوير أو التجربة. لو حابب تختبر كل حاجة الآن اضغط "جرب الآن"، أو لو تحب ترجع بعدين اضغط "مش دلوقتي".</p>
+      <div class="popup-actions">
+        <button class="btn-ok" id="betaOk">جرب الآن</button>
+        <button class="btn-later" id="betaLater">مش دلوقتي</button>
+      </div>
+    </div>
+  </div>
 
   <a href="index.html" class="back-btn">⬅</a>
 
@@ -156,9 +152,9 @@
   <div class="text">
     <p>meetlike - minded people nearby IRL</p>
   </div>
+  <div class="beta">Beta V0.2</div>
 
   <div class="loader"></div>
-  
 
   <input type="text" id="codeInput" placeholder="Pin or Invitation code" class="type"><br><br>
 
@@ -167,24 +163,82 @@
   <div id="error" class="error">❌ الكود غير صحيح، حاول مرة أخرى</div>
 
   <script>
+    // ===== Beta popup logic =====
+    const betaPopup = document.getElementById('betaPopup');
+    const closeBetaBtn = document.getElementById('closeBetaBtn');
+    const betaOk = document.getElementById('betaOk');
+    const betaLater = document.getElementById('betaLater');
+
+    // Show popup only if user didn't close it before
+    const betaClosed = localStorage.getItem('betaClosed'); // "true" لو قفله قبل كده
+    if (!betaClosed) {
+      // عرض بعد 300ms عشان لا يتصادم مع أي أنيميشن بداية
+      setTimeout(() => {
+        betaPopup.style.display = 'flex';
+        betaPopup.setAttribute('aria-hidden', 'false');
+      }, 300);
+    }
+
+    function closeBeta(save = true) {
+      betaPopup.style.display = 'none';
+      betaPopup.setAttribute('aria-hidden', 'true');
+      if (save) localStorage.setItem('betaClosed', 'true'); // متخزن لو ضغط "مش دلوقتي" أو أغلق
+    }
+
+    closeBetaBtn.addEventListener('click', () => closeBeta(true));
+    betaLater.addEventListener('click', () => closeBeta(true));
+
+    // لو ضغط "جرب الآن" هنغلق النافذة ونخليها مخزنة كأن المستخدم قبل التجربة كمان
+    betaOk.addEventListener('click', () => {
+      closeBeta(true);
+      // ممكن تضيف هنا أكشن إضافي لو حببت (مثلاً فتح صفحة مميزات أو تشغيل تجربة)
+      // window.location.href = 'features.html';
+    });
+
+    // اغلاق بالـ Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeBeta(true);
+    });
+
+    // اغلاق لو ضغط بره الصندوق
+    betaPopup.addEventListener('click', (e) => {
+      if (e.target === betaPopup) closeBeta(true);
+    });
+
+    // اختياري: اختفي تلقائيًا بعد 12 ثانية لو مستخدم سابها
+    setTimeout(() => {
+      if (betaPopup.style.display === 'flex') closeBeta(false); // لو فرضًا ما ضغطش، نخفيها مؤقتًا بس من غير حفظ
+    }, 12000);
+
+    // ===== Existing code: check invitation codes =====
     function checkCode() {
       const input = document.getElementById("codeInput").value.trim().toLowerCase();
       const error = document.getElementById("error");
 
       // ✅ الأكواد المسموح بها
-      const validCodes = ["tribble2025", "kareem2025", "team2025", "developer15" , "kareem_ibrahem11" , "user2025" , "Ahmed_samir19"
-        , "Abdo_rady0" , "khaled_Awad5"
+      const validCodes = [
+        "tribble2025","kareem2025","team2025","developer15",
+        "kareem_ibrahem11","user2025","ahmed_samir19",
+        "abdo_rady0","khaled_awad5"
       ];
 
       if (validCodes.includes(input)) {
-        // لو الكود صح
-        window.location.href = "index.html"; // ← غيّرها لاسم الصفحة اللي عايز تروحها
+        // لو الكود صح — نوديه للصفحة الرئيسية
+        // لو عايز نحفظ حالة الدخول عشان ما يرجعش لتاني، شغّل السطر اللي تحته
+        // localStorage.setItem("loggedIn", "true");
+        window.location.href = "index.html";
       } else {
         // لو الكود غلط
         error.style.display = "block";
         setTimeout(() => { error.style.display = "none"; }, 3000);
       }
     }
+
+    // لو حابب: لو المستخدم مسجل دخول مسبقًا (uncomment السطرين دول لو مستخدم محفوظ)
+    // if (localStorage.getItem("loggedIn") === "true") {
+    //   window.location.href = "index.html";
+    // }
+
   </script>
 
 </body>
