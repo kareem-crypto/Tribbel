@@ -1,0 +1,25 @@
+*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+}
+
+body{
+    font-family: sans-serif;
+  color: var(--text-color);
+  background-color: var(--light-color);
+  line-height: 1.6;
+  direction: ltr;
+}
+.nav-actions{
+    width: 30px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.logo h1{
+    width: 20px;
+    font-weight: bolder;
+    padding-right: 20px;
+}

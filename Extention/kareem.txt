@@ -1,0 +1,28 @@
+     <!-- قسم الرئيسية -->
+    <section id="home" class="hero-section">
+        <div class="container">
+                <p data-translate="hero.subtitle">منصة متكاملة لتواصل بين الاصدقاء والقارب  ويمكن مساهدة <br>افضل الفيديوهات</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn primary-btn" data-translate="hero.cta1">ابدأ بالتواصل الآن</a>
+                    <a href="#" class="btn secondary-btn" data-translate="hero.cta2">تعرف على المزيد</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">250+</span>
+                        <span data-translate="stats.students">مستخدم</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">250+</span>
+                        <span data-translate="stats.teachers">حساب</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">650</span>
+                        <span data-translate="stats.sessions">مقابلة</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/lio.jpeg" alt="social network" data-translate="hero.image_alt" loading="lazy">
+            </div>
+        </div>
+    </section>
