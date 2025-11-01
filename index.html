@@ -1164,6 +1164,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<script>
+    // ✅ التأكد من عرض الـ Popup مرة واحدة فقط لكل مستخدم
+    document.addEventListener("DOMContentLoaded", function () {
+        const betaPopup = document.getElementById("betaPopup");
+        const closePopup = document.getElementById("closePopup");
+
+        // فحص إذا المستخدم شاف البوب أب قبل كده
+        if (localStorage.getItem("betaPopupShown")) {
+            betaPopup.style.display = "none";
+        }
+
+        // عند الضغط على زر OK
+        closePopup.addEventListener("click", function () {
+            betaPopup.style.display = "none";
+            localStorage.setItem("betaPopupShown", "true");
+        });
+    });
+</script>
+
 
 </body>
 </html>
