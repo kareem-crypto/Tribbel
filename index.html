@@ -21,7 +21,6 @@
       overflow: hidden;
     }
 
-    /* خلفية زجاجية */
     .overlay {
       position: absolute;
       top: 0;
@@ -127,12 +126,28 @@
   <footer>© 2025 Toribble. جميع الحقوق محفوظة.</footer>
 
   <script>
-    // إعداد المؤقت لمدة 7 أيام من الآن
-    const countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
+    // تحديد مدة الإيقاف (7 أيام)
+    const sevenDays = 7 * 24 * 60 * 60 * 1000;
+
+    // جلب تاريخ الانتهاء من التخزين أو إنشاؤه
+    let endDate = localStorage.getItem("maintenanceEnd");
+
+    if (!endDate) {
+      endDate = new Date().getTime() + sevenDays;
+      localStorage.setItem("maintenanceEnd", endDate);
+    }
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = countDownDate - now;
+      const distance = endDate - now;
+
+      if (distance <= 0) {
+        clearInterval(timer);
+        localStorage.removeItem("maintenanceEnd");
+        document.querySelector(".container").innerHTML =
+          "<h1>✨ عدنا من جديد!</h1><p>تم الانتهاء من التحديثات، شكرًا لصبركم ❤️</p>";
+        return;
+      }
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -143,11 +158,6 @@
       document.getElementById("hours").textContent = hours;
       document.getElementById("minutes").textContent = minutes;
       document.getElementById("seconds").textContent = seconds;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        document.querySelector(".container").innerHTML = "<h1>✨ عدنا من جديد!</h1><p>تم الانتهاء من التحديثات، شكرًا لصبركم ❤️</p>";
-      }
     }, 1000);
   </script>
 </body>
