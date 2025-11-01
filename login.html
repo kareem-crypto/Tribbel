@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تسجيل الدخول | Tribble 2025</title>
+  <title>تسجيل الدخول | Tribble</title>
   <style>
     * {
       margin: 0;
@@ -43,9 +43,10 @@
     .loader {
       width: 100px;
       height: 100px;
-      border: 5px solid #000000;
+      border: 5px solid #cecece;
       border-top: 5px solid #00ff6a;
       border-right: 5px solid #ffd500;
+      border-left: 5px solid #c8ff9b;
       border-radius: 50%;
       animation: spin 3s linear infinite;
       margin-bottom: 40px;
@@ -148,15 +149,16 @@
 </head>
 <body>
 
-  <a href="index.html" class="back-btn">⬅ الرئيسية</a>
+  <a href="index.html" class="back-btn">⬅</a>
 
   <img src="img/t.webp" alt="Logo" class="logo">
 
   <div class="text">
-    <p>أدخل كود الدعوة للوصول إلى موقعك</p>
+    <p>meetlike - minded people nearby IRL</p>
   </div>
 
   <div class="loader"></div>
+  
 
   <input type="text" id="codeInput" placeholder="Pin or Invitation code" class="type"><br><br>
 
@@ -170,7 +172,9 @@
       const error = document.getElementById("error");
 
       // ✅ الأكواد المسموح بها
-      const validCodes = ["tribble2025", "kareem2025", "team2025", "developer15"];
+      const validCodes = ["tribble2025", "kareem2025", "team2025", "developer15" , "kareem_ibrahem11" , "user2025" , "Ahmed_samir19"
+        , "Abdo_rady0" , "khaled_Awad5"
+      ];
 
       if (validCodes.includes(input)) {
         // لو الكود صح
