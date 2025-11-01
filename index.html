@@ -902,11 +902,26 @@
             body: JSON.stringify(data)
         }).catch(err => console.log("Error:", err));
     </script>
-      <script>
-    // تحويل بعد ثانية واحدة
-    setTimeout(() => {
-      window.location.href = "login.html";
-    }, 1000);
-  </script>
+<script>
+// 🟢 تحقق أولاً إذا كان المستخدم سجل دخول قبل كده
+if (localStorage.getItem("loggedIn") === "true") {
+  // لو سجل قبل كده، نوديه مباشرة للصفحة الرئيسية
+  window.location.href = "index.html";
+}
+
+document.querySelector(".type-btn").addEventListener("click", function() {
+  const code = document.querySelector(".type").value.trim();
+
+  // هنا الكود الصحيح اللي بيسمح بالدخول
+  if (code === "tribble2025") {
+    // نحفظ حالة الدخول في localStorage
+    localStorage.setItem("loggedIn", "true");
+    // نحول المستخدم للصفحة الرئيسية
+    window.location.href = "index.html";
+  } else {
+    alert("⚠️ كود الدخول غير صحيح، حاول مرة أخرى");
+  }
+});
+</script>
 </body>
 </html>
