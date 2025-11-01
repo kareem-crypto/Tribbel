@@ -693,7 +693,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#how">How It Works</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="#">Get The App</a></li>
+            <li><a href="get app.html">Get The App</a></li>
             <li><a href="manifesto.html">Manifesto</a></li>
             <li class="mobile-only" style="margin-top: 2rem;">
             </li>
@@ -923,5 +923,247 @@ document.querySelector(".type-btn").addEventListener("click", function() {
   }
 });
 </script>
+<!-- 🔗 IRL Nearby Connection Feature -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    if (!navigator.geolocation) {
+        console.warn("المتصفح لا يدعم تحديد الموقع الجغرافي.");
+        return;
+    }
+
+    // 🗺️ الحصول على موقع المستخدم
+    navigator.geolocation.getCurrentPosition(success, error);
+
+    function success(position) {
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+
+        console.log("إحداثياتك:", userLat, userLon);
+
+        // ✳️ محاكاة مستخدمين قريبين (في المستقبل يتم استبدالها ببيانات من السيرفر)
+        const usersNearby = [
+            { name: "Ahmed", lat: userLat + 0.009, lon: userLon + 0.004 },
+            { name: "Laila", lat: userLat + 0.02, lon: userLon + 0.015 }
+        ];
+
+        // 🔍 حساب المسافة (بالمتر)
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371e3; // نصف قطر الأرض بالمتر
+            const φ1 = lat1 * Math.PI / 180;
+            const φ2 = lat2 * Math.PI / 180;
+            const Δφ = (lat2 - lat1) * Math.PI / 180;
+            const Δλ = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(Δφ / 2) ** 2 +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ / 2) ** 2;
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // ✅ التحقق من وجود شخص قريب
+        let nearbyFound = false;
+        usersNearby.forEach(user => {
+            const distance = getDistance(userLat, userLon, user.lat, user.lon);
+            if (distance <= 2000) { // أقل من 2 كم
+                nearbyFound = true;
+                showNearbyPopup(user.name, distance);
+            }
+        });
+
+        if (!nearbyFound) {
+            console.log("مفيش ناس قريبة دلوقتي 😅");
+        }
+    }
+
+    function error(err) {
+        console.warn("فشل تحديد الموقع:", err.message);
+    }
+
+    // 📢 نافذة الإشعار عند وجود شخص قريب
+    function showNearbyPopup(name, distance) {
+        const popup = document.createElement("div");
+        popup.innerHTML = `
+            <div style="
+                position:fixed;
+                bottom:20px;
+                right:20px;
+                background:linear-gradient(90deg, #6ae44d, #a5ff84);
+                color:#000;
+                padding:15px 25px;
+                border-radius:20px;
+                box-shadow:0 4px 15px rgba(0,0,0,0.2);
+                font-weight:600;
+                z-index:99999;
+                animation: popIn 0.6s ease;
+            ">
+                🎯 شخص قريب منك: <b>${name}</b> (حوالي ${(distance/1000).toFixed(2)} كم)
+            </div>
+        `;
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 8000);
+    }
+});
+</script>
+<!-- ✅ IRL Nearby Detection + Local Chat System -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  if (!navigator.geolocation) {
+    alert("المتصفح لا يدعم تحديد الموقع الجغرافي.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error);
+
+  function success(position) {
+    const userLat = position.coords.latitude;
+    const userLon = position.coords.longitude;
+
+    // 🔸 محاكاة مستخدمين قريبين
+    const usersNearby = [
+      { id: 1, name: "Ahmed", lat: userLat + 0.005, lon: userLon + 0.004 },
+      { id: 2, name: "Laila", lat: userLat + 0.02, lon: userLon + 0.015 }
+    ];
+
+    usersNearby.forEach(user => {
+      const distance = getDistance(userLat, userLon, user.lat, user.lon);
+      if (distance <= 2000) showNearbyPopup(user, distance);
+    });
+  }
+
+  function error(err) {
+    console.warn("فشل تحديد الموقع:", err.message);
+  }
+
+  function getDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371e3;
+    const φ1 = lat1 * Math.PI / 180;
+    const φ2 = lat2 * Math.PI / 180;
+    const Δφ = (lat2 - lat1) * Math.PI / 180;
+    const Δλ = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(Δφ / 2) ** 2 +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ / 2) ** 2;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
+
+  // 🪧 إشعار وجود شخص قريب + زر المراسلة
+  function showNearbyPopup(user, distance) {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        background:linear-gradient(90deg, #6ae44d, #a5ff84);
+        color:#000;
+        padding:15px 25px;
+        border-radius:20px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.3);
+        font-weight:600;
+        z-index:99999;
+        display:flex;
+        align-items:center;
+        gap:10px;
+      ">
+        🎯 <b>${user.name}</b> قريب منك (${(distance/1000).toFixed(2)} كم)
+        <button id="chat-${user.id}" style="
+          background:#000;
+          color:#fff;
+          border:none;
+          border-radius:10px;
+          padding:5px 12px;
+          cursor:pointer;
+          font-weight:600;">مراسلة</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+
+    // لما المستخدم يضغط على "مراسلة"
+    document.getElementById(`chat-${user.id}`).addEventListener("click", () => {
+      popup.remove();
+      openChatBox(user);
+    });
+  }
+
+  // 💬 نافذة الدردشة
+  function openChatBox(user) {
+    // إنشاء صندوق الدردشة
+    const chatBox = document.createElement("div");
+    chatBox.id = `chat-box-${user.id}`;
+    chatBox.innerHTML = `
+      <div style="
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        width:300px;
+        background:#fff;
+        border-radius:15px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.25);
+        display:flex;
+        flex-direction:column;
+        z-index:100000;
+      ">
+        <div style="background:#000;color:#fff;padding:10px;border-radius:15px 15px 0 0;display:flex;justify-content:space-between;align-items:center;">
+          <span>💬 ${user.name}</span>
+          <button id="closeChat" style="background:none;color:#fff;border:none;font-size:18px;cursor:pointer;">×</button>
+        </div>
+        <div id="chatMessages" style="flex:1;max-height:200px;overflow-y:auto;padding:10px;font-size:14px;"></div>
+        <div style="display:flex;border-top:1px solid #ddd;">
+          <input id="chatInput" placeholder="اكتب رسالة..." style="flex:1;border:none;padding:10px;font-size:14px;outline:none;border-radius:0 0 0 15px;">
+          <button id="sendBtn" style="background:#6ae44d;border:none;padding:10px 15px;border-radius:0 0 15px 0;cursor:pointer;font-weight:bold;">إرسال</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(chatBox);
+
+    const chatMessages = chatBox.querySelector("#chatMessages");
+    const chatInput = chatBox.querySelector("#chatInput");
+    const sendBtn = chatBox.querySelector("#sendBtn");
+
+    // تحميل الرسائل القديمة من localStorage
+    const chatKey = `chat_with_${user.id}`;
+    const messages = JSON.parse(localStorage.getItem(chatKey) || "[]");
+    messages.forEach(msg => addMessage(msg.text, msg.self));
+
+    function addMessage(text, self = true) {
+      const msg = document.createElement("div");
+      msg.textContent = text;
+      msg.style = `
+        background:${self ? "#e0ffe0" : "#f0f0f0"};
+        color:#000;
+        padding:6px 10px;
+        border-radius:10px;
+        margin:${self ? "5px 0 5px auto" : "5px auto 5px 0"};
+        width:fit-content;
+        max-width:80%;
+      `;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendBtn.onclick = () => {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      addMessage(text, true);
+      messages.push({ text, self: true });
+      localStorage.setItem(chatKey, JSON.stringify(messages));
+
+      // محاكاة رد تلقائي من الشخص الآخر بعد 1.5 ثانية
+      setTimeout(() => {
+        const reply = `رسالة تلقائية من ${user.name} 😉`;
+        addMessage(reply, false);
+        messages.push({ text: reply, self: false });
+        localStorage.setItem(chatKey, JSON.stringify(messages));
+      }, 1500);
+
+      chatInput.value = "";
+    };
+
+    chatBox.querySelector("#closeChat").onclick = () => chatBox.remove();
+  }
+});
+</script>
+
 </body>
 </html>

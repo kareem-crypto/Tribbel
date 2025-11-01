@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tribble | متاح حاليًا على الويب فقط</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at 20% 20%, #0d1117, #000);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00b4d8, #0077b6, #48cae4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 320px;
+      line-height: 1.7;
+      animation: fadeInUp 1.3s ease forwards;
+    }
+    .logo {
+      width: 80px;
+      margin-bottom: 25px;
+      opacity: 0;
+      animation: fadeIn 1.3s ease forwards;
+    }
+    .btn {
+      margin-top: 25px;
+      padding: 12px 24px;
+      background: #0077b6;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 1rem;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+    .btn:hover {
+      background: #00b4d8;
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 400px) {
+      h1 { font-size: 1.8rem; }
+      p { font-size: 1rem; max-width: 280px; }
+      .btn { padding: 10px 20px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <img src="img/logo.png" alt="Tribble Logo" class="logo">
+
+  <h1>Tribble متاح الآن فقط على الويب 🌐</h1>
+  <p>تطبيق Tribble لسه تحت التطوير. قريب جدًا هيتوفر كتطبيق موبايل على Android و iOS!</p>
+
+  <button class="btn" onclick="window.location.href='index.html'">الانتقال إلى الموقع</button>
+
+  <footer>© 2025 Tribble Beta — جميع الحقوق محفوظة</footer>
+
+  <script>
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      console.log("يبدو أنك تستخدم موبايل!");
+    }
+  </script>
+</body>
+</html>
