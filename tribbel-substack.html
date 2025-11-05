@@ -13,7 +13,7 @@
       font-family: "Poppins", sans-serif;
     }
     body {
-      background: radial-gradient(circle at 20% 20%, #0d1117, #000);
+      background: radial-gradient(circle at 20% 20%, #ecf5e3, #ecf5e3);
       color: white;
       display: flex;
       justify-content: center;
@@ -27,7 +27,7 @@
     h1 {
       font-size: 2.4rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #00b4d8, #0077b6, #48cae4);
+      background: #000000;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 10px;
@@ -35,17 +35,31 @@
     }
     p {
       font-size: 1.1rem;
-      color: #ccc;
+      color: #6d6c6c;
       max-width: 320px;
       line-height: 1.7;
       animation: fadeInUp 1.3s ease forwards;
     }
     .logo {
       width: 80px;
-      border-radius: 50px;
+      border-radius: 20px;
       margin-bottom: 25px;
       opacity: 0;
       animation: fadeIn 1.3s ease forwards;
+    }
+    .input{
+            background: #f8f8f8;
+      border: 2px solid #cceeaa;
+      border-radius: 70px;
+      padding: 18px;
+      width: 400px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 255, 90, 0.1);
+      font-size: 16px;
+      transition: 0.3s;
+      z-index: 1;
+      position: relative;
     }
     .btn {
       margin-top: 25px;
@@ -94,12 +108,15 @@
 <body>
   <img src="img/logo.png" alt="Tribble Logo" class="logo">
 
-  <h1>Tribble متاح الآن فقط على الويب 🌐</h1>
-  <p>تطبيق Tribble لسه تحت التطوير. قريب جدًا هيتوفر كتطبيق موبايل على Android و iOS!</p>
+  <h1>Updates</h1>
+  <p>connecting like-minded <br>people and communities IRL</p> <br>
+  <p>By Tribbel.Over 700 Subscribes</p>
 
-  <button class="btn" onclick="window.location.href='index.html'">الانتقال إلى االصفحة الرئيسية</button>
+  <input type="email" placeholder="Type your email" class="input">
+  <button onclick="window.location.href='index.html'" class="btn">Subscribe</button>
 
-  <footer>© 2025 Tribble  — جميع الحقوق محفوظة</footer>
+  <footer>By subscribbing, i agree to substack's <span style="text-decoration: underline;">Terms of Use</span> and <br> acknowledge its <span style="text-decoration: underline;">information collection notice 
+  </span>and <span style="text-decoration: underline;">Privacy Policy</span> <br><br> <h4>No Thanks</h4></footer>
 
   <script>
     if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {

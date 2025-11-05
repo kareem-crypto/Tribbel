@@ -1,37 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/vido.css">
-    <link rel="stylesheet" href="css/HELP.CSS">
-    <link rel="stylesheet" href="css/style.css">
-    <title>VIDO - TORIBBLE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الأصدقاء | TORIBBLE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f6fa;
+      --text: #1c1e21;
+      --card: #ffffff;
+      --accent: #7a5af5;
+      --accent-hover: #6844e4;
+      --shadow: 0 10px 25px rgba(0,0,0,0.06);
+      --transition: 0.35s ease;
+    }
+    body.dark {
+      --bg: #0e1015;
+      --text: #f1f3f5;
+      --card: #1b1e24;
+      --accent: #7289da;
+      --accent-hover: #5b6dce;
+      --shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: var(--transition);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: rotate(12deg);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .friend-card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .friend-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .friend-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .friend-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .status {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 14px;
+    }
+
+    .status.online::before {
+      content: "● ";
+      color: #4caf50;
+    }
+    .status.offline::before {
+      content: "● ";
+      color: #999;
+    }
+
+    .action-btn {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .action-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    .remove {
+      background: #ff4d4d;
+    }
+    .remove:hover {
+      background: #e03e3e;
+    }
+
+    /* ✨ دخول ناعم للبطاقات */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .friend-card {
+      animation: fadeUp 0.6s ease forwards;
+    }
+  </style>
 </head>
 <body>
-         <!-- قسم النافبار -->
-     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-             <img src="img/logo.png" alt="شعار TORIBBLE" class="logo-img">
-                <span class="logo-text" style="color: black;">TORIBBLE</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html" data-translate="nav.home">الرئيسية</a></li>
-                <li><a href="video.html" data-translate="nav.features">الفيديوهات</a></li>
-                <li><a href="groups.html" data-translate="nav.teachers">الجروبات</a></li>
-                <li><a href="notifucation.html" data-translate="nav.schedule">الاشعارات</a></li>
-                <li><a href="frindes.html" data-translate="nav.contact" style="color: blueviolet;">الاصدقاء</a></li>
-                <li><a href="setting.html" data-translate="nav.contact" >المزيد</a></li>
-            </ul>
-             <!-- <div class="auth-buttons">
-                    <a href="login.html" class="btn login-btn" data-translate="nav.login">التسجيل</a>
-                </div>--> 
-            </div>
-            <button class="mobile-menu-btn" aria-label="قائمة الجوال">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+
+  <nav>
+    <div class="logo">
+      <img src="img/logo.png" width="35">
+      TORIBBLE
+    </div>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </nav>
+
+  <main id="friendsList"></main>
+
+  <script>
+    // بيانات أصدقاء تجريبية
+    const friends = [
+      { name: "كريم", img: "https://i.pravatar.cc/80?img=1", status: "online" },
+      { name: "محمد", img: "https://i.pravatar.cc/80?img=2", status: "offline" },
+      { name: "سارة", img: "https://i.pravatar.cc/80?img=3", status: "online" },
+      { name: "يوسف", img: "https://i.pravatar.cc/80?img=4", status: "online" },
+      { name: "نور", img: "https://i.pravatar.cc/80?img=5", status: "offline" },
+      { name: "هند", img: "https://i.pravatar.cc/80?img=6", status: "online" }
+    ];
+
+    const container = document.getElementById("friendsList");
+
+    friends.forEach((friend) => {
+      const card = document.createElement("div");
+      card.className = "friend-card";
+      card.innerHTML = `
+        <img src="${friend.img}" alt="${friend.name}">
+        <div class="friend-name">${friend.name}</div>
+        <div class="status ${friend.status}">${friend.status === "online" ? "متصل الآن" : "غير متصل"}</div>
+        <button class="action-btn">إضافة صديق</button>
+      `;
+      container.appendChild(card);
+
+      const btn = card.querySelector(".action-btn");
+      btn.addEventListener("click", () => {
+        if (btn.textContent === "إضافة صديق") {
+          btn.textContent = "إلغاء الصداقة";
+          btn.classList.add("remove");
+        } else {
+          btn.textContent = "إضافة صديق";
+          btn.classList.remove("remove");
+        }
+      });
+    });
+
+    // Dark Mode
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+  </script>
+
 </body>
 </html>
