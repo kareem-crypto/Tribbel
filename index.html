@@ -1,715 +1,198 @@
 <!DOCTYPE html>
 <html lang="ar" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toribble | Find Your Tribe Anywhere</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toribble | Find Your Tribe Anywhere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"></script>
 </head>
+
 <body>
-    <!-- Popup -->
-    <div id="betaPopup">
-        <div class="popup-content">
-            <h2>Beta Version (V0.3)</h2>
-            <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
-            <button id="closePopup">OK</button>
-        </div>
+
+  <!-- Popup -->
+  <div id="betaPopup">
+    <div class="popup-content">
+      <h2>Beta Version (V0.3)</h2>
+      <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
+      <button id="closePopup">OK</button>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="img/tribbel.5d54508c.svg" alt="logo">
     </div>
 
-<!-- Navbar -->
-<nav>
-  <div class="logo">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="get-app.html">Get The App</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="login.html" class="join">Join Waitlist</a>
+      <a href="login.html"><button class="login">Login</button></a>
+      <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="beta">Beta release V.0.3</div>
+      <h1>Find Your<br><span style="font-weight:bolder;color:#6ae44d;">Tribe</span><br>Anywhere</h1>
+      <p>Find community and the people you click with closest to you.<br>Your next magical connection is just a click away.</p>
+      <div class="hero-buttons">
+        <a href="login.html"><button class="btn btn-green">Login</button></a>
+        <button class="btn btn-yellow">Join Waitlist</button>
+        <a href="get-code.html"><button class="btn btn-outline">Got An Invitation Code?</button></a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="img/hero-image-base.webp" alt="friends having dinner">
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how">
+    <h2>How Does It Work?</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">1</div>
+        <div class="map-box" style="background-image: url(img/cities.b5e15162.svg);"></div>
+        <h3>Join Tribbel</h3>
+        <p>Subscribe now and be part of the Egyptian beta testers.</p>
+      </div>
+      <div class="card">
+        <div class="icon">2</div>
+        <h3>Fill in your interests</h3>
+        <p>Tell us what you love, and we'll do the rest.</p>
+        <div class="interests">
+          <div class="interest"><span>Music</span>✅</div>
+          <div class="interest"><span>Sports</span>➕</div>
+          <div class="interest"><span>Gaming</span>➕</div>
+          <div class="interest"><span>Traveling</span>➕</div>
+          <div class="interest"><span>Photography</span>✅</div>
+          <div class="interest"><span>Reading</span>✅</div>
+          <div class="interest"><span>Listening</span>➕</div>
+          <div class="interest"><span>Video Games</span>➕</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">3</div>
+        <h3>Get Recommendations</h3>
+        <p>Tribbel AI will suggest communities to join and activities to enjoy in person.</p>
+        <img src="img/card3-recommendations.4b3e9862.svg" alt="Events" style="width:100%;margin-top:10px;">
+      </div>
+      <div class="card">
+        <div class="icon">4</div>
+        <h3>Meet IRL</h3>
+        <p>Go out and connect with people you're sure to click with.</p>
+      </div>
+      <div class="card">
+        <div class="icon">5</div>
+        <h3>Rate your Experience</h3>
+        <p>Help Tribbel AI improve its recommendations.</p>
+        <div class="stars">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+        <p id="rating-text" style="margin-top:10px;color:gray;">Click a star to rate!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cities -->
+  <section id="nearby" style="padding:60px 20px;background:linear-gradient(125deg,#effaff,#dbf4ff);text-align:center;">
+    <h2 style="font-size:28px;font-weight:700;color:#2c3e50;">Cities</h2>
+    <img src="img/cities.b5e15162.svg" alt="map" style="width:100%;border-radius:10px;">
+    <h5>* You can use Tribbel from anywhere, but the <b>Meetup</b> feature is currently only available in Alexandria, Egypt.</h5>
+  </section>
+
+  <!-- Trusted -->
+  <section id="trusted_by">
+    <h2 style="font-size:28px;font-weight:700;color:#2c3e50;">Trusted by communities</h2>
+    <p>We are expanding Tribbel to the most powerful places in <b>Alexandria</b> and all over Egypt soon.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
     <img src="img/tribbel.5d54508c.svg" alt="logo">
-  </div>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="get app.html">Get The App</a></li>
-    <li><a href="manifesto.html">Manifesto</a></li>
-  </ul>
-
-  <div class="nav-actions">
-    <a href="login.html" class="join">Join Waitlist</a>
-    <a href="login.html"><button class="login">Login</button></a>
-
-
-    <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-  </div>
-</nav>
-
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-text">
-            <div class="beta">Beta release V.0.3</div>
-            <h1>Find Your<br><span style="font-weight: bolder; color: #6ae44d;">Tribe </span><br>Any where</h1>
-            <p>Find community and the people you click with closest to you.<br>Your next magical connection is just a click away.</p>
-            <div class="hero-buttons">
-                <a href="login.html"><button class="btn btn-green">Login</button></a>
-                <button class="btn btn-yellow">Join Waitlist</button>
-             <a href="get-code.html"><button class="btn btn-outline">Got An Invitation Code?</button></a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="img/hero-image-base.webp" alt="friends having dinner">
-        </div>
-    </section> 
-
-    <!-- How It Works -->
-    <section id="how">
-        <h2>How Does It Work?</h2>
-        <div class="cards">
-            <div class="card">
-              <div class="icon">1</div>
-                <div class="map-box" style="background-image: url(img/cities.b5e15162.svg);"></div>
-                <h3>Join Tribbel</h3>
-                <p>Subscribe to the Egyptions now and we are looking for a paid.</p>
-            </div>
-            <div class="card">
-                <div class="icon">2</div>
-                <h3>Fill in your interests</h3>
-                <p>Tell us what you love, and we'll do the rest.</p>
-                <div class="interests">
-                    <div class="interest"><span>Music</span>✅</div>
-                    <div class="interest"><span>Sports</span>➕</div>
-                    <div class="interest"><span>Gaming</span>➕</div>
-                    <div class="interest"><span>Traveling</span>➕</div>
-                    <div class="interest"><span>phoyograpy</span>✅</div>
-                    <div class="interest"><span>reading</span>✅</div>
-                    <div class="interest"><span>listening</span>➕</div>
-                    <div class="interest"><span>video Gaming</span>➕</div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon" >3</div>
-                <h3>Get Recommendations</h3>
-                <p>Tribbel AI will suggest communities to join and activities to enjoy in person</p>
-                <img src="img/card3-recommendations.4b3e9862.svg" alt="Events" style="width:100%;margin-top:10px;">
-            </div>
-            <div class="card">
-                <div class="icon">4</div>
-                <h3>Meet IRL</h3>
-                <p>Go out and connect with people we're sure you'll click with.</p><br><br>
-            </div>
-            <div class="card">
-                <div class="icon">5</div>
-                <h3>Rate your Experience</h3>
-                <p>Help Tribbel AI improve its recommendations and make every connection even better.</p>
-                <div class="stars">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
-                </div>
-                <p id="rating-text" style="margin-top:10px;color:gray;">Click a star to rate!</p>
-            </div>
-        </div>
-    </section>
-
-
-<section id="nearby" style="padding: 60px 20px; background: linear-gradient(125deg,#effaff, #dbf4ff); text-align: center;">
-  <h2 style="font-size: 28px; font-weight: 700; color: #2c3e50;">cities</h2>
-  <img src="img/cities.b5e15162.svg" alt="map" style="width: 100%; border-radius: 50px;">
-  <h5 style="color: #000000;">* You Can use Tribbel from Anywhere but
-     the <span style="font-weight: bolder;">meetup</span> Feature is currently only available in Alexandria,Egypt.</h5>
-</section>
-
-<section id="Tursted_by">
-<h2 style="font-size: 28px; font-weight: 700; color: #2c3e50;">Trusted by communities</h2>
-
-  <p>We are sorry and i do not have places to interview now and wait for Tribble in the Most powerful places in <span style="font-weight: bolder;">Alexandria</span>
-  and the rest of Egypt
-  </p>
- <!--<img src="img/community1.9e05c9ab.svg" alt="map" style="width:200px;">
-  <img src="img/community2.cb0b43f2.svg" alt="map" style="width:200px;"><br>
-  <img src="img/community3.2f93702e.svg" alt="map" style="width:200px">
-  <img src="img/community4.528be1fc.svg" alt="map" style="width:200px;">--> 
-</section>
-
-
-<!-- ✅ مكتبة Leaflet للخرائط -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Footer -->
-    <footer>
-        <img src="img/tribbel.5d54508c.svg" alt="logo">
-        <p style="color:gray;font-weight:bold;">Your tribe is</p>
-        <p style="color:black;font-weight:bolder;">closer than you think</p>
-        <div class="footer-links">
-            <ul>
-                <li><a href="manifesto.html">Our Manifesto</a></li>
-                <li><a href="https://wa.me/01207771639?text=Hi">Contact</a></li>
-                <li><a href="tribbel-substack.html">Blog</a></li>
-            </ul>
-        </div>`
-        <p>&copy; 2025 Tribbel, all rights reserved</p>
-        <a href="service.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a>
-    </footer>
-
-<script>
-  const getLocationBtn = document.getElementById("getLocationBtn");
-  const locationStatus = document.getElementById("locationStatus");
-  const mapContainer = document.getElementById("map");
-  let map;
-
-  getLocationBtn.addEventListener("click", () => {
-    if (navigator.geolocation) {
-      locationStatus.textContent = "جارٍ تحديد موقعك...";
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-      locationStatus.textContent = "المتصفح لا يدعم تحديد الموقع الجغرافي.";
-    }
-  });
-
-  function successCallback(position) {
-    const { latitude, longitude } = position.coords;
-    locationStatus.innerHTML = `تم تحديد موقعك ✅<br>خط العرض: ${latitude.toFixed(4)}, خط الطول: ${longitude.toFixed(4)}`;
-    mapContainer.style.display = "block";
-
-    // إنشاء الخريطة
-    if (!map) {
-      map = L.map("map").setView([latitude, longitude], 14);
-
-      // شكل الخريطة
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-      }).addTo(map);
-    } else {
-      map.setView([latitude, longitude], 14);
-    }
-
-    // 🔵 موقع المستخدم
-    const userMarker = L.circleMarker([latitude, longitude], {
-      radius: 10,
-      color: "#2196f3",
-      fillColor: "#2196f3",
-      fillOpacity: 0.8
-    }).addTo(map).bindPopup("📍 أنت هنا");
-
-    // ✅ أشخاص قريبين (نقط خضراء)
-    const nearbyUsers = generateNearbyPoints(latitude, longitude, 6);
-    nearbyUsers.forEach((user, i) => {
-      const greenDot = L.circleMarker([user.lat, user.lng], {
-        radius: 8,
-        color: "#2ecc71",
-        fillColor: "#2ecc71",
-        fillOpacity: 0.9
-      })
-      .addTo(map)
-      .bindPopup(`👤 شخص قريب منك #${i + 1}`);
-
-      // 💫 حركة بسيطة للنقط
-      setInterval(() => {
-        const newOpacity = 0.6 + Math.random() * 0.4;
-        greenDot.setStyle({ fillOpacity: newOpacity });
-      }, 1000 + Math.random() * 500);
-    });
-  }
-
-  // توليد نقاط عشوائية حول المستخدم
-  function generateNearbyPoints(lat, lng, count) {
-    const points = [];
-    for (let i = 0; i < count; i++) {
-      const randomLat = lat + (Math.random() - 0.5) * 0.01;
-      const randomLng = lng + (Math.random() - 0.5) * 0.01;
-      points.push({ lat: randomLat, lng: randomLng });
-    }
-    return points;
-  }
-
-  function errorCallback(error) {
-    locationStatus.textContent = "حدث خطأ أثناء تحديد موقعك.";
-    console.error(error);
-  }
-</script>
-
-
+    <p style="color:gray;font-weight:bold;">Your tribe is</p>
+    <p style="color:black;font-weight:bolder;">closer than you think</p>
+    <div class="footer-links">
+      <ul>
+        <li><a href="manifesto.html">Our Manifesto</a></li>
+        <li><a href="https://wa.me/01207771639?text=Hi">Contact</a></li>
+        <li><a href="tribbel-substack.html">Blog</a></li>
+      </ul>
+    </div>
+    <p>&copy; 2025 Tribbel, all rights reserved</p>
+    <a href="service.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a>
+  </footer>
 
   <script>
-  const getLocationBtn = document.getElementById("getLocationBtn");
-  const locationStatus = document.getElementById("locationStatus");
-  const mapContainer = document.getElementById("map");
-  let map;
-
-  getLocationBtn.addEventListener("click", () => {
-    if (navigator.geolocation) {
-      locationStatus.textContent = "جارٍ تحديد موقعك...";
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-      locationStatus.textContent = "المتصفح لا يدعم تحديد الموقع الجغرافي.";
-    }
-  });
-
-  function successCallback(position) {
-    const { latitude, longitude } = position.coords;
-    locationStatus.innerHTML = `تم تحديد موقعك بنجاح ✅<br>خط العرض: ${latitude.toFixed(4)}, خط الطول: ${longitude.toFixed(4)}`;
-    mapContainer.style.display = "block";
-
-    // إنشاء خريطة
-    if (!map) {
-      map = L.map("map").setView([latitude, longitude], 14);
-
-      // طبقة الخريطة (شكلها)
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-      }).addTo(map);
-    } else {
-      map.setView([latitude, longitude], 14);
-    }
-
-    // 🔵 موقع المستخدم الحالي
-    const userMarker = L.circleMarker([latitude, longitude], {
-      radius: 10,
-      color: "#2196f3",
-      fillColor: "#2196f3",
-      fillOpacity: 0.8
-    }).addTo(map).bindPopup("📍 أنت هنا");
-
-    // ✅ أشخاص قريبين (نقط خضراء عشوائية حول المستخدم)
-    const nearbyUsers = generateNearbyPoints(latitude, longitude, 6);
-    nearbyUsers.forEach(user => {
-      L.circleMarker([user.lat, user.lng], {
-        radius: 8,
-        color: "#2ecc71",
-        fillColor: "#2ecc71",
-        fillOpacity: 0.9
-      }).addTo(map).bindPopup("🧑 شخص قريب منك");
+    // Menu Toggle
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuBtn.innerHTML = navLinks.classList.contains("active")
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
     });
-  }
 
-  function errorCallback(error) {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        locationStatus.textContent = "تم رفض إذن تحديد الموقع ❌";
-        break;
-      case error.POSITION_UNAVAILABLE:
-        locationStatus.textContent = "معلومات الموقع غير متوفرة.";
-        break;
-      case error.TIMEOUT:
-        locationStatus.textContent = "انتهى وقت طلب الموقع.";
-        break;
-      default:
-        locationStatus.textContent = "حدث خطأ غير متوقع.";
-    }
-  }
-
-  // دالة لإنشاء نقاط عشوائية تمثل المستخدمين القريبين
-  function generateNearbyPoints(lat, lng, count) {
-    const points = [];
-    for (let i = 0; i < count; i++) {
-      const randomLat = lat + (Math.random() - 0.5) * 0.02; // فرق بسيط في الإحداثيات
-      const randomLng = lng + (Math.random() - 0.5) * 0.02;
-      points.push({ lat: randomLat, lng: randomLng });
-    }
-    return points;
-  }
-</script>
-<script>
-  const getLocationBtn = document.getElementById("getLocationBtn");
-  const locationStatus = document.getElementById("locationStatus");
-  const mapContainer = document.getElementById("map");
-
-  getLocationBtn.addEventListener("click", () => {
-    if (navigator.geolocation) {
-      locationStatus.textContent = "جارٍ تحديد موقعك...";
-      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-      locationStatus.textContent = "المتصفح لا يدعم تحديد الموقع الجغرافي.";
-    }
-  });
-
-  function successCallback(position) {
-    const { latitude, longitude } = position.coords;
-    locationStatus.innerHTML = `تم تحديد موقعك بنجاح ✅<br>خط العرض: ${latitude.toFixed(4)}, خط الطول: ${longitude.toFixed(4)}`;
-    mapContainer.style.display = "block";
-
-    // إنشاء خريطة Google
-    const mapFrame = document.createElement("iframe");
-    mapFrame.src = `https://www.google.com/maps?q=${latitude},${longitude}&z=14&output=embed`;
-    mapFrame.style.width = "100%";
-    mapFrame.style.height = "400px";
-    mapFrame.style.border = "0";
-    mapFrame.loading = "lazy";
-    mapFrame.allowFullscreen = true;
-
-    mapContainer.innerHTML = "";
-    mapContainer.appendChild(mapFrame);
-  }
-
-  function errorCallback(error) {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        locationStatus.textContent = "تم رفض إذن تحديد الموقع ❌";
-        break;
-      case error.POSITION_UNAVAILABLE:
-        locationStatus.textContent = "معلومات الموقع غير متوفرة.";
-        break;
-      case error.TIMEOUT:
-        locationStatus.textContent = "انتهى وقت طلب الموقع.";
-        break;
-      default:
-        locationStatus.textContent = "حدث خطأ غير متوقع.";
-    }
-  }
-</script>
-    <script>
-        // Menu Toggle
-        const menuBtn = document.querySelector(".menu-btn");
-        const navLinks = document.querySelector(".nav-links");
-        
-        menuBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            menuBtn.innerHTML = navLinks.classList.contains("active") ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Navbar Hide/Show on Scroll
-        let lastScrollTop = 0;
-        const navbar = document.querySelector("nav");
-        
-        window.addEventListener("scroll", function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            navbar.style.top = (scrollTop > lastScrollTop) ? "-5rem" : "0";
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }, false);
-
-        // Star Rating
-        const stars = document.querySelectorAll('.star');
-        const ratingText = document.getElementById('rating-text');
-        
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                stars.forEach(s => s.classList.remove('active'));
-                for(let i = 0; i <= index; i++) {
-                    stars[i].classList.add('active');
-                }
-                ratingText.textContent = `You rated ${index+1} star${index ? 's' : ''}!`;
-                ratingText.style.color = 'gold';
-            });
-        });
-
-        // Popup
-        const popup = document.getElementById("betaPopup");
-        const closeBtn = document.getElementById("closePopup");
-        
-        closeBtn.addEventListener("click", () => popup.style.display = "none");
-        setTimeout(() => popup.style.display = "none", 10000);
-
-        // Banner show/hide
-        const workBanner = document.getElementById("workBanner");
-        const closeBanner = document.getElementById("closeBanner");
-        
-        // يظهر بعد ثانيتين
-        setTimeout(() => workBanner.classList.add("show"), 2000);
-        closeBanner.addEventListener("click", () => workBanner.style.display = "none");
-
-        // Analytics (Optional)
-        const scriptURL = "https://script.google.com/macros/s/AKfycbyExample12345/exec";
-        const data = {
-            device: navigator.userAgent.includes("Mobile") ? "Mobile" : "Desktop",
-            browser: navigator.userAgent,
-            platform: navigator.platform,
-            language: navigator.language,
-            page: window.location.href
-        };
-
-        fetch(scriptURL, {
-            method: "POST",
-            body: JSON.stringify(data)
-        }).catch(err => console.log("Error:", err));
-    </script>
-<script>
-// 🟢 تحقق أولاً إذا كان المستخدم سجل دخول قبل كده
-if (localStorage.getItem("loggedIn") === "true") {
-  // لو سجل قبل كده، نوديه مباشرة للصفحة الرئيسية
-  window.location.href = "index.html";
-}
-
-document.querySelector(".type-btn").addEventListener("click", function() {
-  const code = document.querySelector(".type").value.trim();
-
-  // هنا الكود الصحيح اللي بيسمح بالدخول
-  if (code === "tribble2025") {
-    // نحفظ حالة الدخول في localStorage
-    localStorage.setItem("loggedIn", "true");
-    // نحول المستخدم للصفحة الرئيسية
-    window.location.href = "index.html";
-  } else {
-    alert("⚠️ كود الدخول غير صحيح، حاول مرة أخرى");
-  }
-});
-</script>
-<!-- 🔗 IRL Nearby Connection Feature -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    if (!navigator.geolocation) {
-        console.warn("المتصفح لا يدعم تحديد الموقع الجغرافي.");
-        return;
-    }
-
-    // 🗺️ الحصول على موقع المستخدم
-    navigator.geolocation.getCurrentPosition(success, error);
-
-    function success(position) {
-        const userLat = position.coords.latitude;
-        const userLon = position.coords.longitude;
-
-        console.log("إحداثياتك:", userLat, userLon);
-
-        // ✳️ محاكاة مستخدمين قريبين (في المستقبل يتم استبدالها ببيانات من السيرفر)
-        const usersNearby = [
-            { name: "Ahmed", lat: userLat + 0.009, lon: userLon + 0.004 },
-            { name: "Laila", lat: userLat + 0.02, lon: userLon + 0.015 }
-        ];
-
-        // 🔍 حساب المسافة (بالمتر)
-        function getDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371e3; // نصف قطر الأرض بالمتر
-            const φ1 = lat1 * Math.PI / 180;
-            const φ2 = lat2 * Math.PI / 180;
-            const Δφ = (lat2 - lat1) * Math.PI / 180;
-            const Δλ = (lon2 - lon1) * Math.PI / 180;
-            const a = Math.sin(Δφ / 2) ** 2 +
-                      Math.cos(φ1) * Math.cos(φ2) *
-                      Math.sin(Δλ / 2) ** 2;
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            return R * c;
-        }
-
-        // ✅ التحقق من وجود شخص قريب
-        let nearbyFound = false;
-        usersNearby.forEach(user => {
-            const distance = getDistance(userLat, userLon, user.lat, user.lon);
-            if (distance <= 2000) { // أقل من 2 كم
-                nearbyFound = true;
-                showNearbyPopup(user.name, distance);
-            }
-        });
-
-        if (!nearbyFound) {
-            console.log("مفيش ناس قريبة دلوقتي 😅");
-        }
-    }
-
-    function error(err) {
-        console.warn("فشل تحديد الموقع:", err.message);
-    }
-
-    // 📢 نافذة الإشعار عند وجود شخص قريب
-    function showNearbyPopup(name, distance) {
-        const popup = document.createElement("div");
-        popup.innerHTML = `
-            <div style="
-                position:fixed;
-                bottom:20px;
-                right:20px;
-                background:linear-gradient(90deg, #6ae44d, #a5ff84);
-                color:#000;
-                padding:15px 25px;
-                border-radius:20px;
-                box-shadow:0 4px 15px rgba(0,0,0,0.2);
-                font-weight:600;
-                z-index:99999;
-                animation: popIn 0.6s ease;
-            ">
-                🎯 شخص قريب منك: <b>${name}</b> (حوالي ${(distance/1000).toFixed(2)} كم)
-            </div>
-        `;
-        document.body.appendChild(popup);
-        setTimeout(() => popup.remove(), 8000);
-    }
-});
-</script>
-<!-- ✅ IRL Nearby Detection + Local Chat System -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  if (!navigator.geolocation) {
-    alert("المتصفح لا يدعم تحديد الموقع الجغرافي.");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(success, error);
-
-  function success(position) {
-    const userLat = position.coords.latitude;
-    const userLon = position.coords.longitude;
-
-    // 🔸 محاكاة مستخدمين قريبين
-    const usersNearby = [
-      { id: 1, name: "Ahmed", lat: userLat + 0.005, lon: userLon + 0.004 },
-      { id: 2, name: "Laila", lat: userLat + 0.02, lon: userLon + 0.015 }
-    ];
-
-    usersNearby.forEach(user => {
-      const distance = getDistance(userLat, userLon, user.lat, user.lon);
-      if (distance <= 2000) showNearbyPopup(user, distance);
+    // Navbar Hide/Show
+    let lastScrollTop = 0;
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      navbar.style.top = scrollTop > lastScrollTop ? "-5rem" : "0";
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
-  }
 
-  function error(err) {
-    console.warn("فشل تحديد الموقع:", err.message);
-  }
-
-  function getDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371e3;
-    const φ1 = lat1 * Math.PI / 180;
-    const φ2 = lat2 * Math.PI / 180;
-    const Δφ = (lat2 - lat1) * Math.PI / 180;
-    const Δλ = (lon2 - lon1) * Math.PI / 180;
-    const a = Math.sin(Δφ / 2) ** 2 +
-              Math.cos(φ1) * Math.cos(φ2) *
-              Math.sin(Δλ / 2) ** 2;
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-  }
-
-  // 🪧 إشعار وجود شخص قريب + زر المراسلة
-  function showNearbyPopup(user, distance) {
-    const popup = document.createElement("div");
-    popup.innerHTML = `
-      <div style="
-        position:fixed;
-        bottom:20px;
-        right:20px;
-        background:linear-gradient(90deg, #6ae44d, #a5ff84);
-        color:#000;
-        padding:15px 25px;
-        border-radius:20px;
-        box-shadow:0 4px 15px rgba(0,0,0,0.3);
-        font-weight:600;
-        z-index:99999;
-        display:flex;
-        align-items:center;
-        gap:10px;
-      ">
-        🎯 <b>${user.name}</b> قريب منك (${(distance/1000).toFixed(2)} كم)
-        <button id="chat-${user.id}" style="
-          background:#000;
-          color:#fff;
-          border:none;
-          border-radius:10px;
-          padding:5px 12px;
-          cursor:pointer;
-          font-weight:600;">مراسلة</button>
-      </div>
-    `;
-    document.body.appendChild(popup);
-
-    // لما المستخدم يضغط على "مراسلة"
-    document.getElementById(`chat-${user.id}`).addEventListener("click", () => {
-      popup.remove();
-      openChatBox(user);
+    // Star Rating
+    const stars = document.querySelectorAll('.star');
+    const ratingText = document.getElementById('rating-text');
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        stars.forEach(s => s.classList.remove('active'));
+        for (let i = 0; i <= index; i++) stars[i].classList.add('active');
+        ratingText.textContent = `You rated ${index + 1} star${index ? 's' : ''}!`;
+        ratingText.style.color = 'gold';
+      });
     });
-  }
 
-  // 💬 نافذة الدردشة
-  function openChatBox(user) {
-    // إنشاء صندوق الدردشة
-    const chatBox = document.createElement("div");
-    chatBox.id = `chat-box-${user.id}`;
-    chatBox.innerHTML = `
-      <div style="
-        position:fixed;
-        bottom:20px;
-        right:20px;
-        width:300px;
-        background:#fff;
-        border-radius:15px;
-        box-shadow:0 5px 20px rgba(0,0,0,0.25);
-        display:flex;
-        flex-direction:column;
-        z-index:100000;
-      ">
-        <div style="background:#000;color:#fff;padding:10px;border-radius:15px 15px 0 0;display:flex;justify-content:space-between;align-items:center;">
-          <span>💬 ${user.name}</span>
-          <button id="closeChat" style="background:none;color:#fff;border:none;font-size:18px;cursor:pointer;">×</button>
-        </div>
-        <div id="chatMessages" style="flex:1;max-height:200px;overflow-y:auto;padding:10px;font-size:14px;"></div>
-        <div style="display:flex;border-top:1px solid #ddd;">
-          <input id="chatInput" placeholder="اكتب رسالة..." style="flex:1;border:none;padding:10px;font-size:14px;outline:none;border-radius:0 0 0 15px;">
-          <button id="sendBtn" style="background:#6ae44d;border:none;padding:10px 15px;border-radius:0 0 15px 0;cursor:pointer;font-weight:bold;">إرسال</button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(chatBox);
-
-    const chatMessages = chatBox.querySelector("#chatMessages");
-    const chatInput = chatBox.querySelector("#chatInput");
-    const sendBtn = chatBox.querySelector("#sendBtn");
-
-    // تحميل الرسائل القديمة من localStorage
-    const chatKey = `chat_with_${user.id}`;
-    const messages = JSON.parse(localStorage.getItem(chatKey) || "[]");
-    messages.forEach(msg => addMessage(msg.text, msg.self));
-
-    function addMessage(text, self = true) {
-      const msg = document.createElement("div");
-      msg.textContent = text;
-      msg.style = `
-        background:${self ? "#e0ffe0" : "#f0f0f0"};
-        color:#000;
-        padding:6px 10px;
-        border-radius:10px;
-        margin:${self ? "5px 0 5px auto" : "5px auto 5px 0"};
-        width:fit-content;
-        max-width:80%;
-      `;
-      chatMessages.appendChild(msg);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    sendBtn.onclick = () => {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      addMessage(text, true);
-      messages.push({ text, self: true });
-      localStorage.setItem(chatKey, JSON.stringify(messages));
-
-      // محاكاة رد تلقائي من الشخص الآخر بعد 1.5 ثانية
-      setTimeout(() => {
-        const reply = `رسالة تلقائية من ${user.name} 😉`;
-        addMessage(reply, false);
-        messages.push({ text: reply, self: false });
-        localStorage.setItem(chatKey, JSON.stringify(messages));
-      }, 1500);
-
-      chatInput.value = "";
-    };
-
-    chatBox.querySelector("#closeChat").onclick = () => chatBox.remove();
-  }
-});
+    // Popup
+    const popup = document.getElementById("betaPopup");
+    const closeBtn = document.getElementById("closePopup");
+    closeBtn.addEventListener("click", () => popup.style.display = "none");
+    setTimeout(() => popup.style.display = "none", 10000);
+  </script>
+  <script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
 </script>
-<script>
-    // ✅ التأكد من عرض الـ Popup مرة واحدة فقط لكل مستخدم
-    document.addEventListener("DOMContentLoaded", function () {
-        const betaPopup = document.getElementById("betaPopup");
-        const closePopup = document.getElementById("closePopup");
 
-        // فحص إذا المستخدم شاف البوب أب قبل كده
-        if (localStorage.getItem("betaPopupShown")) {
-            betaPopup.style.display = "none";
-        }
-
-        // عند الضغط على زر OK
-        closePopup.addEventListener("click", function () {
-            betaPopup.style.display = "none";
-            localStorage.setItem("betaPopupShown", "true");
-        });
-    });
-</script>
 </body>
 </html>
