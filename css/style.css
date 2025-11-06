@@ -663,3 +663,155 @@
                 width: 100%;
             }
         }
+
+
+
+
+
+        /* كل الأكواد الأصلية بتاعتك هنا بدون تغيير */
+
+/* ===== تعديل وضع الموبايل ===== */
+@media (max-width: 900px) {
+    nav {
+        padding: 1rem 1.2rem;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 6rem;
+        transition: right 0.4s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-actions {
+        display: none;
+    }
+
+    /* البانر */
+    #workBanner {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+    /* الصورة الرئيسية */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.2rem 1rem;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        order: 2;
+        max-width: 100%;
+    }
+
+    .hero-image {
+        order: 1;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        object-fit: cover;
+        animation: heroFade 1.4s ease-in-out;
+    }
+
+    @keyframes heroFade {
+        0% { opacity: 0; transform: scale(1.08); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* الأزرار */
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 18rem;
+    }
+
+    /* الكروت */
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+        transform: none;
+        opacity: 1;
+        animation: none;
+    }
+
+    /* قسم التوظيف */
+    #recruit {
+        padding: 3rem 1rem;
+        border-radius: 2rem 2rem 0 0;
+    }
+
+    .recruit-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .recruit-buttons .btn {
+        width: 100%;
+        max-width: 18rem;
+    }
+
+    /* الفوتر */
+    footer {
+        padding: 2rem 1rem;
+    }
+}
+
+/* موبايلات صغيرة جدًا */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .beta {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .nav-links {
+        width: 90%;
+    }
+
+    .popup-content {
+        margin: 1rem;
+        padding: 1.2rem;
+    }
+}
