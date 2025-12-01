@@ -26,5 +26,3 @@
             </div>
         </div>
     </section>
-
-    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNrZWJkbGdydmdmYnRzZHphYXZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI0NTI1ODQsImV4cCI6MjA3ODAyODU4NH0.Uug6gIPzOWqBc2TEWYqqNVL6sOSx9kIZdllhBWEqyyk

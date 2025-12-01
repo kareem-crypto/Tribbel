@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tribly | Updates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #ecf5e3, #ecf5e3);
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      width: 95px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeIn 1.3s ease forwards;
+    }
+
+        /* ===== Back Button ===== */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    color: #000000;
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 999;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+    background: #97ff7d;
+    color: rgb(0, 0, 0);
+}
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #6d6c6c;
+      max-width: 320px;
+      line-height: 1.7;
+      animation: fadeInUp 1.3s ease forwards;
+    }
+
+    form {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input, textarea {
+      background: #f8f8f8;
+      border: 2px solid #cceeaa;
+      border-radius: 20px;
+      padding: 14px 18px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 255, 90, 0.05);
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #00b4d8;
+      box-shadow: 0 0 12px rgba(0, 180, 216, 0.2);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: #0077b6;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 1rem;
+      width: 100%;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .btn:hover {
+      background: #00b4d8;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 30px;
+      line-height: 1.5;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 400px) {
+      h1 { font-size: 1.8rem; }
+      p { font-size: 1rem; max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+    <!-- Back Button -->
+<a href="index.html" class="back-btn">⬅</a>
+
+  <img src="img/logo icon.png" alt="Tribly Logo" class="logo">
+
+  <h1>اشترك في التحديثات</h1>
+  <p>انضم إلى مجتمع Tribly وتابع آخر الأخبار والتحديثات</p>
+
+  <form action="https://formsubmit.co/ibrahemkareem043@gmail.com" method="POST">
+    <!-- تقدر تغير البريد هنا -->
+    <input type="email" name="email" placeholder="اكتب بريدك الإلكتروني" required>
+    <textarea name="message" placeholder="اكتب رسالتك (اختياري)"></textarea>
+    <button type="submit" class="btn">إرسال</button>
+    
+    <!-- خيارات إضافية -->
+    <input type="hidden" name="_subject" value="رسالة جديدة من نموذج Tribly!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+  </form>
+
+  <footer>
+    بالاشتراك، أنت توافق على شروط الاستخدام وسياسة الخصوصية الخاصة بـ Tribly.<br>
+    <b><a href="#" style="color:#0077b6; text-decoration:none;">لا، شكرًا</a></b>
+  </footer>
+
+</body>
+</html>

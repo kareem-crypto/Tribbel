@@ -3,18 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toribble | Find Your Tribe Anywhere</title>
+    <meta name="keywords" content="welcome in tr">
+    <title>Tribly | Find Your Tribe Anywhere</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <link rel="icon" href="img/logo icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+    /* ------------------------ */
+/* ✨ ANIMATIONS */
+/* ------------------------ */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease-in-out;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* For Cards fade */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease-in-out;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero text smooth animation */
+.hero-text,
+.hero-image img {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 1s ease;
+}
+
+.hero-loaded {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Button hover animation */
+.btn,
+.login,
+.join {
+  transition: 0.3s ease;
+}
+
+.btn:hover,
+.login:hover,
+.join:hover {
+  transform: scale(1.05);
+}
+
+/* Navbar smooth movement */
+nav {
+  transition: 0.4s ease-in-out;
+}
+</style>
 </head>
 <body>
     <!-- Popup -->
     <div id="betaPopup">
         <div class="popup-content">
             <h2>Beta Version (V0.3)</h2>
-            <p>Some features may not work correctly yet.<br>Thanks for testing Tribbel!</p>
+            <p>Some features may not work correctly yet.<br>Thanks for testing Tribly!</p>
             <button id="closePopup">OK</button>
         </div>
     </div>
@@ -22,8 +82,9 @@
 <!-- Navbar -->
 <nav>
   <div class="logo">
-    <img src="img/tribbel.5d54508c.svg" alt="logo">
+ <img src="img/logo oog.png" alt="logo">
   </div>
+  
 
   <ul class="nav-links" id="navLinks">
     <li><a href="#how">How It Works</a></li>
@@ -45,7 +106,7 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-text">
-            <div class="beta">Beta V0.3.0</div>
+            <div class="beta">Beta V0.4.1</div>
             <h1>Find Your<br><span style="font-weight: bolder; color: #6ae44d;">Tribe </span><br>Any where</h1>
             <p>Find community and the people you click with closest to you.<br>Your next magical connection is just a click away.</p>
             <div class="hero-buttons">
@@ -55,7 +116,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="img/hero-image-base.webp" alt="friends having dinner">
+            <img src="img/hero-image-base.webp" alt="friends having dinner" >
         </div>
     </section> 
 
@@ -66,7 +127,7 @@
             <div class="card">
               <div class="icon">1</div>
                 <div class="map-box" style="background-image: url(img/cities.b5e15162.svg);"></div>
-                <h3>Join Tribbel</h3>
+                <h3>Join Tribly</h3>
                 <p>Subscribe to the Egyptions now and we are looking for a paid.</p>
             </div>
             <div class="card">
@@ -87,8 +148,8 @@
             <div class="card">
                 <div class="icon" >3</div>
                 <h3>Get Recommendations</h3>
-                <p>Tribbel AI will suggest communities to join and activities to enjoy in person</p>
-                <img src="img/card3-recommendations.4b3e9862.svg" alt="Events" style="width:100%;margin-top:10px;">
+                <p>Tribly AI will suggest communities to join and activities to enjoy in person</p>
+                <img src="img/hero-image-base.jpg" alt="Events" style="width:100%;margin-top:10px;">
             </div>
             <div class="card">
                 <div class="icon">4</div>
@@ -98,7 +159,7 @@
             <div class="card">
                 <div class="icon">5</div>
                 <h3>Rate your Experience</h3>
-                <p>Help Tribbel AI improve its recommendations and make every connection even better.</p>
+                <p>Help Tribly AI improve its recommendations and make every connection even better.</p>
                 <div class="stars">
                     <span class="star" data-value="1">★</span>
                     <span class="star" data-value="2">★</span>
@@ -108,21 +169,27 @@
                 </div>
                 <p id="rating-text" style="margin-top:10px;color:gray;">Click a star to rate!</p>
             </div>
+                        <div class="card">
+                <div class="icon">6</div>
+                <h3>Do you want to work in Tribly</h3>
+                <p>Enter the continuity of our email and need to Know any of your advantages</p><br>
+                <a href="mailto:Triblyteam@gmail.com" style="color: green; text-decoration: none;">Triblyteam@gmail.com</a>
+            </div>
         </div>
     </section>
 
 
 <section id="nearby" style="padding: 60px 20px; background: linear-gradient(125deg,#effaff, #dbf4ff); text-align: center;">
   <h2 style="font-size: 28px; font-weight: 700; color: #2c3e50;">cities</h2>
-  <img src="img/cities.b5e15162.svg" alt="map" style="width: 100%; border-radius: 50px;">
-  <h5 style="color: #000000;">* You Can use Tribbel from Anywhere but
+  <img src="img/cities.b5e15162.svg" alt="map" style="width: 100%; border-radius: 50px;"><br>
+  <h5 style="color: #000000;">* You Can use Tribly from Anywhere but
      the <span style="font-weight: bolder;">meetup</span> Feature is currently only available in Alexandria,Egypt.</h5>
 </section>
 
 <section id="Tursted_by">
 <h2 style="font-size: 28px; font-weight: 700; color: #2c3e50;">Trusted by communities</h2>
 
-  <p>We are sorry and i do not have places to interview now and wait for Tribble in the Most powerful places in <span style="font-weight: bolder;">Alexandria</span>
+  <p>We are sorry and i do not have places to interview now and wait for Tribly in the Most powerful places in <span style="font-weight: bolder;">Alexandria</span>
   and the rest of Egypt
   </p>
  <!--<img src="img/community1.9e05c9ab.svg" alt="map" style="width:200px;">
@@ -137,17 +204,17 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Footer -->
     <footer>
-        <img src="img/tribbel.5d54508c.svg" alt="logo">
-        <p style="color:gray;font-weight:bold;">Your tribe is</p>
-        <p style="color:black;font-weight:bolder;">closer than you think</p>
+        <img src="img/logo oog.png" alt="logo">
+        <p style="color:#969696;font-weight:bold;">Your tribe is</p>
+        <p style="color:#000000;font-weight:bolder;">closer than you think</p>
         <div class="footer-links">
             <ul>
                 <li><a href="manifesto.html">Our Manifesto</a></li>
                 <li><a href="https://wa.me/01207771639?text=Hi">Contact</a></li>
-                <li><a href="tribbel-substack.html">Blog</a></li>
+                <li><a href="Tribly-substack.html">Blog</a></li>
             </ul>
         </div>
-        <p>&copy; 2025 Tribbel, all rights reserved</p>
+        <p>&copy; 2025 Tribly, all rights reserved</p>
         <a href="service.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a>
     </footer>
 
@@ -228,13 +295,8 @@
   }
 </script>
 
-
-
   <script>
-  const getLocationBtn = document.getElementById("getLocationBtn");
-  const locationStatus = document.getElementById("locationStatus");
-  const mapContainer = document.getElementById("map");
-  let map;
+
 
   getLocationBtn.addEventListener("click", () => {
     if (navigator.geolocation) {
@@ -310,9 +372,7 @@
   }
 </script>
 <script>
-  const getLocationBtn = document.getElementById("getLocationBtn");
-  const locationStatus = document.getElementById("locationStatus");
-  const mapContainer = document.getElementById("map");
+
 
   getLocationBtn.addEventListener("click", () => {
     if (navigator.geolocation) {
@@ -711,5 +771,42 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 </script>
+
+<script>
+// ✨ Hero animation when page loads
+window.addEventListener("load", () => {
+  document.querySelector(".hero-text").classList.add("hero-loaded");
+  document.querySelector(".hero-image img").classList.add("hero-loaded");
+});
+
+// ✨ Cards fade animation on scroll
+const cards = document.querySelectorAll(".card");
+const fadeOptions = {
+  threshold: 0.3
+};
+
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, fadeOptions);
+
+cards.forEach(card => fadeObserver.observe(card));
+
+
+// ✨ Fade-up sections (you can add class fade-up to anything)
+document.querySelectorAll(".fade-up").forEach(el => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+  });
+
+  observer.observe(el);
+});
+</script>
+
 </body>
 </html>
