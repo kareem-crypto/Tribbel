@@ -9,65 +9,6 @@
     <link rel="icon" href="img/logo icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<style>
-    /* ------------------------ */
-/* ✨ ANIMATIONS */
-/* ------------------------ */
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s ease-in-out;
-}
-
-.fade-up.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* For Cards fade */
-.card {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease-in-out;
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hero text smooth animation */
-.hero-text,
-.hero-image img {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: 1s ease;
-}
-
-.hero-loaded {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-/* Button hover animation */
-.btn,
-.login,
-.join {
-  transition: 0.3s ease;
-}
-
-.btn:hover,
-.login:hover,
-.join:hover {
-  transform: scale(1.05);
-}
-
-/* Navbar smooth movement */
-nav {
-  transition: 0.4s ease-in-out;
-}
-</style>
 </head>
 <body>
     <!-- Popup -->
@@ -91,6 +32,7 @@ nav {
     <li><a href="about.html">About</a></li>
     <li><a href="get app.html">Get The App</a></li>
     <li><a href="manifesto.html">Manifesto</a></li>
+    <li><a id="visitorsCounter">Users: ...</a></li>
   </ul>
 
   <div class="nav-actions">
@@ -173,7 +115,7 @@ nav {
                 <div class="icon">6</div>
                 <h3>Do you want to work in Tribly</h3>
                 <p>Enter the continuity of our email and need to Know any of your advantages</p><br>
-                <a href="mailto:Triblyteam@gmail.com" style="color: green; text-decoration: none;">Triblyteam@gmail.com</a>
+                <a href="mailto:triblyteam@gmail.com" style="color: green; text-decoration: none;">triblyteam@gmail.com</a>
             </div>
         </div>
     </section>
@@ -808,5 +750,39 @@ document.querySelectorAll(".fade-up").forEach(el => {
 });
 </script>
 
+<script>
+// مكان الملف على GitHub
+const counterURL = "https://raw.githubusercontent.com/USERNAME/REPO/main/counter.json";
+
+const visitorsElement = document.getElementById("visitorsCounter");
+
+// منع زيادة الرقم لنفس الشخص
+if (!localStorage.getItem("visited_before")) {
+    localStorage.setItem("visited_before", "true");
+
+    // زيادة العدد
+    fetch(counterURL)
+        .then(res => res.json())
+        .then(data => {
+            let newCount = data.visits + 1;
+
+            visitorsElement.textContent = "Users: " + newCount;
+
+            // تحديث الملف على GitHub غير ممكن عن طريق fetch
+            // علشان كده هنبعتك نسخة جديدة تعملها Paste في الملف
+            console.log("Copy this and update counter.json:", JSON.stringify({ visits: newCount }));
+
+        });
+} else {
+    // فقط عرض الرقم لو الشخص زار قبل كده
+    fetch(counterURL)
+        .then(res => res.json())
+        .then(data => {
+            visitorsElement.textContent = "Users: " + data.visits;
+        });
+}
+</script>
+
+<script src="js/counter.json"></script>
 </body>
 </html>
