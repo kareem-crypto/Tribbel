@@ -35,6 +35,7 @@
 
     /* 🍃 أوراق الشجر */
     .leaves {
+      color: green;
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -57,8 +58,8 @@
     }
 
     .logo {
-      width: 140px;
-      margin-bottom: 20px;
+      width: 130px;
+      margin-bottom: 10px;
       animation: fadeIn 1.8s ease-in-out;
       z-index: 1;
     }
@@ -78,6 +79,7 @@
       display: inline-block;
       background: linear-gradient(90deg, #b8860b, #ffd569);
       color: #222;
+      border-color: #000;
       font-size: 0.875rem;
       font-weight: 600;
       padding: 0.375rem 1.125rem;
@@ -108,9 +110,9 @@
     .loader {
       width: 90px; height: 90px;
       border-radius: 50%;
-      border: 6px solid #e0e0e0;
-      border-top: 6px solid #00ff6a;
-      border-right: 6px solid #ffd500;
+      border: 8px solid #ffffff;
+      border-top: 8px solid #00ff6a;
+      border-right: 8px solid #ffd500;
       animation: spin 2s linear infinite;
       margin-bottom: 30px;
       z-index: 1;
@@ -218,9 +220,9 @@
   <!-- 🍃 أوراق الشجر -->
   <div class="leaves" id="leaves"></div>
 
-  <img src="img/t.webp" class="logo" alt="Logo">
+  <img src="img/logo icon.png" class="logo" alt="Logo">
   <div class="text">meet like-minded people nearby IRL</div>
-  <div class="beta">Beta V0.2.1</div>
+  <div class="beta">Beta release V0.4</div>
   <div class="loader"></div>
 
   <input type="text" id="codeInput" placeholder="Pin or Invitation code">
@@ -232,24 +234,19 @@
 
   <script>
     const validCodes = {
-      "kareem2025": "ريس",
-      "team-Tribly": "فريق Tribly",
-      "Tribly2025": "عضو Tribly",
+      "kareem_ibrahem9": "ريس",
+      "team-tribly": "فريق Tribly",
       "developer15": "مطور Tribly",
       "khaled_awad5": "خالد",
       "user2025": "مستخدم",
       "abdo_rady0": "عبدو",
       "ahmed_samir19": "يابوحميد",
-      "user2": "العميل الفائز1",
-      "user3": "العميل الفائز2",
-      "user4": "العميل الفائز3",
-      "user5": "العميل الفائز4",
-      "user6": "العميل الفائز5",
-      "user7": "العميل الفائز6",
-      "user8": "العميل الفائز7",
-      "user9": "العميل الفائز8",
-      "user10": "العميل الفائز9",
-      "user10": "العميل الفائز10",
+      "shrouk_samir12": "شروق",
+      "mohamed_samir13": "حموو",
+      "Abdo_hamada2": "بودي",
+      "Eslam_omer20": "السيكوا",
+      "Elsawy_mohamed21": "الصاوي",
+      "mohamed_hany15": "حموو هاني",
     };
 
     // 🌿 إنشاء أوراق الشجر + تحميل الوضع المحفوظ
@@ -257,7 +254,7 @@
       const savedUser = localStorage.getItem("tribble_user");
       if (savedUser) {
         alert(`👋 أهلاً يا ${savedUser}!`);
-        window.location.href = "index.html";
+        window.location.href = "home.html";
       }
 
       const savedMode = localStorage.getItem("mode");
@@ -283,7 +280,7 @@
         const username = validCodes[input];
         localStorage.setItem("tribble_user", username);
         alert(`🌿 أهلاً يا ${username}!`);
-        window.location.href = "index.html";
+        window.location.href = "home.html";
       } else {
         error.style.display = "block";
         setTimeout(() => error.style.display = "none", 2500);
@@ -307,3 +304,7 @@
   </script>
 </body>
 </html>
+
+
+
+

@@ -26,3 +26,18 @@
             </div>
         </div>
     </section>
+
+
+
+
+★
+                للحصول علي الكود
+ <a href="get-code.html"><button class="btn btn-outline">Got An Invitation Code?</button></a>
+
+
+     <a href="profile.html"><img src="img/me.jpg" alt="profile picture" class="profile"></a>
+
+     img/profile-pic.jpg
+
+
+      <a href="profile.html"><img src="img/profile-pic.jpg" alt="Tribly photo" class="profile"></a>

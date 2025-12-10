@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+     background: linear-gradient(125deg,#ffffff, #dbf4ff);
+    color: #222;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+        :root {
+            --primary-color: #6ae44d;
+            --secondary-color: #ffb300;
+            --dark-color: #17223b;
+            --light-color: #f5f5f5;
+            --text-color: #333;
+            --white: #fff;
+            --black: #0a0a0a;
+            --border-radius: 30px;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+/* زر الرجوع */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    color: #333;
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 999;
+}
+.back-btn:hover {
+    transform: scale(1.1);
+    background: #6ae44d;
+    color: white;
+}
+
+    /* Profile Section */
+       .profile-container {
+            max-width: 1000px;
+            margin: 12px auto 100px;
+            padding: 70px;
+            background-color: #1a1a1a;
+            border-radius: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .profile-header .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-header .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-header .profile-info h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #c9f31d;
+            margin-bottom: 10px;
+        }
+
+        .profile-header .profile-info p {
+            font-size: 20px;
+            color: #bbb;
+        }
+
+        .profile-header .profile-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .profile-actions .btn {
+            background-color: #c9f31d;
+            color: #070707;
+            padding: 14px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .profile-actions .btn:hover {
+            background-color: #a8e010;
+            transform: scale(1.05);
+        }
+
+        /* Edit Profile Section */
+        .edit-profile {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        .edit-profile h2 {
+            color: #c9f31d;
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .edit-profile input,
+        .edit-profile textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .edit-profile input:focus,
+        .edit-profile textarea:focus {
+            border-color: #c9f31d;
+        }
+
+        .edit-profile button {
+            background-color: #c9f31d;
+            padding: 15px 25px;
+            color: #070707;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .edit-profile button:hover {
+            background-color: #a8e010;
+            transform: scale(1.05);
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #070707;
+            color: #c9f31d;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }

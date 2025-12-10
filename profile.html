@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إعداد البروفايل</title>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: #f3f5f7;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 450px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        opacity: 1;
+        transition: .6s ease;
+        position: relative;
+    }
+
+    /* انيميشن الخروج */
+    .slide-out {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    /* انيميشن الدخول */
+    .slide-in {
+        opacity: 0;
+        transform: translateX(60px);
+        animation: slideIn .6s forwards ease;
+    }
+
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    h2 { text-align: center; margin-bottom: 15px; }
+
+    .interest { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+
+    .interest label {
+        padding: 10px 16px;
+        background: #eef1f4;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: .3s;
+        font-size: 15px;
+        border: 1px solid transparent;
+    }
+
+    .interest input:checked + label {
+        background: #3a7afe;
+        color: #fff;
+        border-color: #3a7afe;
+    }
+
+    input[type="checkbox"] { display:none; }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #3a7afe;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: .3s;
+        margin-top: 10px;
+    }
+
+    .btn:hover { opacity: .85; }
+
+    .hidden { display: none; }
+
+    .form-group { margin-bottom: 15px; }
+
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #dcdcdc;
+        border-radius: 10px;
+        outline: none;
+        transition: .3s;
+        background: #fafafa;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+        border-color: #3a7afe;
+        background: #fff;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="step1">
+    <h2>اختار اهتماماتك</h2>
+
+    <div class="interest">
+        <input type="checkbox" id="gaming"><label for="gaming">جيمينج</label>
+        <input type="checkbox" id="tech"><label for="tech">تكنولوجيا</label>
+        <input type="checkbox" id="sport"><label for="sport">رياضة</label>
+        <input type="checkbox" id="anime"><label for="anime">أنمي</label>
+        <input type="checkbox" id="music"><label for="music">موسيقى</label>
+        <input type="checkbox" id="drawing"><label for="drawing">رسم</label>
+    </div>
+
+    <button class="btn" onclick="goNext()">التالي</button>
+</div>
+
+<div class="container hidden" id="step2">
+    <h2>إكمل بياناتك</h2>
+
+    <div class="form-group">
+        <input type="text" id="name" placeholder="الاسم" required>
+    </div>
+
+    <div class="form-group">
+        <input type="text" id="username" placeholder="اسم المستخدم" required>
+    </div>
+
+    <div class="form-group" >
+        <select id="city">
+            <option value="">اختر المحافظة</option>
+            <option>القاهرة</option>
+            <option>الجيزة</option>
+            <option>الإسكندرية</option>
+            <option>الدقهلية</option>
+            <option>الشرقية</option>
+            <option>الغربية</option>
+            <option>المنوفية</option>
+            <option>أسيوط</option>
+            <option>أسوان</option>
+        </select>
+    </div>
+
+    <button class="btn" href="home.html">حفظ ومتابعة</button>
+</div>
+
+<script>
+    function goNext() {
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+
+        // خروج الصفحة الأولى بانيميشن
+        step1.classList.add("slide-out");
+
+        setTimeout(() => {
+            step1.classList.add("hidden");
+            step2.classList.remove("hidden");
+
+            // انيميشن دخول الصفحة الثانية
+            step2.classList.add("slide-in");
+        }, 600);
+    }
+</script>
+
+</body>
+</html>

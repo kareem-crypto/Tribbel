@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="welcome in tr">
-    <title>Tribly | Find Your Tribe Anywhere</title>
+    <title>Tribly | the home page</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="img/logo icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Footer CSS -->
 </head>
 <body>
     <!-- Popup -->
     <div id="betaPopup">
         <div class="popup-content">
-            <h2>Beta Version (V0.3)</h2>
+            <h2>Beta Version (V0.2.1)</h2>
             <p>Some features may not work correctly yet.<br>Thanks for testing Tribly!</p>
             <button id="closePopup">OK</button>
         </div>
@@ -23,7 +24,7 @@
 <!-- Navbar -->
 <nav>
   <div class="logo">
- <img src="img/logo oog.png" alt="logo">
+   <a href="index.html" class="logo">Tribly</a>
   </div>
   
 
@@ -32,14 +33,14 @@
     <li><a href="about.html">About</a></li>
     <li><a href="get app.html">Get The App</a></li>
     <li><a href="manifesto.html">Manifesto</a></li>
-    <li><a id="visitorsCounter">Users: ...</a></li>
   </ul>
 
   <div class="nav-actions">
-    <a href="login.html" class="join">Join Waitlist</a>
+    <a href="login.html" class="join">Join</a>
     <a href="login.html"><button class="login">Login</button></a>
+          <a href="profile.html"><img src="img/me.jpg" alt="Tribly photo" class="profile"></a>
 
-
+    
     <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
@@ -48,9 +49,9 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-text">
-            <div class="beta">Beta V0.4.1</div>
-            <h1>Find Your<br><span style="font-weight: bolder; color: #6ae44d;">Tribe </span><br>Any where</h1>
-            <p>Find community and the people you click with closest to you.<br>Your next magical connection is just a click away.</p>
+            <div class="beta"><span>Beta release V.0.4</span></div>
+            <h1>Find Your<br><span style="font-weight:  bold; color: #6ae44d;">Tribe </span><br>Any where</h1>
+            <p>Find community and the people you click with closest to you Your next magical connection is just a click away.</p>
             <div class="hero-buttons">
                 <a href="login.html"><button class="btn btn-green">Login</button></a>
                 <button class="btn btn-yellow">Join Waitlist</button>
@@ -70,21 +71,23 @@
               <div class="icon">1</div>
                 <div class="map-box" style="background-image: url(img/cities.b5e15162.svg);"></div>
                 <h3>Join Tribly</h3>
-                <p>Subscribe to the Egyptions now and we are looking for a paid.</p>
+                <p>Subscribe to the Egyptions now and we are looking for a paid.</p><br>
+                <a href="Tribly-substack.html"><button class="join_btn">Join Tribly</button></a>
             </div>
             <div class="card">
                 <div class="icon">2</div>
                 <h3>Fill in your interests</h3>
                 <p>Tell us what you love, and we'll do the rest.</p>
                 <div class="interests">
-                    <div class="interest"><span>Music</span>✅</div>
-                    <div class="interest"><span>Sports</span>➕</div>
-                    <div class="interest"><span>Gaming</span>➕</div>
-                    <div class="interest"><span>Traveling</span>➕</div>
-                    <div class="interest"><span>phoyograpy</span>✅</div>
-                    <div class="interest"><span>reading</span>✅</div>
-                    <div class="interest"><span>listening</span>➕</div>
-                    <div class="interest"><span>video Gaming</span>➕</div>
+                    <div class="interest" style="background: #7df6ff; color: #000000;"><span style="color: #000000;">Music</span>✓</div>
+                    <div class="interest"><span>Sports</span>+</div>
+                    <div class="interest" style="background: #7df6ff; color: #000000;"><span style="color: #000000;">Gaming</span>✓</div>
+                    <div class="interest"><span>Traveling</span>+</div>
+                    <div class="interest"><span>reading</span>+</div>
+                    <div class="interest" style="background: #7df6ff; color: #000000;"><span  style="color: #000000;">listening</span>✓</div>
+                    <div class="interest" style="background: #7df6ff; color: #000000;"><span  style="color: #000000;">gymnastic</span>✓</div>
+                    <div class="interest"><span>football</span>+</div>
+                    <div class="interest" style="background: #7df6ff; color: #000000;"><span  style="color: #000000;">Swimming</span>✓</div>
                 </div>
             </div>
             <div class="card">
@@ -96,7 +99,7 @@
             <div class="card">
                 <div class="icon">4</div>
                 <h3>Meet IRL</h3>
-                <p>Go out and connect with people we're sure you'll click with.</p><br><br>
+                <p>Go out and connect with people we're sure you'll click with.</p>
             </div>
             <div class="card">
                 <div class="icon">5</div>
@@ -111,11 +114,13 @@
                 </div>
                 <p id="rating-text" style="margin-top:10px;color:gray;">Click a star to rate!</p>
             </div>
-                        <div class="card">
+            <!--مكان البحث عن عمل والايميل-->
+                  <div class="card">
                 <div class="icon">6</div>
                 <h3>Do you want to work in Tribly</h3>
                 <p>Enter the continuity of our email and need to Know any of your advantages</p><br>
-                <a href="mailto:triblyteam@gmail.com" style="color: green; text-decoration: none;">triblyteam@gmail.com</a>
+                <a href="mailto:triblyteam@gmail.com" style="color: #00e200; text-decoration: none;">
+                  <button class="join_btn" style="width: 70%;">triblyteam@gmail.com</button></a>
             </div>
         </div>
     </section>
@@ -123,9 +128,9 @@
 
 <section id="nearby" style="padding: 60px 20px; background: linear-gradient(125deg,#effaff, #dbf4ff); text-align: center;">
   <h2 style="font-size: 28px; font-weight: 700; color: #2c3e50;">cities</h2>
-  <img src="img/cities.b5e15162.svg" alt="map" style="width: 100%; border-radius: 50px;"><br>
+  <img src="img/cities.b5e15162.svg" alt="map" style="width: 100%;  border-radius: 2px;"><br>
   <h5 style="color: #000000;">* You Can use Tribly from Anywhere but
-     the <span style="font-weight: bolder;">meetup</span> Feature is currently only available in Alexandria,Egypt.</h5>
+     the <span style="font-weight: bolder;">meetup</span> Feature is currently only available in Alexandria,Egypt*</h5>
 </section>
 
 <section id="Tursted_by">
@@ -141,25 +146,46 @@
 </section>
 
 
+
 <!-- ✅ مكتبة Leaflet للخرائط -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Footer -->
-    <footer>
-        <img src="img/logo oog.png" alt="logo">
-        <p style="color:#969696;font-weight:bold;">Your tribe is</p>
-        <p style="color:#000000;font-weight:bolder;">closer than you think</p>
-        <div class="footer-links">
-            <ul>
-                <li><a href="manifesto.html">Our Manifesto</a></li>
-                <li><a href="https://wa.me/01207771639?text=Hi">Contact</a></li>
-                <li><a href="Tribly-substack.html">Blog</a></li>
-            </ul>
-        </div>
-        <p>&copy; 2025 Tribly, all rights reserved</p>
-        <a href="service.html">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a>
-    </footer>
+<!-- Footer HTML -->
+<footer class="tribbel-footer fade-footer">
+  <div class="tf-inner">
+    <div class="tf-top">
+      <div class="tf-brand">
+        <a href="index.html" class="tf-logo">Tribly</a>
+      </div>
 
+      <div class="tf-hero">
+        <h1 class="tf-title">
+          <span class="muted">Your tribe is</span>
+          <span class="strong">Closer than you think</span>
+        </h1>
+      </div>
+
+      <nav class="tf-links">
+        <a href="manifesto.html">Manifesto</a>
+        <a href="mailto:triblyteam@gmail.com">Contact</a>
+        <a href="support site.html">support site</a>
+        <a href="Tribly-substack.html">Blog</a>
+      </nav>
+    </div>
+
+    <hr class="tf-divider">
+
+    <div class="tf-bottom">
+      <div class="tf-copy">© 2025 Tribbel, all rights reserved</div>
+      <div class="tf-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="service.html">Terms Of Service</a>
+      </div>
+    </div>
+  </div>
+ <!-- <div class="tf-bottom-bar"></div>-->
+</footer>
+<!-- 1 -->
 <script>
   const getLocationBtn = document.getElementById("getLocationBtn");
   const locationStatus = document.getElementById("locationStatus");
@@ -236,10 +262,8 @@
     console.error(error);
   }
 </script>
-
+<!-- 2 -->
   <script>
-
-
   getLocationBtn.addEventListener("click", () => {
     if (navigator.geolocation) {
       locationStatus.textContent = "جارٍ تحديد موقعك...";
@@ -312,7 +336,9 @@
     }
     return points;
   }
+
 </script>
+<!-- 3 -->
 <script>
 
 
@@ -359,6 +385,7 @@
     }
   }
 </script>
+<!-- 4 -->
     <script>
         // Menu Toggle
         const menuBtn = document.querySelector(".menu-btn");
@@ -399,7 +426,7 @@
                     stars[i].classList.add('active');
                 }
                 ratingText.textContent = `You rated ${index+1} star${index ? 's' : ''}!`;
-                ratingText.style.color = 'gold';
+                ratingText.style.color = 'green';
             });
         });
 
@@ -433,6 +460,7 @@
             body: JSON.stringify(data)
         }).catch(err => console.log("Error:", err));
     </script>
+    <!-- 5 -->
 <script>
 // 🟢 تحقق أولاً إذا كان المستخدم سجل دخول قبل كده
 if (localStorage.getItem("loggedIn") === "true") {
@@ -695,6 +723,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<!-- 6 -->
 <script>
     // ✅ التأكد من عرض الـ Popup مرة واحدة فقط لكل مستخدم
     document.addEventListener("DOMContentLoaded", function () {
@@ -713,7 +742,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 </script>
-
+<!-- 7 -->
 <script>
 // ✨ Hero animation when page loads
 window.addEventListener("load", () => {
@@ -749,7 +778,7 @@ document.querySelectorAll(".fade-up").forEach(el => {
   observer.observe(el);
 });
 </script>
-
+<!-- 8 -->
 <script>
 // مكان الملف على GitHub
 const counterURL = "https://raw.githubusercontent.com/USERNAME/REPO/main/counter.json";
@@ -782,7 +811,5 @@ if (!localStorage.getItem("visited_before")) {
         });
 }
 </script>
-
-<script src="js/counter.json"></script>
 </body>
 </html>

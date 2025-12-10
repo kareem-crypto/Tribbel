@@ -14,7 +14,7 @@
             --text-color: #333;
             --white: #fff;
             --black: #0a0a0a;
-            --border-radius: 50px;
+            --border-radius: 30px;
             --transition: all 0.3s ease;
             --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
@@ -24,7 +24,7 @@
         }
 
         body {
-            background: linear-gradient(125deg,#ffffff, #c4edff);
+            background: linear-gradient(125deg,#ffffff, #dbf4ff);
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.6;
@@ -190,7 +190,7 @@ footer img:hover, nav .logo img:hover {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.225rem 5%;
+            padding: 0.325rem 5%;
             background: var(--white);
             position: sticky;
             top: 0;
@@ -200,10 +200,13 @@ footer img:hover, nav .logo img:hover {
         }
 
         .logo a{
+          display: flex;
+          justify-content: center;
+          padding-left: 630%;
           font-weight: bolder;
           font-family: Arial, Helvetica, sans-serif;
           text-decoration: none;
-          color: #33ff00;
+          color: #6ae44d;
           font-size: 27px;
         }
 
@@ -215,14 +218,15 @@ footer img:hover, nav .logo img:hover {
         }
 
         .nav-links a {
-            padding: 0.2rem 0.300rem;
             text-decoration: none;
-            color: #000000;
+            color: var(--text-color);
             font-weight: 500;
             transition: var(--transition);
         }
 
-
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
         .nav-actions {
             display: flex;
@@ -231,12 +235,7 @@ footer img:hover, nav .logo img:hover {
         }
 
         .join {
-            background: #000000;
-            border-radius: var(--border-radius);
-            border-radius: 20px;
-            border: none;
-            padding: 0.2rem 1.375rem;
-            color: #ffffff;
+            color: var(--primary-color);
             font-weight: 600;
             text-decoration: none;
         }
@@ -340,15 +339,14 @@ footer img:hover, nav .logo img:hover {
             width: 120px;
             font-size: 15px;
             font-weight: bold;
-            background: #6ae44d;
+            background: #81ff81;
             border-radius: 30px;
             border-color: gray;
             cursor: pointer;
         }
 
         .join_btn:hover{
-            background: #ffb300;
-            color: black;
+            background: #25d366;
              transform: scale(1.05);
         }
 
@@ -386,10 +384,11 @@ footer img:hover, nav .logo img:hover {
         .icon {
             font-size: 30px;
             color: #000000;
-            margin-bottom: 0.9375rem;
+            margin-top: 8px;
             background: #c4c3c3;
-            border-radius: 120px;
-            width: 50px;
+            border-radius: 10px;
+            width: 100%;
+            height: 50%;
         }
 
         .interests {
@@ -435,19 +434,19 @@ footer img:hover, nav .logo img:hover {
         }
 
         .star {
-            color: #999999;
+            color: #ccc;
             transition: color 0.2s;
         }
 
         .star.active, .star:hover, .star:hover ~ .star {
-            color: gold;
+            color: green;
         }
 
         /* ===== Footer ===== */
         footer {
             background: #ffffff;
-            padding: 0.5rem 5%;
-            text-align: left;
+            padding: 2.5rem 5%;
+            text-align: center;
         }
 
         footer .logo_down{
@@ -473,30 +472,6 @@ footer img:hover, nav .logo img:hover {
         footer a:hover {
             text-decoration: none;
             color: #1ebe5a;
-        }
-
-        footer .Tribe{
-            color: #727272;
-            font-size: 1.343rem;
-            font-weight: bold;
-        }
-
-        footer .Tribe_cls{
-            color: #000000;
-            font-size: 20px;
-            font-weight: bolder;
-        }
-
-        footer .support{
-            background: #000000;
-            border-radius: var(--border-radius);
-            border-radius: 20px;
-            border: none;
-            padding: 0.2rem 1.375rem;
-            color: #ffffff;
-            font-weight: 600;
-            text-decoration: none;
-            margin: 0;
         }
 
         .footer-links ul {
@@ -964,160 +939,3 @@ footer img:hover, nav .logo img:hover {
         padding: 1.2rem;
     }
 }
-
-
-/* ===== قاعدة ونمط النقاط في الخلفية ===== */
-.tribbel-footer{
-  position: relative;
-  background-color: #f6f7f8;
-  /* نقش النقاط */
-  background-image:
-    radial-gradient(#dcdfe3 1px, transparent 1px),
-    radial-gradient(#dcdfe3 1px, transparent 1px);
-  background-size: 14px 14px;
-  background-position: 0 0, 7px 7px; /* ينتج نمط نقاط منقّطة */
-  padding: 48px 16px 80px; /* مساحة علوي وسفلي اكبر علشان الشريط */
-  font-family: "Inter", "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #333;
-  overflow: hidden;
-}
-
-/* ===== داخلية الحاوية ===== */
-.tf-inner{
-  max-width: 1180px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-
-
-/* ===== التخطيط العلوي: لوجو - عنوان - روابط ===== */
-.tf-top{
-  display: grid;
-  grid-template-columns: 160px 1fr 220px;
-  gap: 20px;
-  align-items: center;
-}
-
-/* لوجو */
-.tf-logo{
-  font-size: 40px;
-  color: #00e200;
-  font-weight: bolder;
-  height: auto;
-  display: block;
-}
-
-/* العنوان الكبير */
-.tf-hero .tf-title{
-  margin: 0;
-  font-weight: bolder;
-  line-height: 1.05;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: #222;
-  font-size: 25px; /* الحجم الرئيسي */
-}
-
-/* كلمة باهتة فوق */
-.tf-hero .muted{
-  color: #9c9c9c;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* الجزء القوي */
-.tf-hero .strong{
-  color: #111;
-  font-size: 44px;
-  letter-spacing: -0.6px;
-}
-
-/* روابط العمود اليمين */
-.tf-links{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: flex-start;
-  justify-self: end;
-  background: 0;
-}
-
-.tf-links a{
-  color: #141414;
-  text-decoration: none;
-  font-size: 16px;
-  transition: color .15s;
-}
-.tf-links a:hover{ color: #00e200; }
-
-/* ===== الفاصل المنقّط ===== */
-.tf-divider{
-  border: none;
-  border-top: 1px double #9b9b9b;
-  margin: 26px 0;
-  opacity: .9;
-}
-
-/* ===== الأسفل: حقوق وروابط القوانين ===== */
-.tf-bottom{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  color: #444444;
-}
-
-.tf-legal a{
-  margin-left: 18px;
-  color: #000000;
-  text-decoration: none;
-  font-size: 15px;
-}
-.tf-legal a:hover{ color: #00e200; }
-
-/* ===== الشريط الدائري السفلي ===== */
-.tf-bottom-bar{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
-  width: 420px;
-  height: 14px;
-  background: #000000;
-  border-radius: 999px;
-  box-shadow: inset 0 -2px 0 #00000005;
-}
-
-/* ===== تجاوب موبايل ===== */
-@media (max-width: 880px){
-  .tf-top{
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 14px;
-  }
-  .tf-links{
-    flex-direction: row;
-    justify-content: center;
-    padding-right: 20px;
-    gap: 12px;
-  }
-  .tf-hero .tf-title{
-    align-items: center;
-    font-size: 28px;
-  }
-  .tf-hero .muted{ font-size: 14px; }
-  .tf-hero .strong{ font-size: 28px; }
-  .tf-inner{ padding: 0 8px; }
-  .tf-bottom{ flex-direction: column; gap: 8px; text-align: center; }
-  .tf-bottom-bar{ width: 260px; height: 12px; }
-}
-
-/* ===== خيارات ثانوية للضبط السريع ===== */
-/* لو تحب تغير لون النص الرئيسي */
-.tribbel-footer .tf-hero .strong { color: #000; }
-
-/* لو تحب تخفي الشريط السفلي */
-.tribbel-footer.no-bar .tf-bottom-bar { display: none; }

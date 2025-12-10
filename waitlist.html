@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/wait.css">
+    <title>join waitlist</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html" class="logo">Tribly</a>
+        </div>
+    </nav>
+      <!-- 🍃 أوراق الشجر -->
+  <div class="leaves" id="leaves"></div>
+
+  <div class="text">Enter the code with and wait until you are approved</div>
+  <div class="beta">Beta V0.4</div>
+  <div class="loader"></div>
+
+  <input type="text" id="codeInput" placeholder="Pin or Invitation code">
+  <button class="btn" onclick="checkCode()">دخول</button>
+  <button class="btn" onclick="checkCode()">الحصول علي الكود</button>
+
+  <div id="error" class="error">❌ الكود غير صحيح</div>
+
+
+
+
+ <!--  <script>
+    const validCodes = {
+      "kareem_ibrahem9": "ريس",
+      "team-tribly": "فريق Tribly",
+      "developer15": "مطور Tribly",
+      "khaled_awad5": "خالد",
+      "user2025": "مستخدم",
+      "abdo_rady0": "عبدو",
+      "ahmed_samir19": "يابوحميد",
+      "shrouk_samir12": "شروق",
+      "mohamed_samir13": "حموو",
+      "Abdo_hamada2": "بودي",
+      "Eslam_omer20": "السيكوا",
+      "Elsawy_mohamed21": "الصاوي",
+      "mohamed_hany15": "حموو هاني",
+    };
+
+    // 🌿 إنشاء أوراق الشجر + تحميل الوضع المحفوظ
+    window.onload = function() {
+      const savedUser = localStorage.getItem("tribble_user");
+      if (savedUser) {
+        alert(`👋 أهلاً يا ${savedUser}!`);
+        window.location.href = "index.html";
+      }
+
+      const savedMode = localStorage.getItem("mode");
+      if (savedMode === "night") toggleMode(true);
+
+      const leavesContainer = document.getElementById('leaves');
+      for (let i = 0; i < 12; i++) {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        leaf.style.left = Math.random() * 100 + '%';
+        leaf.style.animationDuration = 6 + Math.random() * 5 + 's';
+        leaf.style.animationDelay = Math.random() * 5 + 's';
+        leaf.style.opacity = Math.random() * 0.8 + 0.2;
+        leavesContainer.appendChild(leaf);
+      }
+    };
+
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim().toLowerCase();
+      const error = document.getElementById("error");
+
+      if (validCodes[input]) {
+        const username = validCodes[input];
+        localStorage.setItem("tribble_user", username);
+        alert(`🌿 أهلاً يا ${username}!`);
+        window.location.href = "waitlist.html";
+      } else {
+        error.style.display = "block";
+        setTimeout(() => error.style.display = "none", 2500);
+      }
+    }
+
+    function toggleMode(init = false) {
+      const body = document.body;
+      const button = document.querySelector('.toggle-mode');
+
+      if (body.classList.contains("day") && !init) {
+        body.classList.replace("day", "night");
+        button.textContent = "🌙";
+        localStorage.setItem("mode", "night");
+      } else {
+        body.classList.replace("night", "day");
+        button.textContent = "☀️";
+        localStorage.setItem("mode", "day");
+      }
+    }
+  </script>--> 
+</body>
+</html>

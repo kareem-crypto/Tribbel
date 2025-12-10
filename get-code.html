@@ -1,119 +1,233 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الحصول على كود التسجيل | Tribly</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>الموقع قيد التحديث | Toribble</title>
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+    :root{
+      --bg-gradient-start:#000000;
+      --bg-gradient-end:#64fa78;
+      --card-bg: #424141;
+      --card-border: #4d4d4de0;
+      --text: #000000;
+      --muted: #000000;
+      --accent-shadow: #000000;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Poppins", "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg,var(--bg-gradient-start),var(--bg-gradient-end));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      direction:rtl;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      padding:24px;
     }
 
-    body {
-      background: radial-gradient(circle at 20% 20%, #0d1117, #000);
-      color: white;
-      display: flex; justify-content: center; align-items: center;
-      height: 100vh; flex-direction: column; text-align: center;
+    /* زر الرجوع */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    color: #333;
+    padding: 10px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 999;
+}
+.back-btn:hover {
+    transform: scale(1.1);
+    background: #6ae44d;
+    color: white;
+}
+
+
+    /* overlay optional (soft blur) */
+    .overlay{
+      position:fixed;inset:0;
+      pointer-events:none;
+      backdrop-filter: blur(16px) saturate(110%);
+      -webkit-backdrop-filter: blur(16px) saturate(110%);
+      background: rgba(255,255,255,0.02);
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, #00b4d8, #0077b6, #48cae4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInDown 1s ease;
+    .card{
+      position:relative;
+      width:100%;
+      max-width:720px;
+      border-radius:18px;
+      padding:36px 44px;
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      box-shadow:0 10px 30px var(--accent-shadow);
+      text-align:center;
+      animation: enter 600ms cubic-bezier(.16,.84,.24,1);
+      backdrop-filter: blur(18px);
     }
 
-    p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 25px;
-      animation: fadeInUp 1.2s ease;
+    @keyframes enter{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:none}
     }
 
-    .btn {
-      background: #0077b6;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 30px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
+    h1{
+      font-size:1.7rem;
+      margin-bottom:8px;
+      color:var(--text);
     }
 
-    .btn:hover {
-      background: #00b4d8;
-      transform: translateY(-3px);
+    p{
+      color:var(--muted);
+      font-size:1.03rem;
+      line-height:1.6;
+      margin-bottom:18px;
     }
 
-    .code-box {
-      margin-top: 25px;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #00b4d8;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+    .timer{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      align-items:center;
+      margin-top:8px;
+      flex-wrap:wrap;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-15px); }
-      to { opacity: 1; transform: translateY(0); }
+    .time-box{
+      min-width:72px;
+      padding:12px 16px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.55);
+      box-shadow: inset 3px 3px 10px rgba(0,0,0,0.06), inset -3px -3px 8px rgba(255,255,255,0.8);
+      transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+      font-weight:600;
+      color:var(--text);
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+    .time-box small{
+      display:block;
+      margin-top:6px;
+      font-weight:500;
+      color:var(--muted);
+      font-size:0.85rem;
     }
 
-    footer {
-      position: absolute;
-      bottom: 15px;
-      font-size: 0.8rem;
-      color: #666;
+    .time-box:hover{transform:scale(1.05);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+
+    footer{
+      margin-top:18px;
+      font-size:0.9rem;
+      color:#6b6b6b;
+    }
+
+    @media (max-width:520px){
+      .card{padding:20px 18px;border-radius:14px}
+      h1{font-size:1.3rem}
+      .time-box{min-width:60px;padding:10px 12px;font-size:0.98rem}
     }
   </style>
 </head>
 <body>
-  <h1>الحصول على كود التسجيل</h1>
-  <p>اضغط على الزر أدناه للحصول على كودك الخاص 🔑</p>
+  <a href="index.html" class="back-btn">↩</a>
 
-  <button class="btn" onclick="getCode()">احصل على الكود الآن</button>
-  <div class="code-box" id="codeBox"></div>
+  <div class="overlay" aria-hidden="true"></div>
 
-  <button class="btn" style="background:#333;margin-top:20px;" onclick="window.location.href='index.html'">🔙 الرجوع إلى الصفحة الرئيسية</button>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">🕛 الموقع قيد التحديث</h1>
+    <p id="desc">هذة الصفحة قيد التحديث سوف يتم الافصاح عنها بعد هذا الوقت المحدد↓</p>
 
-  <footer>© 2025 Tribly Beta — جميع الحقوق محفوظة</footer>
+    <div class="timer" aria-live="polite" aria-atomic="true" id="timer">
+      <div class="time-box" aria-hidden="false"><span id="days">0</span><small>يوم</small></div>
+      <div class="time-box"><span id="hours">0</span><small>ساعة</small></div>
+      <div class="time-box"><span id="minutes">0</span><small>دقيقة</small></div>
+      <div class="time-box"><span id="seconds">0</span><small>ثانية</small></div>
+    </div>
+
+    <footer>© 2025 Toribble — جميع الحقوق محفوظة</footer>
+  </main>
 
   <script>
-    function getCode() {
-      const codeBox = document.getElementById("codeBox");
-      const code = generateCode();
-      localStorage.setItem("TriblyCode", code); // حفظ الكود
-      codeBox.style.opacity = 0;
-      codeBox.textContent = "";
-      let i = 0;
-      let reveal = setInterval(() => {
-        codeBox.style.opacity = 1;
-        codeBox.textContent += code[i];
-        i++;
-        if (i >= code.length) clearInterval(reveal);
-      }, 120);
-    }
+    (function () {
+      // مدة 7 أيام بالمللي ثانية
+      const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+      const STORAGE_KEY = "tribble_maintenance_end";
 
-    function generateCode() {
-      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-      let result = "";
-      for (let i = 0; i < 8; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      // عناصر DOM
+      const elDays = document.getElementById("days");
+      const elHours = document.getElementById("hours");
+      const elMinutes = document.getElementById("minutes");
+      const elSeconds = document.getElementById("seconds");
+      const container = document.querySelector(".card");
+
+      // احصل على تاريخ الانتهاء من localStorage أو أنشئ واحد جديد
+      let endTimestamp = null;
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          // تخزين كـ رقم (string) — تأكد من التحويل
+          const n = Number(stored);
+          if (!Number.isNaN(n) && n > Date.now()) {
+            endTimestamp = n;
+          }
+        }
+      } catch (e) {
+        // إذا localStorage مقفول أو فشل، نتخطى ونستخدم جلسة مؤقتة
+        endTimestamp = null;
       }
-      return result;
-    }
+
+      if (!endTimestamp) {
+        const now = Date.now();
+        endTimestamp = now + SEVEN_DAYS_MS;
+        try { localStorage.setItem(STORAGE_KEY, String(endTimestamp)); } catch (e) { /* ignore */ }
+      }
+
+      // تنسيق قيمة رقمية لعرض مرتّب (لو حبيت)
+      function pad(n){ return String(n); }
+
+      // تحديث المؤقت كل ثانية
+      let intervalId = null;
+      function update() {
+        const now = Date.now();
+        const diff = endTimestamp - now;
+
+        if (diff <= 0) {
+          // انتهى
+          if (intervalId) { clearInterval(intervalId); intervalId = null; }
+          try { localStorage.removeItem(STORAGE_KEY); } catch(e){/*ignore*/}
+          container.innerHTML = '<h1>✨ عدنا من جديد!</h1><p>تم الانتهاء من التحديثات، شكرًا لصبركم ❤️</p>';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // عرض القيم
+        elDays.textContent = pad(days);
+        elHours.textContent = pad(hours);
+        elMinutes.textContent = pad(minutes);
+        elSeconds.textContent = pad(seconds);
+      }
+
+      // تشغيل
+      update();
+      intervalId = setInterval(update, 1000);
+
+      // نظافة عند الخروج من الصفحة (مش مطلوب لكن آمن)
+      window.addEventListener("beforeunload", function () {
+        // لا نحذف التاريخ هنا — يجب أن يبقى محفوظ
+      });
+    })();
   </script>
 </body>
 </html>

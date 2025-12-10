@@ -1,0 +1,232 @@
+<!-- support.html -->
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Support • موقعك</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      font-family: "Inter", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:
+      radial-gradient(1200px 500px at 10% 10%, rgba(110,231,183,0.06), transparent 10%),
+      linear-gradient(180deg,#071029 0%, #071623 50%, #051021 100%);
+      color:#e6eef8;}
+    .wrap{max-width:1100px;margin:36px auto;padding:28px;display:grid;grid-template-columns:1fr 420px;gap:28px}
+    .card{background:linear-gradient(180deg,var(--glass), var(--glass-2));border-radius:14px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);backdrop-filter: blur(8px)}
+    header{display:flex;align-items:center;gap:12px}
+    .logo{font-weight:700;font-size:20px;color:var(--accent)}
+    h1{margin:6px 0 14px;font-size:22px}
+    p.lead{color:#a9c2d6;margin:0 0 12px}
+    form .row{display:flex;gap:10px}
+    label{display:block;font-size:13px;color:#9fb2c9;margin-bottom:6px}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none}
+    textarea{min-height:120px;resize:vertical}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#34d399);color:#032018;box-shadow:0 6px 18px rgba(110,231,183,0.12)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:#cfeaf0}
+    /* right column */
+    .side {position:relative;overflow:hidden}
+    .balance{font-size:13px;color:#9fb2c9;margin-bottom:18px}
+    .amount{font-size:30px;font-weight:700;color:var(--accent)}
+    .pay-methods{display:grid;gap:12px}
+    .pay-card{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+    .small{font-size:13px;color:#bcd7e0}
+    /* flashy animation */
+    .shimmer {
+      position:absolute;inset: -30% -40% auto auto;
+      width:60%;height:60%;transform:rotate(25deg);opacity:0.06;
+      background:linear-gradient(90deg, transparent, #6ee7b7, transparent);
+      filter: blur(36px);animation: slide 6s linear infinite;
+    }
+    @keyframes slide{
+      0%{transform:translateX(-20%) rotate(25deg)}
+      50%{transform:translateX(20%) rotate(25deg)}
+      100%{transform:translateX(-20%) rotate(25deg)}
+    }
+    /* tiny micro interactions */
+    .fade-in {animation:fadeIn 600ms ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    footer{grid-column:1 / -1;margin-top:18px;color:#7e98ad;font-size:13px;text-align:center}
+    /* responsive */
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card fade-in" aria-live="polite">
+      <header>
+        <div class="logo">Support • موقعك</div>
+      </header>
+
+      <h1>اطلب دعم أو تبرع لدعم الموقع</h1>
+      <p class="lead">لو عايز تبلغ عن مشكلة، أو تبعث اقتراح، أو تدعمنا ماليًا — استخدم النموذج تحت. الدفع يتم عبر Stripe أو PayPal.</p>
+
+      <form id="supportForm" onsubmit="return false">
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:160px">
+            <label>الاسم</label>
+            <input id="name" placeholder="مثال: كريم" required />
+          </div>
+          <div style="width:180px">
+            <label>الموبايل / إيميل</label>
+            <input id="contact" placeholder="رقم أو ايميل" required />
+          </div>
+        </div>
+
+        <label style="margin-top:12px">نوع الطلب</label>
+        <select id="type">
+          <option value="bug">بلاغ عن مشكلة</option>
+          <option value="feature">اقتراح ميزة</option>
+          <option value="donation">دعم/تبرع</option>
+        </select>
+
+        <label style="margin-top:12px">وصف</label>
+        <textarea id="message" placeholder="اكتب التفاصيل هنا..." required></textarea>
+
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-primary" id="stripePay">ادفع عبر Stripe</button>
+          <div id="paypal-button-container"></div>
+          <button class="btn btn-ghost" id="sendTicket">أرسل طلب الدعم</button>
+        </div>
+
+        <p class="small" style="margin-top:12px">ملاحظة: للدفع سيتم تحويلك إلى مزود الدفع الآمن. هذه الصفحة تستخدم أمثلة للشرح — استبدل مفاتيحك في السيرفر.</p>
+      </form>
+    </div>
+
+    <aside class="card side fade-in">
+      <div class="shimmer" aria-hidden="true"></div>
+      <div class="balance">رصيد حساب الدعم الحالي</div>
+      <div class="amount" id="balance">EGP 1,250.00</div>
+
+      <div style="margin-top:18px">
+        <div class="small">طرق الدفع المتاحة</div>
+        <div class="pay-methods" style="margin-top:10px">
+          <div class="pay-card">
+            <div>
+              <div style="font-weight:700">Stripe</div>
+              <div class="small">بطاقات فيزا / ماستر / والمحافظ</div>
+            </div>
+            <div><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4b3.png" alt="" width="34"></div>
+          </div>
+
+          <div class="pay-card">
+            <div>
+              <div style="font-weight:700">PayPal</div>
+              <div class="small">دفع آمن عبر حساب PayPal</div>
+            </div>
+            <div><img src="https://www.paypalobjects.com/images/shared/paypal-logo-129x32.svg" alt="" width="60"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <label class="small">تحويل داخلي (اختياري)</label>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <input id="transferAmount" placeholder="المبلغ" />
+          <button class="btn btn-primary" id="doTransfer">تحويل</button>
+        </div>
+        <div id="transferMsg" class="small" style="margin-top:8px;color:#bcd7e0"></div>
+      </div>
+    </aside>
+
+    <footer class="fade-in">© كل الحقوق محفوظة • موقعك — صفحة الدعم</footer>
+  </div>
+
+  <!-- Stripe.js (client only; session created on server) -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <!-- PayPal SDK: replace client-id with your sandbox/live key in production -->
+  <script src="https://www.paypal.com/sdk/js?client-id=REPLACE_PAYPAL_CLIENT_ID&currency=USD"></script>
+
+  <script>
+    // Helper: show messages
+    function toast(msg, time=3500){
+      const el = document.createElement('div');
+      el.textContent = msg;
+      Object.assign(el.style,{position:'fixed',left:'50%',bottom:'28px',transform:'translateX(-50%)',background:'#021924',color:'#bff0df',padding:'10px 14px',borderRadius:'8px',boxShadow:'0 8px 30px rgba(0,0,0,0.6)'});
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),time);
+    }
+
+    // Stripe button click: call server to create checkout session then redirect
+    document.getElementById('stripePay').addEventListener('click', async (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'Guest';
+      const msg = document.getElementById('message').value || '';
+      // create session on server
+      try{
+        const res = await fetch('/create-checkout-session', {
+          method:'POST',
+          headers:{'content-type':'application/json'},
+          body: JSON.stringify({name, msg, amount: 5000}) // amount in cents (e.g., 5000 => $50.00 if currency USD)
+        });
+        const data = await res.json();
+        if(data.error) return toast('خطأ: '+data.error);
+        const stripe = Stripe(data.publishableKey); // publishable from server
+        await stripe.redirectToCheckout({sessionId: data.sessionId});
+      }catch(err){
+        console.error(err); toast('فشل إنشاء الجلسة');
+      }
+    });
+
+    // PayPal button (client-side calls server to create order)
+    paypal.Buttons({
+      style:{layout:'vertical',color:'blue',shape:'rect',label:'paypal'},
+      createOrder: function(data, actions){
+        // call server to create order
+        return fetch('/create-paypal-order', {
+          method:'post',
+          headers:{'content-type':'application/json'},
+          body: JSON.stringify({amount:'50.00'}) // example amount
+        }).then(res => res.json()).then(order => order.id);
+      },
+      onApprove: function(data, actions){
+        return fetch('/capture-paypal-order', {
+          method:'post',
+          headers:{'content-type':'application/json'},
+          body: JSON.stringify({orderID: data.orderID})
+        }).then(res => res.json()).then(resp=>{
+          toast('تم إتمام الدفع بنجاح');
+        });
+      },
+      onError: function(err){
+        console.error(err); toast('خطأ في PayPal');
+      }
+    }).render('#paypal-button-container');
+
+    // send ticket (support message) — هنا مثال بسيط يرسل للسيرفر
+    document.getElementById('sendTicket').addEventListener('click', async (e)=>{
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        type: document.getElementById('type').value,
+        message: document.getElementById('message').value
+      };
+      try{
+        const r = await fetch('/support-ticket', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
+        if(r.ok){ toast('تم إرسال الطلب — شكراً لك'); document.getElementById('supportForm').reset(); }
+        else toast('فشل إرسال الطلب');
+      }catch(e){ console.error(e); toast('خطأ في الاتصال'); }
+    });
+
+    // Mock transfer: هذا مثال محلي فقط (ستحتاج backend للتحقق من الحسابات الحقيقية)
+    document.getElementById('doTransfer').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const amt = document.getElementById('transferAmount').value;
+      if(!amt || isNaN(amt)) return toast('أدخل مبلغ صالح');
+      // محاكاة تحويل
+      document.getElementById('transferMsg').textContent = `تمت محاكاة تحويل ${amt} إلى حساب الدعم.`;
+      // في تطبيق حقيقي: إرسال طلب لسيرفر مع المصادقة والتحقق
+    });
+  </script>
+</body>
+</html>
