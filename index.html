@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark-mode">
+<html lang="ar" dir="rtl" class="light-mode">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tribly | ابحث عن قبيلتك - المنصة الاجتماعية الأذكى</title>
     
     <!-- SEO Meta Tags -->
@@ -10,6 +10,13 @@
     <meta name="keywords" content="مجتمع، تعارف، أصدقاء، أنشطة، لقاءات، هوايات، مصر، الإسكندرية">
     <meta name="author" content="Tribly Team">
     <meta name="theme-color" content="#00D4AA">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tribly">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#00D4AA">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Tribly | ابحث عن قبيلتك">
@@ -32,46 +39,38 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
-    
-    <!-- AOS (Animate On Scroll) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <style>
         /* ===== CSS RESET & VARIABLES ===== */
         :root {
-            /* Primary Colors */
+            /* Light Mode Colors (فاتح) */
             --primary: #00D4AA;
             --primary-dark: #00B894;
-            --primary-light: #80FFE5;
-            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, #00C9FF 100%);
-            --primary-gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, #0097CC 100%);
+            --primary-light: #E8FDF8;
+            --primary-gradient: linear-gradient(135deg, #00D4AA 0%, #00C9FF 100%);
+            --primary-gradient-light: linear-gradient(135deg, #E8FDF8 0%, #E8F7FF 100%);
             
             /* Secondary Colors */
             --secondary: #6C63FF;
             --secondary-dark: #5A52D5;
-            --secondary-light: #A29FFF;
-            --secondary-gradient: linear-gradient(135deg, var(--secondary) 0%, #9D4EDD 100%);
+            --secondary-light: #F0EFFF;
             
             /* Accent Colors */
             --accent: #FF6B8B;
             --accent-dark: #E55A74;
-            --accent-light: #FFA8BC;
-            --accent-gradient: linear-gradient(135deg, var(--accent) 0%, #FF9A3C 100%);
+            --accent-light: #FFE8EC;
             
             /* Neutral Colors - Light Mode */
             --bg-primary: #FFFFFF;
             --bg-secondary: #F8F9FA;
-            --bg-tertiary: #E9ECEF;
+            --bg-tertiary: #F1F3F4;
             --text-primary: #1A1A2E;
-            --text-secondary: #6C757D;
+            --text-secondary: #5A5A7A;
             --text-tertiary: #8A8AA3;
-            --border-color: #E2E2EA;
-            --shadow-color: rgba(0, 0, 0, 0.08);
+            --border-color: #E2E8F0;
+            --shadow-color: rgba(0, 0, 0, 0.05);
             
             /* Dark Mode Colors */
             --dark-bg-primary: #0F0F1E;
@@ -84,37 +83,32 @@
             --dark-shadow-color: rgba(0, 0, 0, 0.3);
             
             /* Effects */
-            --shadow-sm: 0 2px 8px var(--shadow-color);
-            --shadow-md: 0 4px 20px var(--shadow-color);
-            --shadow-lg: 0 10px 40px var(--shadow-color);
-            --shadow-xl: 0 20px 60px var(--shadow-color);
-            --shadow-primary: 0 10px 30px rgba(0, 212, 170, 0.3);
-            --shadow-secondary: 0 10px 30px rgba(108, 99, 255, 0.3);
-            --shadow-accent: 0 10px 30px rgba(255, 107, 139, 0.3);
+            --shadow-sm: 0 1px 3px var(--shadow-color);
+            --shadow-md: 0 4px 6px var(--shadow-color);
+            --shadow-lg: 0 10px 15px var(--shadow-color);
+            --shadow-xl: 0 20px 25px var(--shadow-color);
+            --shadow-primary: 0 10px 20px rgba(0, 212, 170, 0.15);
             
             /* Border Radius */
-            --radius-xs: 4px;
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-2xl: 32px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
             --radius-full: 9999px;
             
             /* Transitions */
             --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             
             /* Layout */
-            --header-height: 80px;
-            --container-max: 1280px;
-            --section-spacing: 120px;
+            --header-height: 70px;
+            --container-max: 1200px;
+            --section-spacing: 80px;
             
-            /* Glass Effect */
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-blur: blur(20px);
+            /* Mobile Adjustments */
+            --mobile-padding: 16px;
+            --mobile-font-size: 14px;
         }
 
         /* Dark Mode Variables */
@@ -127,8 +121,7 @@
             --text-tertiary: var(--dark-text-tertiary);
             --border-color: var(--dark-border-color);
             --shadow-color: var(--dark-shadow-color);
-            --glass-bg: rgba(26, 26, 46, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.05);
+            --shadow-primary: 0 10px 20px rgba(0, 212, 170, 0.2);
         }
 
         /* ===== BASE STYLES ===== */
@@ -136,28 +129,45 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             scroll-behavior: smooth;
             scroll-padding-top: var(--header-height);
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
         }
 
         body {
             font-family: 'Tajawal', 'Poppins', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
-            transition: background-color var(--transition-normal);
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
-            position: relative;
+        }
+
+        /* تحسين النصوص للجوال */
+        @media (max-width: 768px) {
+            body {
+                font-size: var(--mobile-font-size);
+                line-height: 1.5;
+            }
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -166,13 +176,13 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-gradient);
+            background: var(--primary);
             border-radius: var(--radius-full);
             border: 2px solid var(--bg-secondary);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-gradient-dark);
+            background: var(--primary-dark);
         }
 
         /* Selection */
@@ -190,27 +200,21 @@
         }
 
         .display-1 {
-            font-size: clamp(3.5rem, 8vw, 5.5rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
             line-height: 1.1;
-            letter-spacing: -0.02em;
         }
 
         .display-2 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
             line-height: 1.2;
         }
 
-        .display-3 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 700;
-        }
-
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
@@ -218,19 +222,12 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             right: 0;
-            width: 60px;
-            height: 4px;
+            width: 50px;
+            height: 3px;
             background: var(--primary-gradient);
             border-radius: var(--radius-full);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .text-gradient {
@@ -240,24 +237,27 @@
             background-clip: text;
         }
 
-        .text-gradient-secondary {
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .text-gradient-accent {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .lead {
-            font-size: 1.25rem;
-            font-weight: 400;
+            font-size: 1.125rem;
             color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .display-1 {
+                font-size: 2rem;
+            }
+            
+            .display-2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+            
+            .lead {
+                font-size: 1rem;
+            }
         }
 
         /* ===== LAYOUT UTILITIES ===== */
@@ -265,12 +265,13 @@
             width: 100%;
             max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 var(--mobile-padding);
         }
 
-        .container-fluid {
-            width: 100%;
-            padding: 0 2rem;
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 2rem;
+            }
         }
 
         .section {
@@ -278,50 +279,32 @@
             position: relative;
         }
 
-        .section-sm {
-            padding: calc(var(--section-spacing) / 2) 0;
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
         }
 
         .text-center {
             text-align: center;
         }
 
-        .text-right {
-            text-align: right;
-        }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
 
-        .text-left {
-            text-align: left;
-        }
-
-        /* ===== GLASS MORPHISM ===== */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .glass-primary {
-            background: rgba(0, 212, 170, 0.1);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(0, 212, 170, 0.2);
-        }
-
-        .glass-secondary {
-            background: rgba(108, 99, 255, 0.1);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(108, 99, 255, 0.2);
-        }
-
-        /* ===== BUTTONS ===== */
+        /* ===== BUTTONS - محسنة للجوال ===== */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            padding: 0.875rem 2rem;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
             border-radius: var(--radius-full);
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -332,18 +315,14 @@
             transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
-            isolation: isolate;
-            outline: none;
+            user-select: none;
+            touch-action: manipulation;
+            min-height: 44px; /* للتحسين على الجوال */
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--primary-gradient);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity var(--transition-normal);
+        /* تجنب تأثير اللمس على الجوال */
+        .btn:active {
+            transform: translateY(1px);
         }
 
         .btn-primary {
@@ -353,12 +332,8 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .btn-primary:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .btn-secondary {
@@ -370,34 +345,31 @@
         .btn-secondary:hover {
             background: var(--primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-primary);
+            transform: translateY(-2px);
         }
 
         .btn-accent {
-            background: var(--accent-gradient);
+            background: var(--accent);
             color: white;
-            box-shadow: var(--shadow-accent);
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.2);
         }
 
         .btn-accent:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-xl);
+            background: var(--accent-dark);
+            transform: translateY(-2px);
         }
 
+        /* أحجام الأزرار للجوال */
         .btn-lg {
-            padding: 1.25rem 2.5rem;
-            font-size: 1.1rem;
-        }
-
-        .btn-xl {
-            padding: 1.5rem 3rem;
-            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            min-height: 52px;
         }
 
         .btn-sm {
-            padding: 0.625rem 1.5rem;
+            padding: 0.5rem 1rem;
             font-size: 0.875rem;
+            min-height: 36px;
         }
 
         .btn-block {
@@ -405,10 +377,11 @@
         }
 
         .btn-icon {
-            width: 3rem;
-            height: 3rem;
+            width: 44px;
+            height: 44px;
             padding: 0;
             border-radius: 50%;
+            min-height: auto;
         }
 
         .btn:disabled {
@@ -417,7 +390,28 @@
             transform: none !important;
         }
 
-        /* ===== NAVBAR - PREMIUM ===== */
+        /* تحسينات الجوال للأزرار */
+        @media (max-width: 768px) {
+            .btn {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.9375rem;
+                min-height: 40px;
+            }
+            
+            .btn-lg {
+                padding: 0.875rem 1.75rem;
+                font-size: 1rem;
+                min-height: 48px;
+            }
+            
+            .btn-sm {
+                padding: 0.375rem 0.875rem;
+                font-size: 0.8125rem;
+                min-height: 32px;
+            }
+        }
+
+        /* ===== NAVBAR - محسنة للجوال ===== */
         .navbar {
             position: fixed;
             top: 0;
@@ -425,17 +419,19 @@
             width: 100%;
             height: var(--header-height);
             z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             transition: all var(--transition-normal);
         }
 
+        .dark-mode .navbar {
+            background: rgba(15, 15, 30, 0.95);
+        }
+
         .navbar.scrolled {
-            height: 70px;
-            box-shadow: var(--shadow-lg);
-            background: var(--bg-secondary);
+            box-shadow: var(--shadow-md);
         }
 
         .nav-container {
@@ -443,37 +439,65 @@
             align-items: center;
             justify-content: space-between;
             height: 100%;
-            padding: 0 2rem;
+            padding: 0 var(--mobile-padding);
+        }
+
+        @media (min-width: 640px) {
+            .nav-container {
+                padding: 0 2rem;
+            }
         }
 
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             text-decoration: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-primary);
             transition: var(--transition-fast);
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: var(--primary-gradient);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.25rem;
+            font-size: 1rem;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - var(--header-height));
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 2rem;
+                transition: var(--transition-normal);
+                border-left: 1px solid var(--border-color);
+                box-shadow: var(--shadow-xl);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
         }
 
         .nav-link {
@@ -484,6 +508,7 @@
             position: relative;
             padding: 0.5rem 0;
             transition: var(--transition-fast);
+            white-space: nowrap;
         }
 
         .nav-link::after {
@@ -506,7 +531,8 @@
         }
 
         .nav-link.active {
-            color: var(--text-primary);
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .nav-link.active::after {
@@ -516,40 +542,47 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-user {
-            display: flex;
-            align-items: center;
             gap: 0.75rem;
         }
 
-        .user-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            border: 2px solid transparent;
-            overflow: hidden;
+            transition: var(--transition-fast);
+            touch-action: manipulation;
         }
 
-        .user-avatar:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
         }
 
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .dark-mode .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        .dark-mode .theme-toggle .fa-moon {
+            display: block;
+        }
+
+        .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        .theme-toggle .fa-moon {
+            display: none;
         }
 
         .mobile-toggle {
@@ -565,13 +598,25 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition-fast);
+            touch-action: manipulation;
         }
 
         .mobile-toggle:hover {
             background: var(--bg-tertiary);
         }
 
-        /* ===== HERO SECTION - ULTRA PREMIUM ===== */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-link {
+                font-size: 1.125rem;
+                padding: 0.75rem 0;
+            }
+        }
+
+        /* ===== HERO SECTION - محسنة للجوال ===== */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -583,80 +628,135 @@
         }
 
         .hero-container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--mobile-padding);
             position: relative;
             z-index: 2;
         }
 
+        @media (min-width: 640px) {
+            .hero-container {
+                padding: 0 2rem;
+            }
+        }
+
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(0, 212, 170, 0.1);
+            background: var(--primary-light);
             color: var(--primary);
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: var(--radius-full);
             font-size: 0.875rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(0, 212, 170, 0.3);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 212, 170, 0.2);
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .dark-mode .hero-badge {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: rgba(0, 212, 170, 0.3);
         }
 
-        .hero-title {
-            margin-bottom: 1.5rem;
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 0 8px rgba(0, 212, 170, 0);
+            }
         }
 
         .hero-description {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-actions {
             display: flex;
             gap: 1rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
         }
 
         .hero-stats {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-normal);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
 
         .stat-icon {
             width: 50px;
             height: 50px;
-            background: rgba(0, 212, 170, 0.1);
-            border-radius: var(--radius-lg);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             color: var(--primary);
+            margin: 0 auto 1rem;
+        }
+
+        .dark-mode .stat-icon {
+            background: rgba(0, 212, 170, 0.1);
         }
 
         .stat-content h3 {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
+            color: var(--text-primary);
         }
 
         .stat-content p {
@@ -664,127 +764,55 @@
             font-size: 0.875rem;
         }
 
-        .hero-visual {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-30%, -50%);
-            width: 60%;
-            height: 80%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            top: 10%;
-            right: 10%;
-            opacity: 0.3;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: var(--secondary);
-            bottom: 20%;
-            right: 30%;
-            opacity: 0.2;
-            animation-delay: 2s;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: var(--accent);
-            top: 40%;
-            right: 50%;
-            opacity: 0.15;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
         /* ===== FEATURES SECTION ===== */
         .features-section {
             background: var(--bg-secondary);
-            position: relative;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
         }
 
         .feature-card {
-            padding: 2.5rem;
-            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
             background: var(--bg-primary);
             border: 1px solid var(--border-color);
             transition: all var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
             height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity var(--transition-normal);
-            z-index: 0;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: var(--primary);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .feature-card > * {
-            position: relative;
-            z-index: 1;
+            box-shadow: var(--shadow-lg);
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(0, 212, 170, 0.1);
-            border-radius: var(--radius-lg);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             transition: var(--transition-normal);
+        }
+
+        .dark-mode .feature-icon {
+            background: rgba(0, 212, 170, 0.1);
         }
 
         .feature-card:hover .feature-icon {
@@ -794,12 +822,14 @@
         }
 
         .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
         }
 
         .feature-description {
             color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
         }
 
         /* ===== COMMUNITIES SECTION ===== */
@@ -809,7 +839,12 @@
 
         .communities-slider {
             position: relative;
-            padding: 2rem 0;
+            padding: 1rem 0;
+        }
+
+        .swiper {
+            padding: 1rem;
+            margin: -1rem;
         }
 
         .swiper-slide {
@@ -818,8 +853,8 @@
 
         .community-card {
             height: 100%;
-            padding: 2rem;
-            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
             background: var(--bg-primary);
             border: 1px solid var(--border-color);
             display: flex;
@@ -828,60 +863,62 @@
         }
 
         .community-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-lg);
         }
 
         .community-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .community-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--primary-gradient);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: white;
             flex-shrink: 0;
         }
 
         .community-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
         }
 
         .community-meta {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             color: var(--text-tertiary);
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
         }
 
         .community-description {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9375rem;
+            line-height: 1.6;
             flex: 1;
         }
 
         .community-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
         }
 
         .tag {
-            padding: 0.25rem 0.75rem;
+            padding: 0.25rem 0.5rem;
             background: var(--bg-tertiary);
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-sm);
             font-size: 0.75rem;
             color: var(--text-secondary);
             transition: var(--transition-fast);
@@ -892,289 +929,144 @@
             color: white;
         }
 
-        /* ===== FRIENDS IMAGE SECTION ===== */
-        .friends-section {
-            background: var(--bg-primary);
-            padding: 80px 0;
+        /* تأثير القفل على المجتمعات المقفولة */
+        .community-card.locked {
             position: relative;
-            overflow: hidden;
+            opacity: 0.9;
         }
 
-        .friends-container {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .friends-image {
-            flex: 1;
-            position: relative;
-            min-height: 500px;
-        }
-
-        .friends-img-wrapper {
-            position: relative;
+        .community-card.locked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border-radius: var(--radius-2xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .friends-img-placeholder {
-            width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            min-height: 500px;
-        }
-
-        .friends-img-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .floating-icons {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .floating-icon {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            box-shadow: var(--shadow-lg);
-            animation: floatAround 20s linear infinite;
-        }
-
-        @keyframes floatAround {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(100px, 50px) rotate(90deg); }
-            50% { transform: translate(50px, 100px) rotate(180deg); }
-            75% { transform: translate(-50px, 50px) rotate(270deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
-        }
-
-        .floating-icon:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; background: var(--primary); color: white; }
-        .floating-icon:nth-child(2) { top: 40%; right: 30%; animation-delay: -5s; background: var(--secondary); color: white; }
-        .floating-icon:nth-child(3) { bottom: 30%; left: 40%; animation-delay: -10s; background: var(--accent); color: white; }
-        .floating-icon:nth-child(4) { top: 60%; right: 20%; animation-delay: -15s; background: #2ECC71; color: white; }
-        .floating-icon:nth-child(5) { bottom: 40%; left: 20%; animation-delay: -7s; background: #9B59B6; color: white; }
-
-        .friends-content {
-            flex: 1;
-        }
-
-        /* ===== MAP SECTION ===== */
-        .map-section {
-            background: var(--bg-secondary);
-        }
-
-        .map-container {
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            position: relative;
-            background: var(--bg-primary);
-        }
-
-        #tribly-map {
-            width: 100%;
-            height: 500px;
-            background: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-tertiary);
-            position: relative;
-        }
-
-        .map-overlay {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
             border-radius: var(--radius-lg);
-            padding: 1.5rem;
-            max-width: 300px;
-            border: 1px solid var(--glass-border);
-            z-index: 10;
+            z-index: 1;
         }
 
-        /* ===== TESTIMONIALS SECTION ===== */
-        .testimonials-section {
-            background: var(--bg-primary);
+        .dark-mode .community-card.locked::before {
+            background: linear-gradient(135deg, rgba(15, 15, 30, 0.9), rgba(15, 15, 30, 0.7));
         }
 
-        .testimonial-card {
-            padding: 2.5rem;
-            border-radius: var(--radius-xl);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            margin: 1rem;
-            transition: var(--transition-normal);
+        .community-card.locked > * {
+            position: relative;
+            z-index: 2;
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-lg);
+        .community-card.locked .community-avatar {
+            background: var(--accent);
         }
 
-        .testimonial-content {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            flex-shrink: 0;
-        }
-
-        .author-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .author-info p {
-            color: var(--text-tertiary);
+        .lock-icon {
+            color: var(--accent);
+            margin-left: 0.25rem;
             font-size: 0.875rem;
         }
 
-        /* ===== AUTH MODAL - WORLD CLASS ===== */
-        .auth-modal {
+        /* ===== MODALS - محسنة للجوال ===== */
+        .modal-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .auth-modal.active {
-            display: flex;
-            animation: modalFadeIn 0.3s ease;
+        .modal-overlay.active {
+            display: block;
+            opacity: 1;
         }
 
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .auth-container {
-            width: 100%;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            width: 90%;
             max-width: 500px;
+            max-height: 90vh;
             background: var(--bg-primary);
-            border-radius: var(--radius-2xl);
+            border-radius: var(--radius-xl);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
-            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2001;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        @keyframes modalSlideUp {
-            from { transform: translateY(50px) scale(0.95); opacity: 0; }
-            to { transform: translateY(0) scale(1); opacity: 1; }
+        .modal.active {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
         }
 
-        .auth-header {
-            padding: 2.5rem 2.5rem 0;
+        .modal-header {
+            padding: 1.5rem;
             text-align: center;
-        }
-
-        .auth-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .auth-tabs {
-            display: flex;
             border-bottom: 1px solid var(--border-color);
-        }
-
-        .auth-tab {
-            flex: 1;
-            padding: 1.25rem;
-            background: none;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: var(--transition-fast);
             position: relative;
         }
 
-        .auth-tab.active {
-            color: var(--primary);
-        }
-
-        .auth-tab.active::after {
-            content: '';
+        .modal-close {
             position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--primary-gradient);
+            top: 1rem;
+            left: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: none;
+            color: var(--text-primary);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .auth-content {
-            padding: 2.5rem;
+        .modal-close:hover {
+            background: var(--border-color);
+            transform: rotate(90deg);
         }
 
-        .auth-form {
-            display: none;
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: calc(90vh - 140px);
         }
 
-        .auth-form.active {
-            display: block;
-            animation: formFadeIn 0.3s ease;
+        /* تحسينات الجوال للمودالات */
+        @media (max-width: 768px) {
+            .modal {
+                width: 95%;
+                max-height: 85vh;
+            }
+            
+            .modal-header {
+                padding: 1.25rem;
+            }
+            
+            .modal-body {
+                padding: 1.25rem;
+                max-height: calc(85vh - 120px);
+            }
         }
 
-        @keyframes formFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* ===== FORMS ===== */
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-label {
@@ -1182,11 +1074,12 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--text-primary);
+            font-size: 0.9375rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 0.875rem 1rem;
+            padding: 0.75rem 1rem;
             background: var(--bg-secondary);
             border: 2px solid var(--border-color);
             border-radius: var(--radius-md);
@@ -1202,377 +1095,196 @@
             box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
         }
 
-        .form-control::placeholder {
-            color: var(--text-tertiary);
+        .form-control.error {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.1);
         }
 
-        .form-footer {
-            margin-top: 2rem;
-            text-align: center;
+        .form-control.success {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
         }
 
-        .form-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-fast);
-        }
-
-        .form-link:hover {
-            text-decoration: underline;
-        }
-
-        .social-auth {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .social-auth-title {
+        .password-input {
             position: relative;
-            margin-bottom: 1.5rem;
-            color: var(--text-tertiary);
-            font-size: 0.875rem;
         }
 
-        .social-auth-title::before,
-        .social-auth-title::after {
-            content: '';
+        .password-toggle {
             position: absolute;
+            left: 1rem;
             top: 50%;
-            width: 30%;
-            height: 1px;
-            background: var(--border-color);
-        }
-
-        .social-auth-title::before {
-            right: 0;
-        }
-
-        .social-auth-title::after {
-            left: 0;
-        }
-
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .social-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-btn.facebook:hover {
-            background: #1877F2;
-            color: white;
-            border-color: #1877F2;
-        }
-
-        .social-btn.google:hover {
-            background: #DB4437;
-            color: white;
-            border-color: #DB4437;
-        }
-
-        .social-btn.twitter:hover {
-            background: #1DA1F2;
-            color: white;
-            border-color: #1DA1F2;
-        }
-
-        .auth-close {
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-secondary);
+            transform: translateY(-50%);
+            background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.25rem;
+            color: var(--text-tertiary);
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
             transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
         }
 
-        .auth-close:hover {
+        .password-toggle:hover {
+            color: var(--primary);
             background: var(--bg-tertiary);
-            transform: rotate(90deg);
         }
 
-        /* ===== JOIN MODAL (رمز الدخول) ===== */
-        .join-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+        .password-input .form-control {
+            padding-left: 3rem;
         }
 
-        .join-modal.active {
-            display: flex;
-        }
-
-        .join-container {
-            width: 100%;
-            max-width: 400px;
-            background: var(--bg-primary);
-            border-radius: var(--radius-2xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .join-header {
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .join-community-avatar {
+        /* ===== PASSWORD MODAL ===== */
+        .password-icon {
             width: 80px;
             height: 80px;
-            background: var(--primary-gradient);
-            border-radius: var(--radius-lg);
+            background: var(--accent);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             color: white;
             margin: 0 auto 1rem;
+            box-shadow: 0 8px 16px rgba(255, 107, 139, 0.2);
         }
 
-        .join-body {
-            padding: 2rem;
-        }
-
-        .code-inputs {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .code-input {
-            width: 50px;
-            height: 60px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-color);
+        .password-hint {
+            background: var(--primary-light);
+            border: 1px solid rgba(0, 212, 170, 0.2);
             border-radius: var(--radius-md);
-            color: var(--text-primary);
-            outline: none;
-            transition: var(--transition-fast);
-        }
-
-        .code-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
-        }
-
-        .code-input.filled {
-            background: rgba(0, 212, 170, 0.1);
-            border-color: var(--primary);
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta-section {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
             text-align: center;
-            background: var(--primary-gradient);
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        .dark-mode .password-hint {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: rgba(0, 212, 170, 0.3);
         }
 
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            color: white;
+        .password-attempts {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 107, 139, 0.1);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 107, 139, 0.2);
+            font-size: 0.875rem;
+            color: var(--accent);
+            display: none;
         }
 
-        .cta-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            color: white;
+        .password-attempts.show {
+            display: block;
+            animation: slideDown 0.3s ease;
         }
 
-        .cta-description {
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 5rem 0 2rem;
-            position: relative;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-grid {
+        /* ===== GROUPS MODAL ===== */
+        .groups-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .footer-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
+            max-height: 400px;
+            overflow-y: auto;
             padding-right: 0.5rem;
         }
 
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            color: var(--text-tertiary);
-            font-size: 0.875rem;
+        @media (max-width: 640px) {
+            .groups-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
         }
 
-        /* ===== NOTIFICATION SYSTEM ===== */
+        .group-item {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-fast);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .group-item:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .group-item.locked {
+            border: 2px dashed var(--accent);
+            opacity: 0.9;
+        }
+
+        .group-item.locked .group-lock {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .group-item.unlocked {
+            border: 2px solid var(--primary);
+        }
+
+        .group-item.unlocked .group-unlock {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        /* ===== NOTIFICATIONS ===== */
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 1rem 1.5rem;
+            padding: 1rem 1.25rem;
             background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
             border-left: 4px solid var(--primary);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             z-index: 3000;
             transform: translateX(120%);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 400px;
+            max-width: 350px;
         }
 
         .notification.show {
             transform: translateX(0);
         }
 
+        .notification.error {
+            border-left-color: var(--accent);
+        }
+
+        .notification.success {
+            border-left-color: var(--primary);
+        }
+
+        .notification.warning {
+            border-left-color: #FF9A3C;
+        }
+
         .notification-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
+            font-size: 1.25rem;
         }
 
         .notification-content {
             flex: 1;
+            font-size: 0.9375rem;
         }
 
         .notification-close {
@@ -1590,7 +1302,7 @@
             color: var(--text-primary);
         }
 
-        /* ===== LOADING SPINNER ===== */
+        /* ===== LOADING ===== */
         .loading {
             position: fixed;
             top: 0;
@@ -1611,8 +1323,8 @@
         }
 
         .spinner {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border: 3px solid var(--bg-tertiary);
             border-top-color: var(--primary);
             border-radius: 50%;
@@ -1623,440 +1335,385 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 1200px) {
-            .hero-visual {
-                transform: translate(-20%, -50%);
-            }
-            
-            .friends-container {
-                flex-direction: column;
-            }
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1.5rem;
+            position: relative;
+            border-top: 1px solid var(--border-color);
         }
 
-        @media (max-width: 992px) {
-            .mobile-toggle {
-                display: flex;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: var(--header-height);
-                right: -100%;
-                width: 300px;
-                height: calc(100vh - var(--header-height));
-                background: var(--bg-primary);
-                flex-direction: column;
-                padding: 2rem;
-                transition: var(--transition-normal);
-                border-left: 1px solid var(--border-color);
-                box-shadow: var(--shadow-xl);
-            }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .hero-visual {
-                display: none;
-            }
-            
-            .hero-content {
-                text-align: center;
-                margin: 0 auto;
-            }
-            
-            .hero-actions {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .auth-container {
-                max-width: 100%;
-            }
-            
-            .join-container {
-                max-width: 100%;
-            }
-            
-            .code-input {
-                width: 40px;
-                height: 50px;
-                font-size: 1.25rem;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .display-1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .feature-card,
-            .community-card,
-            .testimonial-card {
-                padding: 1.5rem;
-            }
-            
-            .code-input {
-                width: 35px;
-                height: 45px;
-                font-size: 1.1rem;
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* ===== DARK MODE TOGGLE ===== */
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-fast);
+        .footer-brand {
+            max-width: 300px;
         }
 
-        .theme-toggle:hover {
-            background: var(--bg-tertiary);
-        }
-
-        .dark-mode .theme-toggle .fa-sun {
-            display: none;
-        }
-
-        .dark-mode .theme-toggle .fa-moon {
-            display: block;
-        }
-
-        .theme-toggle .fa-sun {
-            display: block;
-        }
-
-        .theme-toggle .fa-moon {
-            display: none;
-        }
-
-        /* ===== PASSWORD REQUIREMENTS ===== */
-        .password-requirements {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-        }
-
-        .requirement {
+        .footer-logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
-        .requirement.valid {
-            color: var(--primary);
+        .footer-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
         }
 
-        .requirement.invalid {
-            color: var(--accent);
+        .social-links {
+            display: flex;
+            gap: 0.5rem;
         }
 
-        .requirement i {
-            font-size: 0.75rem;
-        }
-
-        /* ===== FADE EFFECT ===== */
-        .fade-out {
-            animation: fadeOut 0.3s ease forwards;
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-
-        /* ===== GROUPS MODAL ===== */
-        .groups-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            font-size: 0.875rem;
         }
 
-        .groups-modal.active {
-            display: flex;
-        }
-
-        .groups-container {
-            width: 100%;
-            max-width: 600px;
-            background: var(--bg-primary);
-            border-radius: var(--radius-2xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .groups-header {
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .groups-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            padding: 2rem;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .group-item {
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            transition: var(--transition-fast);
-            cursor: pointer;
-        }
-
-        .group-item:hover {
-            background: var(--bg-tertiary);
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
             transform: translateY(-2px);
         }
 
-        .group-item.locked {
-            opacity: 0.7;
-            position: relative;
+        .footer-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .group-item.locked::after {
-            content: '🔒';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 1.25rem;
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-right: 0.5rem;
+        }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .d-none { display: none !important; }
+        .d-flex { display: flex !important; }
+        .justify-center { justify-content: center; }
+        .align-center { align-items: center; }
+        .w-100 { width: 100%; }
+        .text-muted { color: var(--text-tertiary); }
+        .small { font-size: 0.875rem; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* ===== SWIPER PAGINATION STYLES ===== */
+        .swiper-pagination-bullet {
+            background: var(--text-tertiary);
+            opacity: 0.3;
+            width: 8px;
+            height: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            opacity: 1;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ===== TOUCH OPTIMIZATIONS ===== */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover {
+                transform: none !important;
+            }
+            
+            .feature-card:hover,
+            .community-card:hover,
+            .stat-item:hover {
+                transform: none !important;
+            }
+            
+            .nav-link:hover::after {
+                width: 0;
+            }
+            
+            .nav-link.active::after {
+                width: 100%;
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            .navbar,
+            .footer,
+            .btn,
+            .modal-overlay,
+            .modal,
+            .notification {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
 
+    <!-- Modals Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
     <!-- Auth Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="auth-container">
-            <button class="auth-close" id="authClose">
+    <div class="modal" id="authModal">
+        <div class="modal-header">
+            <button class="modal-close" id="authClose">
                 <i class="fas fa-times"></i>
             </button>
-            
-            <div class="auth-header">
-                <a href="#" class="auth-logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <span>Tribly</span>
-                </a>
+            <h3>مرحباً بك في Tribly</h3>
+        </div>
+        <div class="modal-body">
+            <div class="auth-tabs" style="display: flex; border-bottom: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+                <button class="btn btn-sm" data-tab="login" style="flex: 1; border-radius: 0; border-bottom: 2px solid var(--primary);">تسجيل الدخول</button>
+                <button class="btn btn-sm" data-tab="register" style="flex: 1; border-radius: 0; border-bottom: 2px solid var(--border-color);">إنشاء حساب</button>
             </div>
             
-            <div class="auth-tabs">
-                <button class="auth-tab active" data-tab="login">تسجيل الدخول</button>
-                <button class="auth-tab" data-tab="register">إنشاء حساب</button>
-            </div>
-            
-            <div class="auth-content">
-                <!-- Login Form -->
-                <form class="auth-form active" id="loginForm">
-                    <div class="form-group">
-                        <label class="form-label" for="loginEmail">البريد الإلكتروني</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="loginPassword">كلمة المرور</label>
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <div class="password-input">
                         <input type="password" class="form-control" id="loginPassword" placeholder="أدخل كلمة المرور" required>
+                        <button type="button" class="password-toggle" data-target="loginPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input type="checkbox" id="rememberMe" class="form-check-input">
-                            <label for="rememberMe" class="form-check-label">تذكرني</label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
-                    
-                    <div class="form-footer">
-                        <a href="#forgot" class="form-link">نسيت كلمة المرور؟</a>
-                    </div>
-                </form>
+                </div>
                 
-                <!-- Register Form -->
-                <form class="auth-form" id="registerForm">
-                    <div class="form-group">
-                        <label class="form-label" for="registerName">الاسم الكامل</label>
-                        <input type="text" class="form-control" id="registerName" placeholder="أدخل اسمك الكامل" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="registerEmail">البريد الإلكتروني</label>
-                        <input type="email" class="form-control" id="registerEmail" placeholder="example@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="registerPassword">كلمة المرور</label>
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="rememberMe">
+                        <span style="font-size: 0.875rem;">تذكرني</span>
+                    </label>
+                    <a href="#" style="font-size: 0.875rem; color: var(--primary); text-decoration: none;">نسيت كلمة المرور؟</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block mt-3">تسجيل الدخول</button>
+            </form>
+            
+            <form id="registerForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">الاسم الكامل</label>
+                    <input type="text" class="form-control" id="registerName" placeholder="أدخل اسمك الكامل" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="registerEmail" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">كلمة المرور</label>
+                    <div class="password-input">
                         <input type="password" class="form-control" id="registerPassword" placeholder="أدخل كلمة المرور" required>
-                        <div class="password-requirements">
-                            <div class="requirement invalid" id="reqLength">
-                                <i class="fas fa-circle"></i>
-                                <span>8 أحرف على الأقل</span>
-                            </div>
-                            <div class="requirement invalid" id="reqUppercase">
-                                <i class="fas fa-circle"></i>
-                                <span>حرف كبير واحد على الأقل</span>
-                            </div>
-                            <div class="requirement invalid" id="reqNumber">
-                                <i class="fas fa-circle"></i>
-                                <span>رقم واحد على الأقل</span>
-                            </div>
+                        <button type="button" class="password-toggle" data-target="registerPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-requirements" style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-tertiary);">
+                        <div class="requirement" data-requirement="length">
+                            <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                            <span>8 أحرف على الأقل</span>
+                        </div>
+                        <div class="requirement" data-requirement="uppercase">
+                            <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                            <span>حرف كبير واحد على الأقل</span>
+                        </div>
+                        <div class="requirement" data-requirement="number">
+                            <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                            <span>رقم واحد على الأقل</span>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="registerConfirm">تأكيد كلمة المرور</label>
-                        <input type="password" class="form-control" id="registerConfirm" placeholder="أعد إدخال كلمة المرور" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input type="checkbox" id="acceptTerms" class="form-check-input" required>
-                            <label for="acceptTerms" class="form-check-label">
-                                أوافق على <a href="#terms" class="form-link">شروط الاستخدام</a> و <a href="#privacy" class="form-link">سياسة الخصوصية</a>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-block" id="registerSubmit" disabled>إنشاء حساب</button>
-                </form>
+                </div>
                 
-                <div class="social-auth">
-                    <div class="social-auth-title">أو سجل عبر</div>
-                    <div class="social-buttons">
-                        <button type="button" class="social-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </button>
-                        <button type="button" class="social-btn google">
-                            <i class="fab fa-google"></i>
-                        </button>
-                        <button type="button" class="social-btn twitter">
-                            <i class="fab fa-twitter"></i>
+                <div class="form-group">
+                    <label class="form-label">تأكيد كلمة المرور</label>
+                    <div class="password-input">
+                        <input type="password" class="form-control" id="registerConfirm" placeholder="أعد إدخال كلمة المرور" required>
+                        <button type="button" class="password-toggle" data-target="registerConfirm">
+                            <i class="fas fa-eye"></i>
                         </button>
                     </div>
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; font-size: 0.875rem;">
+                        <input type="checkbox" id="acceptTerms" style="margin-top: 0.25rem;">
+                        <span>أوافق على <a href="#" style="color: var(--primary); text-decoration: none;">شروط الاستخدام</a> و <a href="#" style="color: var(--primary); text-decoration: none;">سياسة الخصوصية</a></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block mt-3" id="registerSubmit" disabled>إنشاء حساب</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 1rem;">أو سجل عبر</p>
+                <div style="display: flex; gap: 0.75rem; justify-content: center;">
+                    <button type="button" class="btn btn-icon" style="background: var(--bg-tertiary); border: 1px solid var(--border-color);">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button type="button" class="btn btn-icon" style="background: var(--bg-tertiary); border: 1px solid var(--border-color);">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button type="button" class="btn btn-icon" style="background: var(--bg-tertiary); border: 1px solid var(--border-color);">
+                        <i class="fab fa-twitter"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Join Community Modal -->
-    <div class="join-modal" id="joinModal">
-        <div class="join-container">
-            <button class="auth-close" id="joinClose">
+    <!-- Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-header">
+            <button class="modal-close" id="passwordClose">
                 <i class="fas fa-times"></i>
             </button>
-            
-            <div class="join-header">
-                <div class="join-community-avatar" id="joinCommunityIcon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3 id="joinCommunityTitle">انضم للمجتمع</h3>
-                <p class="text-secondary">أدخل رمز الدخول للانضمام</p>
+            <div class="password-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3 id="passwordCommunityTitle">مجتمع حصري</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">أدخل كلمة المرور للانضمام</p>
+        </div>
+        <div class="modal-body">
+            <div class="password-hint" id="passwordHint">
+                💡 تلميح: كلمة المرور: اسم مدينة + 2024
             </div>
             
-            <div class="join-body">
-                <div class="code-inputs">
-                    <input type="text" class="code-input" maxlength="1" data-index="0">
-                    <input type="text" class="code-input" maxlength="1" data-index="1">
-                    <input type="text" class="code-input" maxlength="1" data-index="2">
-                    <input type="text" class="code-input" maxlength="1" data-index="3">
-                    <span style="align-self: center; margin: 0 0.5rem;">-</span>
-                    <input type="text" class="code-input" maxlength="1" data-index="4">
-                    <input type="text" class="code-input" maxlength="1" data-index="5">
+            <div class="form-group">
+                <label class="form-label">كلمة مرور المجتمع</label>
+                <div class="password-input">
+                    <input type="password" class="form-control" id="communityPassword" placeholder="أدخل كلمة المرور هنا" required autocomplete="off">
+                    <button type="button" class="password-toggle" data-target="communityPassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
                 </div>
-                
-                <button class="btn btn-primary btn-block" id="joinSubmit" disabled>
-                    <i class="fas fa-door-open"></i>
-                    انضم الآن
+            </div>
+            
+            <div class="password-attempts" id="passwordAttempts">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>باقي لديك <span id="attemptsCount">3</span> محاولات</span>
+            </div>
+            
+            <div class="mt-4" style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary btn-block" id="passwordSubmit">
+                    <i class="fas fa-unlock"></i>
+                    فتح المجتمع
                 </button>
-                
-                <div class="form-footer mt-3">
-                    <p class="text-tertiary small">رمز الدخول مكون من 6 أرقام</p>
-                </div>
+                <button class="btn btn-secondary" id="passwordCancel">
+                    إلغاء
+                </button>
             </div>
         </div>
     </div>
 
     <!-- Groups Modal -->
-    <div class="groups-modal" id="groupsModal">
-        <div class="groups-container">
-            <button class="auth-close" id="groupsClose">
+    <div class="modal" id="groupsModal">
+        <div class="modal-header">
+            <button class="modal-close" id="groupsClose">
                 <i class="fas fa-times"></i>
             </button>
-            
-            <div class="groups-header">
-                <h3>جميع المجتمعات المتاحة</h3>
-                <p class="text-secondary">اختر المجتمع الذي تريد الانضام إليه</p>
-            </div>
-            
+            <h3>جميع المجتمعات</h3>
+            <p style="color: var(--text-secondary); font-size: 0.875rem;">اختر المجتمع الذي تريد الانضام إليه</p>
+        </div>
+        <div class="modal-body">
             <div class="groups-grid" id="allGroupsList">
-                <!-- Groups will be populated by JavaScript -->
+                <!-- سيتم ملؤها بالجافاسكريبت -->
             </div>
         </div>
     </div>
@@ -2077,8 +1734,6 @@
                 <li><a href="#home" class="nav-link active">الرئيسية</a></li>
                 <li><a href="#features" class="nav-link">المميزات</a></li>
                 <li><a href="#communities" class="nav-link">المجتمعات</a></li>
-                <li><a href="#friends" class="nav-link">الأصدقاء</a></li>
-                <li><a href="#map" class="nav-link">الخريطة</a></li>
                 <li><a href="#testimonials" class="nav-link">التقييمات</a></li>
                 <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
             </ul>
@@ -2089,12 +1744,7 @@
                     <i class="fas fa-sun"></i>
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="btn btn-secondary" id="authOpen">تسجيل الدخول</button>
-                <div class="nav-user">
-                    <div class="user-avatar" id="userMenu">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
+                <button class="btn btn-secondary btn-sm" id="authOpen">تسجيل الدخول</button>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -2104,24 +1754,24 @@
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
-        <div class="container hero-container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
-                <div class="hero-badge">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in">
                     <i class="fas fa-crown"></i>
-                    <span>النسخة الاحترافية V3.0</span>
+                    <span>النسخة النهائية V1.0</span>
                 </div>
                 
-                <h1 class="display-1 hero-title">
+                <h1 class="display-1 fade-in delay-100">
                     اكتشف <span class="text-gradient">مجتمعك</span><br>
-                    بطريقة <span class="text-gradient-secondary">ذكية</span>
+                    بطريقة <span class="text-gradient">ذكية</span>
                 </h1>
                 
-                <p class="hero-description">
+                <p class="hero-description fade-in delay-200">
                     منصة اجتماعية متطورة تربطك بأشخاص حقيقيين يتشاركون معك نفس الاهتمامات والهوايات. 
-                    تعرّف على أصدقاء جدد، انضم لمجتمعات نشطة، وابنِ علاقات تستمر مدى الحياة.
+                    تعرّف على أصدقاء جدد، انضم لمجتمعات نشطة، وابنِ علاقات مستدامة.
                 </p>
                 
-                <div class="hero-actions">
+                <div class="hero-actions fade-in delay-300">
                     <button class="btn btn-primary btn-lg" id="ctaRegister">
                         <i class="fas fa-user-plus"></i>
                         انضم مجاناً
@@ -2132,8 +1782,8 @@
                     </a>
                 </div>
                 
-                <div class="hero-stats">
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="hero-stats fade-in delay-300">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -2143,7 +1793,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -2153,7 +1803,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
                         <div class="stat-icon">
                             <i class="fas fa-star"></i>
                         </div>
@@ -2164,28 +1814,19 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="hero-visual">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="section features-section" id="features">
         <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
+            <div class="text-center mb-4">
                 <h2 class="section-title">لماذا <span class="text-gradient">Tribly</span> مختلف؟</h2>
-                <p class="section-subtitle">منصة ذكية تجمع بين التكنولوجيا الحديثة والعلاقات الإنسانية الحقيقية</p>
+                <p class="lead">منصة ذكية تجمع بين التكنولوجيا الحديثة والعلاقات الإنسانية الحقيقية</p>
             </div>
             
             <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
@@ -2195,8 +1836,7 @@
                     </p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card fade-in delay-100">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -2206,47 +1846,13 @@
                     </p>
                 </div>
                 
-                <!-- Feature 3 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card fade-in delay-200">
                     <div class="feature-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <h3 class="feature-title">خرائط تفاعلية</h3>
                     <p class="feature-description">
                         اكتشف المجتمعات والأحداث القريبة منك على خرائط تفاعلية مع تحديثات حية وتنبيهات فورية.
-                    </p>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="feature-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="feature-title">تواصل مرئي</h3>
-                    <p class="feature-description">
-                        غرف فيديو جماعية، بث مباشر للأحداث، وتواصل مرئي عالي الجودة مع انخفاض في التأخير.
-                    </p>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="feature-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3 class="feature-title">إدارة فعاليات</h3>
-                    <p class="feature-description">
-                        أنشئ وأدر فعالياتك بسهولة مع نظام تذاكر، حجوزات، وتنبيهات تلقائية للمشاركين.
-                    </p>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="feature-title">منصات متعددة</h3>
-                    <p class="feature-description">
-                        تطبيقات أصلية لنظامي iOS و Android مع تجربة مخصصة لكل منصة ومزامنة فورية.
                     </p>
                 </div>
             </div>
@@ -2256,130 +1862,142 @@
     <!-- Communities Section -->
     <section class="section communities-section" id="communities">
         <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
+            <div class="text-center mb-4">
                 <h2 class="section-title">استكشف <span class="text-gradient">المجتمعات</span></h2>
-                <p class="section-subtitle">انضم لمجتمعات حقيقية تشاركك نفس الشغف والاهتمامات</p>
+                <p class="lead">انضم لمجتمعات حقيقية تشاركك نفس الشغف والاهتمامات</p>
             </div>
             
             <div class="communities-slider">
-                <div class="swiper communitiesSwiper">
+                <div class="swiper">
                     <div class="swiper-wrapper">
-                        <!-- Community 1 -->
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
-                            <div class="community-card" data-community="1">
+                        <!-- Community 1 - مقفل -->
+                        <div class="swiper-slide">
+                            <div class="community-card locked" data-community="1">
                                 <div class="community-header">
                                     <div class="community-avatar">
-                                        <i class="fas fa-code"></i>
+                                        <i class="fas fa-palette"></i>
                                     </div>
                                     <div>
-                                        <h3 class="community-title">مطورو المستقبل</h3>
+                                        <h3 class="community-title">
+                                            الفنون التشكيلية
+                                            <i class="fas fa-lock lock-icon"></i>
+                                        </h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 1,247 عضو</span>
-                                            <span><i class="fas fa-calendar"></i> 48 فعالية</span>
+                                            <span><i class="fas fa-users"></i> 674 عضو</span>
+                                            <span><i class="fas fa-calendar"></i> 28 فعالية</span>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="community-description">
-                                    مجتمع للمطورين والمبرمجين المهتمين بأحدث التقنيات وتبادل الخبرات في مجال البرمجة.
+                                    مجتمع حصري لمحبي الفنون التشكيلية، الرسم، النحت، والفنون البصرية.
                                 </p>
                                 <div class="community-tags">
-                                    <span class="tag">برمجة</span>
-                                    <span class="tag">تطوير</span>
-                                    <span class="tag">تقنية</span>
-                                </div>
-                                <button class="btn btn-primary join-btn" data-community="1">
-                                    <i class="fas fa-door-open"></i>
-                                    انضم الآن
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Community 2 -->
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                            <div class="community-card" data-community="2">
-                                <div class="community-header">
-                                    <div class="community-avatar">
-                                        <i class="fas fa-music"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="community-title">عشاق الموسيقى</h3>
-                                        <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 856 عضو</span>
-                                            <span><i class="fas fa-calendar"></i> 32 فعالية</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="community-description">
-                                    لمحبي الموسيقى العربية والعالمية، حفلات وجلسات استماع ومناقشات فنية.
-                                </p>
-                                <div class="community-tags">
-                                    <span class="tag">موسيقى</span>
                                     <span class="tag">فن</span>
-                                    <span class="tag">حفلات</span>
+                                    <span class="tag">رسم</span>
+                                    <span class="tag">إبداع</span>
                                 </div>
-                                <button class="btn btn-primary join-btn" data-community="2">
-                                    <i class="fas fa-door-open"></i>
-                                    انضم الآن
+                                <button class="btn btn-accent btn-block join-btn" data-community="1">
+                                    <i class="fas fa-unlock-alt"></i>
+                                    أدخل كلمة المرور
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Community 3 -->
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
-                            <div class="community-card" data-community="3">
+                        <!-- Community 2 - مقفل -->
+                        <div class="swiper-slide">
+                            <div class="community-card locked" data-community="2">
                                 <div class="community-header">
                                     <div class="community-avatar">
-                                        <i class="fas fa-briefcase"></i>
+                                        <i class="fas fa-book"></i>
                                     </div>
                                     <div>
-                                        <h3 class="community-title">ريادة الأعمال</h3>
+                                        <h3 class="community-title">
+                                            القراءة والكتابة
+                                            <i class="fas fa-lock lock-icon"></i>
+                                        </h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 2,134 عضو</span>
-                                            <span><i class="fas fa-calendar"></i> 76 فعالية</span>
+                                            <span><i class="fas fa-users"></i> 892 عضو</span>
+                                            <span><i class="fas fa-calendar"></i> 36 فعالية</span>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="community-description">
-                                    مجتمع لرواد الأعمال والمستثمرين لتبادل الخبرات وبناء شبكات مهنية قوية.
+                                    مجتمع القراء والكتاب، مناقشات أدبية، ورش كتابة، ولقاءات مع مؤلفين.
                                 </p>
                                 <div class="community-tags">
-                                    <span class="tag">أعمال</span>
-                                    <span class="tag">استثمار</span>
-                                    <span class="tag">ريادة</span>
+                                    <span class="tag">قراءة</span>
+                                    <span class="tag">كتابة</span>
+                                    <span class="tag">أدب</span>
                                 </div>
-                                <button class="btn btn-primary join-btn" data-community="3">
-                                    <i class="fas fa-door-open"></i>
-                                    انضم الآن
+                                <button class="btn btn-accent btn-block join-btn" data-community="2">
+                                    <i class="fas fa-unlock-alt"></i>
+                                    أدخل كلمة المرور
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Community 4 -->
-                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                            <div class="community-card" data-community="4">
+                        <!-- Community 3 - مقفل -->
+                        <div class="swiper-slide">
+                            <div class="community-card locked" data-community="3">
                                 <div class="community-header">
                                     <div class="community-avatar">
-                                        <i class="fas fa-heartbeat"></i>
+                                        <i class="fas fa-plane"></i>
                                     </div>
                                     <div>
-                                        <h3 class="community-title">اللياقة والصحة</h3>
+                                        <h3 class="community-title">
+                                            السفر والسياحة
+                                            <i class="fas fa-lock lock-icon"></i>
+                                        </h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 1,543 عضو</span>
-                                            <span><i class="fas fa-calendar"></i> 54 فعالية</span>
+                                            <span><i class="fas fa-users"></i> 1,245 عضو</span>
+                                            <span><i class="fas fa-calendar"></i> 42 فعالية</span>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="community-description">
-                                    مجتمع للاهتمام بالصحة واللياقة البدنية، تمارين جماعية ونصائح تغذية.
+                                    مجتمع محبي السفر والمغامرات، تبادل تجارب، نصائح سفر، وتنظيم رحلات جماعية.
                                 </p>
                                 <div class="community-tags">
-                                    <span class="tag">صحة</span>
-                                    <span class="tag">رياضة</span>
-                                    <span class="tag">تغذية</span>
+                                    <span class="tag">سفر</span>
+                                    <span class="tag">سياحة</span>
+                                    <span class="tag">مغامرة</span>
                                 </div>
-                                <button class="btn btn-primary join-btn" data-community="4">
-                                    <i class="fas fa-door-open"></i>
-                                    انضم الآن
+                                <button class="btn btn-accent btn-block join-btn" data-community="3">
+                                    <i class="fas fa-unlock-alt"></i>
+                                    أدخل كلمة المرور
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Community 4 - مقفل -->
+                        <div class="swiper-slide">
+                            <div class="community-card locked" data-community="4">
+                                <div class="community-header">
+                                    <div class="community-avatar">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="community-title">
+                                            الطبخ والأكل
+                                            <i class="fas fa-lock lock-icon"></i>
+                                        </h3>
+                                        <div class="community-meta">
+                                            <span><i class="fas fa-users"></i> 987 عضو</span>
+                                            <span><i class="fas fa-calendar"></i> 31 فعالية</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="community-description">
+                                    مجتمع عشاق الطبخ، تبادل وصفات، ورش طبخ، وتذوق أطعمة من مختلف الثقافات.
+                                </p>
+                                <div class="community-tags">
+                                    <span class="tag">طبخ</span>
+                                    <span class="tag">طعام</span>
+                                    <span class="tag">وصفات</span>
+                                </div>
+                                <button class="btn btn-accent btn-block join-btn" data-community="4">
+                                    <i class="fas fa-unlock-alt"></i>
+                                    أدخل كلمة المرور
                                 </button>
                             </div>
                         </div>
@@ -2388,7 +2006,7 @@
                 </div>
             </div>
             
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+            <div class="text-center mt-4">
                 <button class="btn btn-secondary" id="viewAllGroups">
                     <i class="fas fa-th-list"></i>
                     عرض جميع المجتمعات
@@ -2397,152 +2015,65 @@
         </div>
     </section>
 
-    <!-- Friends Image Section -->
-    <section class="section friends-section" id="friends">
-        <div class="container friends-container">
-            <div class="friends-image" data-aos="fade-right">
-                <div class="friends-img-wrapper">
-                    <div class="friends-img-placeholder">
-                        <div>
-                            <i class="fas fa-users"></i>
-                            <p>صورة أصدقاء يضحكون ويستمتعون</p>
-                        </div>
-                    </div>
-                    <div class="floating-icons">
-                        <div class="floating-icon"><i class="fas fa-heart"></i></div>
-                        <div class="floating-icon"><i class="fas fa-star"></i></div>
-                        <div class="floating-icon"><i class="fas fa-comment"></i></div>
-                        <div class="floating-icon"><i class="fas fa-thumbs-up"></i></div>
-                        <div class="floating-icon"><i class="fas fa-share"></i></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="friends-content" data-aos="fade-left">
-                <h2 class="section-title">تواصل مع <span class="text-gradient">أصدقاء حقيقيين</span></h2>
-                <p class="lead mb-4">
-                    في Tribly، نؤمن بأن الصداقات الحقيقية تبدأ من اهتمامات مشتركة. 
-                    انضم لمجتمعات نشطة حيث يمكنك:
-                </p>
-                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
-                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
-                        <span>التعرف على أشخاص يتشاركون معك نفس الشغف والاهتمامات</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
-                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
-                        <span>المشاركة في أنشطة وفعاليات قريبة منك</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
-                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
-                        <span>بناء علاقات اجتماعية قوية ومستدامة</span>
-                    </li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
-                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
-                        <span>اكتشاف هوايات جديدة مع أصدقاء جدد</span>
-                    </li>
-                </ul>
-                <button class="btn btn-primary btn-lg" id="findFriendsBtn">
-                    <i class="fas fa-user-friends"></i>
-                    ابحث عن أصدقاء
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="section map-section" id="map">
-        <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
-                <h2 class="section-title">اكتشف <span class="text-gradient">القريبين</span></h2>
-                <p class="section-subtitle">اعثر على المجتمعات والأشخاص القريبين منك على خريطة تفاعلية ذكية</p>
-            </div>
-            
-            <div class="map-container" data-aos="fade-up" data-aos-delay="200">
-                <div id="tribly-map">
-                    <!-- Interactive Map Visualization -->
-                    <div style="width: 100%; height: 100%; position: relative; background: var(--bg-tertiary); border-radius: var(--radius-xl); overflow: hidden;">
-                        <!-- Map Grid -->
-                        <div style="position: absolute; inset: 0; background-image: linear-gradient(var(--border-color) 1px, transparent 1px), linear-gradient(90deg, var(--border-color) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.3;"></div>
-                        
-                        <!-- User Location -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--primary-gradient); border-radius: 50%; box-shadow: 0 0 0 10px rgba(0, 212, 170, 0.2), 0 0 0 20px rgba(0, 212, 170, 0.1); animation: pulse 2s infinite;"></div>
-                        
-                        <!-- Nearby Communities -->
-                        <div id="nearbyMarkers">
-                            <!-- Markers will be added by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="map-overlay" data-aos="fade-left" data-aos-delay="400">
-                    <h3 style="margin-bottom: 1rem;">كيف تعمل الخريطة؟</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                        اضغط على زر تحديد الموقع لرؤية المجتمعات والأشخاص القريبين منك. 
-                        الألوان تمثل أنواع الأنشطة المختلفة.
-                    </p>
-                    <button class="btn btn-primary" id="locateMeBtn">
-                        <i class="fas fa-location-arrow"></i>
-                        حدد موقعي
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Testimonials Section -->
-    <section class="section testimonials-section" id="testimonials">
+    <section class="section" id="testimonials">
         <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
+            <div class="text-center mb-4">
                 <h2 class="section-title">ماذا يقول <span class="text-gradient">المستخدمون</span>؟</h2>
-                <p class="section-subtitle">انضم لأكثر من 50,000 شخص وجدوا مجتمعاتهم على Tribly</p>
+                <p class="lead">انضم لأكثر من 50,000 شخص وجدوا مجتمعاتهم على Tribly</p>
             </div>
             
-            <div class="swiper testimonialsSwiper" data-aos="fade-up" data-aos-delay="200">
+            <div class="swiper">
                 <div class="swiper-wrapper">
-                    <!-- Testimonial 1 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: var(--secondary-light); color: var(--secondary);">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p class="feature-description">
                                 "Tribly غير حياتي الاجتماعية تماماً! كمطور، وجدت مجتمعاً رائعاً في مدينتي وشاركت في عدة فعاليات تقنية. التوصيات الذكية كانت دقيقة جداً."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar"></div>
-                                <div class="author-info">
-                                    <h4>أحمد محمد</h4>
-                                    <p>مطور ويب - القاهرة</p>
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem;">
+                                <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%;"></div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin: 0;">أحمد محمد</h4>
+                                    <p style="color: var(--text-tertiary); font-size: 0.875rem; margin: 0;">مطور ويب - القاهرة</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Testimonial 2 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: var(--secondary-light); color: var(--secondary);">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p class="feature-description">
                                 "كأم عزباء، كان من الصعب عليّ تكوين صداقات جديدة. Tribly ساعدني في التعرف على أمهات في منطقتي نشارك نفس الاهتمامات والظروف."
-                            </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar"></div>
-                                <div class="author-info">
-                                    <h4>سارة أحمد</h4>
-                                    <p>مهندسة معمارية - الإسكندرية</p>
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem;">
+                                <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%;"></div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin: 0;">سارة أحمد</h4>
+                                    <p style="color: var(--text-tertiary); font-size: 0.875rem; margin: 0;">مهندسة معمارية - الإسكندرية</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Testimonial 3 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-content">
-                                "المنصة الأفضل للتعرف على أشخاص جدد! واجهة مستخدم رائعة، خوارزميات ذكية، ومجتمعات نشطة. أنصح بها بشدة لكل من يبحث عن توسيع دائرة معارفه."
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: var(--secondary-light); color: var(--secondary);">
+                                <i class="fas fa-quote-right"></i>
                             </div>
-                            <div class="testimonial-author">
-                                <div class="author-avatar"></div>
-                                <div class="author-info">
-                                    <h4>محمد خالد</h4>
-                                    <p>طبيب - الرياض</p>
+                            <p class="feature-description">
+                                "المنصة الأفضل للتعرف على أشخاص جدد! واجهة مستخدم رائعة، خوارزميات ذكية، ومجتمعات نشطة. أنصح بها بشدة لكل من يبحث عن توسيع دائرة معارفه."
+                            </p>
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem;">
+                                <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 50%;"></div>
+                                <div>
+                                    <h4 style="font-size: 1rem; margin: 0;">محمد خالد</h4>
+                                    <p style="color: var(--text-tertiary); font-size: 0.875rem; margin: 0;">طبيب - الرياض</p>
                                 </div>
                             </div>
                         </div>
@@ -2554,21 +2085,18 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section cta-section" id="cta">
+    <section class="section" style="background: var(--primary-gradient); color: white;">
         <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2 class="cta-title">جاهز للانضمام إلى مجتمعك؟</h2>
-                <p class="cta-description">
+            <div class="text-center">
+                <h2 class="display-2" style="color: white;">جاهز للانضمام إلى مجتمعك؟</h2>
+                <p class="lead" style="color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 1rem auto 2rem;">
                     انضم لأكثر من 50,000 شخص وجدوا صداقات وأنشطة جديدة بالقرب منهم.
                     ابدأ رحلتك الاجتماعية اليوم واستمتع بتجربة Tribly الاحترافية.
                 </p>
-                
-                <div class="hero-actions" style="justify-content: center;">
-                    <button class="btn btn-accent btn-xl" id="finalCta">
-                        <i class="fas fa-user-plus"></i>
-                        سجل مجاناً الآن
-                    </button>
-                </div>
+                <button class="btn btn-accent btn-lg" id="finalCta">
+                    <i class="fas fa-user-plus"></i>
+                    سجل مجاناً الآن
+                </button>
             </div>
         </div>
     </section>
@@ -2577,7 +2105,6 @@
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-grid">
-                <!-- Brand Column -->
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
                         <div class="logo-icon">
@@ -2593,52 +2120,47 @@
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Links -->
-                <div class="footer-links">
+                <div>
                     <h3 class="footer-title">المنصة</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
                         <li><a href="#features"><i class="fas fa-chevron-left"></i> المميزات</a></li>
                         <li><a href="#communities"><i class="fas fa-chevron-left"></i> المجتمعات</a></li>
-                        <li><a href="#friends"><i class="fas fa-chevron-left"></i> الأصدقاء</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-left"></i> التقييمات</a></li>
                     </ul>
                 </div>
 
-                <!-- Legal -->
-                <div class="footer-links">
+                <div>
                     <h3 class="footer-title">الشركة</h3>
-                    <ul>
-                        <li><a href="#about"><i class="fas fa-chevron-left"></i> عنا</a></li>
-                        <li><a href="#careers"><i class="fas fa-chevron-left"></i> وظائف</a></li>
-                        <li><a href="#privacy"><i class="fas fa-chevron-left"></i> الخصوصية</a></li>
-                        <li><a href="#terms"><i class="fas fa-chevron-left"></i> الشروط</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> عنا</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> وظائف</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الخصوصية</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الشروط</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact -->
-                <div class="footer-links">
+                <div>
                     <h3 class="footer-title">التواصل</h3>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="mailto:hello@tribly.com"><i class="fas fa-chevron-left"></i> hello@tribly.com</a></li>
                         <li><a href="tel:+201234567890"><i class="fas fa-chevron-left"></i> +20 123 456 7890</a></li>
-                        <li><a href="#support"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
-                        <li><a href="#press"><i class="fas fa-chevron-left"></i> الصحافة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الدعم الفني</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> الصحافة</a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Bottom -->
             <div class="footer-bottom">
                 <div class="copyright">
                     © 2024 Tribly. جميع الحقوق محفوظة.
                 </div>
-                <div class="footer-links">
-                    <a href="#cookies" style="color: var(--text-tertiary); font-size: 0.875rem;">ملفات تعريف الارتباط</a>
-                    <a href="#sitemap" style="color: var(--text-tertiary); font-size: 0.875rem;">خريطة الموقع</a>
+                <div>
+                    <a href="#" style="color: var(--text-tertiary); font-size: 0.75rem; text-decoration: none; margin-left: 1rem;">ملفات تعريف الارتباط</a>
+                    <a href="#" style="color: var(--text-tertiary); font-size: 0.75rem; text-decoration: none;">خريطة الموقع</a>
                 </div>
             </div>
         </div>
@@ -2646,116 +2168,105 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <script>
-        // ===== TRIBELY ULTIMATE APP =====
-        class TriblyUltimate {
+        // ===== TRIBLY APP - النسخة النهائية =====
+        class TriblyApp {
             constructor() {
                 this.currentUser = null;
-                this.communityCodes = {
-                    1: "123456",  // مطورو المستقبل
-                    2: "234567",  // عشاق الموسيقى
-                    3: "345678",  // ريادة الأعمال
-                    4: "456789",  // اللياقة والصحة
-                    5: "567890",  // الفنون التشكيلية
-                    6: "678901",  // القراءة والكتابة
-                    7: "789012",  // السفر والسياحة
-                    8: "890123"   // الطبخ والأكل
+                this.unlockedCommunities = new Set();
+                this.passwordAttempts = {};
+                
+                // كلمات مرور المجتمعات
+                this.communityPasswords = {
+                    1: { // الفنون التشكيلية
+                        password: "الرياض2024",
+                        hint: "كلمة المرور: اسم المدينة + 2024"
+                    },
+                    2: { // القراءة والكتابة
+                        password: "جدة2024", 
+                        hint: "كلمة المرور: اسم المدينة + 2024"
+                    },
+                    3: { // السفر والسياحة
+                        password: "دبي2024",
+                        hint: "كلمة المرور: اسم المدينة + 2024"
+                    },
+                    4: { // الطبخ والأكل
+                        password: "القاهرة2024",
+                        hint: "كلمة المرور: اسم المدينة + 2024"
+                    }
                 };
                 
+                // جميع المجتمعات
                 this.allCommunities = [
-                    { id: 1, name: "مطورو المستقبل", icon: "fa-code", locked: false },
-                    { id: 2, name: "عشاق الموسيقى", icon: "fa-music", locked: false },
-                    { id: 3, name: "ريادة الأعمال", icon: "fa-briefcase", locked: false },
-                    { id: 4, name: "اللياقة والصحة", icon: "fa-heartbeat", locked: false },
-                    { id: 5, name: "الفنون التشكيلية", icon: "fa-palette", locked: true },
-                    { id: 6, name: "القراءة والكتابة", icon: "fa-book", locked: true },
-                    { id: 7, name: "السفر والسياحة", icon: "fa-plane", locked: true },
-                    { id: 8, name: "الطبخ والأكل", icon: "fa-utensils", locked: true }
+                    { id: 1, name: "الفنون التشكيلية", icon: "fa-palette", locked: true },
+                    { id: 2, name: "القراءة والكتابة", icon: "fa-book", locked: true },
+                    { id: 3, name: "السفر والسياحة", icon: "fa-plane", locked: true },
+                    { id: 4, name: "الطبخ والأكل", icon: "fa-utensils", locked: true },
+                    { id: 5, name: "مطورو المستقبل", icon: "fa-code", locked: false },
+                    { id: 6, name: "عشاق الموسيقى", icon: "fa-music", locked: false },
+                    { id: 7, name: "ريادة الأعمال", icon: "fa-briefcase", locked: false },
+                    { id: 8, name: "اللياقة والصحة", icon: "fa-heartbeat", locked: false }
                 ];
                 
+                this.currentCommunityId = null;
                 this.init();
             }
 
             async init() {
-                console.log('🚀 Tribly Ultimate Initialized');
+                console.log('🚀 Tribly App Initialized');
                 
-                // Initialize AOS (Animate On Scroll)
-                AOS.init({
-                    duration: 800,
-                    once: true,
-                    offset: 100
-                });
-
-                // Initialize all components
+                // تهيئة التحميل
                 await this.initLoading();
+                
+                // تهيئة جميع المكونات
                 this.initNavbar();
                 this.initTheme();
                 this.initAuthModal();
-                this.initJoinModal();
+                this.initPasswordModal();
                 this.initGroupsModal();
                 this.initSwiper();
-                this.initMap();
                 this.initNotifications();
                 this.initCounters();
                 this.initForms();
                 this.initEventListeners();
+                this.initScrollAnimations();
                 
-                // Start animations
-                this.startAnimations();
+                // تحميل البيانات المحفوظة
+                this.loadUserData();
+                this.loadUnlockedCommunities();
                 
-                // Show welcome notification
+                // إظهار رسالة ترحيب
                 setTimeout(() => {
-                    this.showNotification('مرحباً بك في Tribly! ابدأ رحلت الاجتماعية الآن.', 'success');
-                }, 2000);
+                    this.showNotification('مرحباً بك في Tribly! ابدأ رحلتك الاجتماعية الآن.', 'success');
+                }, 1500);
             }
 
-            // === LOADING SCREEN ===
+            // === التحميل الأولي ===
             async initLoading() {
                 const loading = document.getElementById('loading');
-                
-                // Simulate minimum loading time
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                
                 loading.classList.add('hidden');
-                
-                // Remove from DOM after animation
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 500);
+                setTimeout(() => loading.remove(), 500);
             }
 
-            // === NAVBAR ===
+            // === الشريط العلوي ===
             initNavbar() {
                 const navbar = document.getElementById('navbar');
                 const mobileToggle = document.getElementById('mobileToggle');
                 const navMenu = document.getElementById('navMenu');
                 const navLinks = document.querySelectorAll('.nav-link');
 
-                // Scroll effect
-                let lastScroll = 0;
+                // تأثير التمرير
                 window.addEventListener('scroll', () => {
-                    const currentScroll = window.pageYOffset;
-                    
-                    // Add/remove scrolled class
-                    if (currentScroll > 50) {
+                    if (window.scrollY > 50) {
                         navbar.classList.add('scrolled');
                     } else {
                         navbar.classList.remove('scrolled');
                     }
-                    
-                    // Hide/show navbar on scroll
-                    if (currentScroll > lastScroll && currentScroll > 100) {
-                        navbar.style.transform = 'translateY(-100%)';
-                    } else {
-                        navbar.style.transform = 'translateY(0)';
-                    }
-                    
-                    lastScroll = currentScroll;
                 });
 
-                // Mobile menu toggle
+                // قائمة الجوال
                 mobileToggle.addEventListener('click', () => {
                     navMenu.classList.toggle('active');
                     mobileToggle.innerHTML = navMenu.classList.contains('active') 
@@ -2763,7 +2274,7 @@
                         : '<i class="fas fa-bars"></i>';
                 });
 
-                // Close mobile menu when clicking on link
+                // إغلاق القائمة عند النقر على رابط
                 navLinks.forEach(link => {
                     link.addEventListener('click', () => {
                         navMenu.classList.remove('active');
@@ -2771,7 +2282,7 @@
                     });
                 });
 
-                // Active link on scroll
+                // رابط نشط عند التمرير
                 window.addEventListener('scroll', () => {
                     let current = '';
                     const sections = document.querySelectorAll('section');
@@ -2794,24 +2305,25 @@
                 });
             }
 
-            // === THEME TOGGLE ===
+            // === تبديل الثيم ===
             initTheme() {
                 const themeToggle = document.getElementById('themeToggle');
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                // Check for saved theme
                 const savedTheme = localStorage.getItem('triblyTheme');
                 
-                // Apply theme
-                if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
-                    document.body.classList.remove('dark-mode');
-                } else {
+                // تطبيق الثيم المحفوظ أو الافتراضي
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                     document.body.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode');
+                } else {
+                    document.body.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode');
                 }
                 
-                // Toggle theme
+                // تبديل الثيم
                 themeToggle.addEventListener('click', () => {
                     const isDark = document.body.classList.toggle('dark-mode');
+                    document.body.classList.toggle('light-mode');
                     localStorage.setItem('triblyTheme', isDark ? 'dark' : 'light');
                     
                     this.showNotification(
@@ -2821,258 +2333,362 @@
                 });
             }
 
-            // === AUTH MODAL ===
+            // === مودال التسجيل ===
             initAuthModal() {
                 const authModal = document.getElementById('authModal');
+                const modalOverlay = document.getElementById('modalOverlay');
                 const authOpen = document.getElementById('authOpen');
                 const authClose = document.getElementById('authClose');
-                const authTabs = document.querySelectorAll('.auth-tab');
-                const authForms = document.querySelectorAll('.auth-form');
+                const authTabs = document.querySelectorAll('.auth-tabs button');
+                const authForms = {
+                    login: document.getElementById('loginForm'),
+                    register: document.getElementById('registerForm')
+                };
                 const ctaRegister = document.getElementById('ctaRegister');
                 const finalCta = document.getElementById('finalCta');
 
-                // Open modal
-                const openModal = () => {
-                    authModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                // فتح المودال
+                const openModal = (tab = 'login') => {
+                    modalOverlay.classList.add('active');
+                    setTimeout(() => {
+                        authModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        this.switchAuthTab(tab);
+                    }, 10);
                 };
 
-                // Close modal
+                // إغلاق المودال
                 const closeModal = () => {
                     authModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                };
-
-                // Switch tabs
-                const switchTab = (tabId) => {
-                    // Update active tab
-                    authTabs.forEach(tab => {
-                        tab.classList.toggle('active', tab.dataset.tab === tabId);
-                    });
-                    
-                    // Update active form
-                    authForms.forEach(form => {
-                        form.classList.toggle('active', form.id === `${tabId}Form`);
-                    });
-                };
-
-                // Event listeners
-                authOpen?.addEventListener('click', () => {
-                    openModal();
-                    switchTab('login');
-                });
-
-                ctaRegister?.addEventListener('click', () => {
-                    openModal();
-                    switchTab('register');
-                });
-
-                finalCta?.addEventListener('click', () => {
-                    openModal();
-                    switchTab('register');
-                });
-
-                authClose?.addEventListener('click', closeModal);
-
-                // Close modal when clicking outside
-                authModal.addEventListener('click', (e) => {
-                    if (e.target === authModal) {
-                        closeModal();
-                    }
-                });
-
-                // Tab switching
-                authTabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        switchTab(tab.dataset.tab);
-                    });
-                });
-            }
-
-            // === JOIN MODAL ===
-            initJoinModal() {
-                const joinModal = document.getElementById('joinModal');
-                const joinClose = document.getElementById('joinClose');
-                const codeInputs = document.querySelectorAll('.code-input');
-                const joinSubmit = document.getElementById('joinSubmit');
-                let currentCommunityId = null;
-
-                // Open modal for a specific community
-                window.openJoinModal = (communityId, communityName, communityIcon) => {
-                    currentCommunityId = communityId;
-                    
-                    // Update modal content
-                    document.getElementById('joinCommunityTitle').textContent = `انضم إلى ${communityName}`;
-                    document.getElementById('joinCommunityIcon').innerHTML = `<i class="fas ${communityIcon}"></i>`;
-                    
-                    // Reset inputs
-                    codeInputs.forEach(input => {
-                        input.value = '';
-                        input.classList.remove('filled');
-                    });
-                    
-                    // Focus first input
-                    codeInputs[0].focus();
-                    
-                    // Open modal
-                    joinModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                };
-
-                // Close modal
-                joinClose.addEventListener('click', () => {
-                    joinModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-
-                // Close modal when clicking outside
-                joinModal.addEventListener('click', (e) => {
-                    if (e.target === joinModal) {
-                        joinModal.classList.remove('active');
+                    setTimeout(() => {
+                        modalOverlay.classList.remove('active');
                         document.body.style.overflow = '';
-                    }
-                });
+                    }, 300);
+                };
 
-                // Handle code input
-                codeInputs.forEach((input, index) => {
-                    input.addEventListener('input', (e) => {
-                        const value = e.target.value;
-                        
-                        if (value.length === 1 && /[0-9]/.test(value)) {
-                            input.classList.add('filled');
-                            
-                            // Move to next input
-                            if (index < codeInputs.length - 1) {
-                                codeInputs[index + 1].focus();
-                            }
-                        } else if (value.length === 0) {
-                            input.classList.remove('filled');
-                        } else {
-                            input.value = '';
-                        }
-                        
-                        // Check if all inputs are filled
-                        const allFilled = Array.from(codeInputs).every(input => input.value.length === 1);
-                        joinSubmit.disabled = !allFilled;
+                // تبديل التبويبات
+                this.switchAuthTab = (tabId) => {
+                    authTabs.forEach(tab => {
+                        const isActive = tab.dataset.tab === tabId;
+                        tab.style.borderBottomColor = isActive ? 'var(--primary)' : 'var(--border-color)';
+                        tab.style.fontWeight = isActive ? '600' : '400';
                     });
                     
-                    // Handle backspace
-                    input.addEventListener('keydown', (e) => {
-                        if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
-                            codeInputs[index - 1].focus();
-                        }
+                    Object.keys(authForms).forEach(key => {
+                        authForms[key].style.display = key === tabId ? 'block' : 'none';
                     });
+                };
+
+                // أحداث الفتح
+                authOpen?.addEventListener('click', () => openModal('login'));
+                ctaRegister?.addEventListener('click', () => openModal('register'));
+                finalCta?.addEventListener('click', () => openModal('register'));
+
+                // أحداث الإغلاق
+                authClose?.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', closeModal);
+
+                // تبديل التبويبات
+                authTabs.forEach(tab => {
+                    tab.addEventListener('click', () => this.switchAuthTab(tab.dataset.tab));
                 });
 
-                // Handle join submission
-                joinSubmit.addEventListener('click', () => {
-                    const enteredCode = Array.from(codeInputs).map(input => input.value).join('');
-                    const correctCode = this.communityCodes[currentCommunityId];
-                    
-                    if (enteredCode === correctCode) {
-                        // Success
-                        this.showNotification(`مبروك! لقد انضممت للمجتمع بنجاح.`, 'success');
-                        
-                        // Update button state
-                        const joinBtn = document.querySelector(`.join-btn[data-community="${currentCommunityId}"]`);
-                        if (joinBtn) {
-                            joinBtn.innerHTML = '<i class="fas fa-check"></i> عضو بالفعل';
-                            joinBtn.disabled = true;
-                            joinBtn.classList.remove('btn-primary');
-                            joinBtn.classList.add('btn-secondary');
-                        }
-                        
-                        // Close modal
-                        setTimeout(() => {
-                            joinModal.classList.remove('active');
-                            document.body.style.overflow = '';
-                        }, 1500);
-                    } else {
-                        // Error
-                        this.showNotification('رمز الدخول غير صحيح. حاول مرة أخرى.', 'error');
-                        
-                        // Shake animation
-                        codeInputs.forEach(input => {
-                            input.style.animation = 'shake 0.5s ease';
-                            setTimeout(() => {
-                                input.style.animation = '';
-                            }, 500);
-                        });
-                    }
-                });
-
-                // Add shake animation
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes shake {
-                        0%, 100% { transform: translateX(0); }
-                        25% { transform: translateX(-5px); }
-                        75% { transform: translateX(5px); }
-                    }
-                `;
-                document.head.appendChild(style);
+                // منع إغلاق المودال عند النقر داخله
+                authModal.addEventListener('click', (e) => e.stopPropagation());
             }
 
-            // === GROUPS MODAL ===
+            // === مودال كلمة المرور ===
+            initPasswordModal() {
+                const passwordModal = document.getElementById('passwordModal');
+                const modalOverlay = document.getElementById('modalOverlay');
+                const passwordClose = document.getElementById('passwordClose');
+                const passwordCancel = document.getElementById('passwordCancel');
+                const passwordSubmit = document.getElementById('passwordSubmit');
+                const passwordInput = document.getElementById('communityPassword');
+                const passwordToggle = document.querySelector('[data-target="communityPassword"]');
+                const attemptsElement = document.getElementById('passwordAttempts');
+
+                // تبديل إظهار كلمة المرور
+                passwordToggle?.addEventListener('click', () => {
+                    const target = passwordToggle.dataset.target;
+                    const input = document.getElementById(target);
+                    const type = input.type === 'password' ? 'text' : 'password';
+                    input.type = type;
+                    passwordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+                });
+
+                // فتح المودال (وظيفة عامة)
+                window.openPasswordModal = (communityId) => {
+                    this.currentCommunityId = communityId;
+                    
+                    // التحقق من تسجيل الدخول
+                    if (!this.currentUser) {
+                        this.showNotification('يجب تسجيل الدخول أولاً للانضمام للمجتمعات المقفولة', 'warning');
+                        this.switchAuthTab('login');
+                        document.getElementById('authModal').classList.add('active');
+                        modalOverlay.classList.add('active');
+                        return;
+                    }
+                    
+                    // التحقق إذا كان المجتمع مفتوحاً بالفعل
+                    if (this.unlockedCommunities.has(communityId)) {
+                        this.showNotification('أنت عضو بالفعل في هذا المجتمع!', 'success');
+                        this.updateCommunityCard(communityId, true);
+                        return;
+                    }
+                    
+                    // تهيئة المحاولات
+                    if (!this.passwordAttempts[communityId]) {
+                        this.passwordAttempts[communityId] = 3;
+                    }
+                    
+                    // تحديث محتوى المودال
+                    const community = this.allCommunities.find(c => c.id === communityId);
+                    if (community) {
+                        document.getElementById('passwordCommunityTitle').textContent = community.name;
+                        document.getElementById('passwordHint').textContent = this.communityPasswords[communityId].hint;
+                    }
+                    
+                    // إعادة تعيين الحقول
+                    passwordInput.value = '';
+                    passwordInput.classList.remove('error', 'success');
+                    passwordInput.focus();
+                    
+                    // تحديث عرض المحاولات
+                    if (this.passwordAttempts[communityId] < 3) {
+                        attemptsElement.classList.add('show');
+                        document.getElementById('attemptsCount').textContent = this.passwordAttempts[communityId];
+                    } else {
+                        attemptsElement.classList.remove('show');
+                    }
+                    
+                    // فتح المودال
+                    modalOverlay.classList.add('active');
+                    setTimeout(() => {
+                        passwordModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }, 10);
+                };
+
+                // إغلاق المودال
+                const closeModal = () => {
+                    passwordModal.classList.remove('active');
+                    setTimeout(() => {
+                        modalOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }, 300);
+                };
+
+                // أحداث الإغلاق
+                passwordClose?.addEventListener('click', closeModal);
+                passwordCancel?.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', closeModal);
+
+                // منع إغلاق المودال عند النقر داخله
+                passwordModal.addEventListener('click', (e) => e.stopPropagation());
+
+                // إرسال كلمة المرور
+                passwordSubmit?.addEventListener('click', () => {
+                    const enteredPassword = passwordInput.value.trim();
+                    const communityId = this.currentCommunityId;
+                    
+                    if (!enteredPassword) {
+                        this.showNotification('الرجاء إدخال كلمة المرور', 'warning');
+                        passwordInput.classList.add('error');
+                        return;
+                    }
+                    
+                    const correctPassword = this.communityPasswords[communityId].password;
+                    
+                    // إضافة حالة التحميل
+                    const originalText = passwordSubmit.innerHTML;
+                    passwordSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحقق...';
+                    passwordSubmit.disabled = true;
+                    
+                    // محاكاة التحقق
+                    setTimeout(() => {
+                        if (enteredPassword === correctPassword) {
+                            // نجاح
+                            passwordInput.classList.remove('error');
+                            passwordInput.classList.add('success');
+                            
+                            this.unlockedCommunities.add(communityId);
+                            this.saveUnlockedCommunities();
+                            
+                            this.showNotification(`🎉 مبروك! لقد انضممت بنجاح إلى المجتمع.`, 'success');
+                            
+                            // تحديث الواجهة
+                            this.updateCommunityCard(communityId, true);
+                            
+                            // إغلاق المودال بعد النجاح
+                            setTimeout(() => {
+                                closeModal();
+                                passwordSubmit.innerHTML = originalText;
+                                passwordSubmit.disabled = false;
+                            }, 1500);
+                        } else {
+                            // فشل
+                            passwordInput.classList.remove('success');
+                            passwordInput.classList.add('error');
+                            this.passwordAttempts[communityId]--;
+                            
+                            // إعادة تعيين الزر
+                            passwordSubmit.innerHTML = originalText;
+                            passwordSubmit.disabled = false;
+                            
+                            if (this.passwordAttempts[communityId] > 0) {
+                                // عرض المحاولات المتبقية
+                                attemptsElement.classList.add('show');
+                                document.getElementById('attemptsCount').textContent = this.passwordAttempts[communityId];
+                                
+                                this.showNotification(`❌ كلمة مرور خاطئة! باقي ${this.passwordAttempts[communityId]} محاولات`, 'error');
+                                
+                                // تأثير الاهتزاز
+                                passwordInput.style.animation = 'shake 0.5s ease';
+                                setTimeout(() => passwordInput.style.animation = '', 500);
+                                
+                                passwordInput.value = '';
+                                passwordInput.focus();
+                            } else {
+                                // نفاد المحاولات
+                                this.showNotification('⏳ لقد استنفدت جميع المحاولات. حاول مرة أخرى لاحقاً.', 'error');
+                                closeModal();
+                            }
+                        }
+                    }, 1000);
+                });
+
+                // إدخال بالزر Enter
+                passwordInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        passwordSubmit.click();
+                    }
+                });
+            }
+
+            // === مودال عرض المجتمعات ===
             initGroupsModal() {
                 const groupsModal = document.getElementById('groupsModal');
+                const modalOverlay = document.getElementById('modalOverlay');
                 const groupsClose = document.getElementById('groupsClose');
                 const viewAllGroupsBtn = document.getElementById('viewAllGroups');
                 const allGroupsList = document.getElementById('allGroupsList');
 
-                // Populate groups list
+                // تعبئة قائمة المجتمعات
                 this.allCommunities.forEach(community => {
+                    const isUnlocked = this.unlockedCommunities.has(community.id) || !community.locked;
+                    
                     const groupItem = document.createElement('div');
-                    groupItem.className = `group-item ${community.locked ? 'locked' : ''}`;
+                    groupItem.className = `group-item ${community.locked ? (isUnlocked ? 'unlocked' : 'locked') : ''}`;
                     groupItem.innerHTML = `
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="width: 40px; height: 40px; background: ${isUnlocked ? 'var(--primary)' : 'var(--accent)'}; 
+                                border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
                                 <i class="fas ${community.icon}"></i>
                             </div>
                             <div>
-                                <h4 style="margin: 0 0 0.25rem 0;">${community.name}</h4>
-                                <p style="color: var(--text-tertiary); font-size: 0.875rem; margin: 0;">
-                                    ${community.locked ? 'يتطلب رمز دخول' : 'مفتوح للجميع'}
+                                <h4 style="margin: 0 0 0.25rem 0; font-size: 1rem;">${community.name}</h4>
+                                <p style="color: var(--text-tertiary); font-size: 0.75rem; margin: 0;">
+                                    ${community.locked ? 
+                                        (isUnlocked ? 'مفتوح - عضو بالفعل' : 'مقفل - يتطلب كلمة مرور') 
+                                        : 'مفتوح للجميع'}
                                 </p>
                             </div>
                         </div>
+                        ${community.locked ? 
+                            (isUnlocked ? 
+                                '<div class="group-unlock"><i class="fas fa-unlock"></i></div>' : 
+                                '<div class="group-lock"><i class="fas fa-lock"></i></div>') 
+                            : ''}
                     `;
                     
-                    if (!community.locked) {
-                        groupItem.addEventListener('click', () => {
-                            openJoinModal(community.id, community.name, community.icon);
-                            groupsModal.classList.remove('active');
-                        });
-                    }
+                    groupItem.addEventListener('click', () => {
+                        if (community.locked && !isUnlocked) {
+                            openPasswordModal(community.id);
+                        } else if (community.locked && isUnlocked) {
+                            this.showNotification(`أنت عضو بالفعل في ${community.name}`, 'info');
+                        } else {
+                            this.showNotification(`المجتمع ${community.name} مفتوح للانضمام!`, 'info');
+                        }
+                        this.closeModal(groupsModal);
+                    });
                     
                     allGroupsList.appendChild(groupItem);
                 });
 
-                // Open modal
+                // فتح المودال
                 viewAllGroupsBtn?.addEventListener('click', () => {
-                    groupsModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    modalOverlay.classList.add('active');
+                    setTimeout(() => {
+                        groupsModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }, 10);
                 });
 
-                // Close modal
-                groupsClose.addEventListener('click', () => {
-                    groupsModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-
-                // Close modal when clicking outside
-                groupsModal.addEventListener('click', (e) => {
-                    if (e.target === groupsModal) {
-                        groupsModal.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
+                // إغلاق المودال
+                groupsClose?.addEventListener('click', () => this.closeModal(groupsModal));
+                modalOverlay.addEventListener('click', () => this.closeModal(groupsModal));
+                groupsModal.addEventListener('click', (e) => e.stopPropagation());
             }
 
-            // === SWIPER SLIDERS ===
+            // === إغلاق المودال ===
+            closeModal(modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    document.getElementById('modalOverlay').classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            // === تحديث بطاقة المجتمع ===
+            updateCommunityCard(communityId, isUnlocked) {
+                const communityCard = document.querySelector(`.community-card[data-community="${communityId}"]`);
+                if (!communityCard) return;
+                
+                if (isUnlocked) {
+                    communityCard.classList.remove('locked');
+                    const button = communityCard.querySelector('.join-btn');
+                    if (button) {
+                        button.innerHTML = '<i class="fas fa-check"></i> عضو بالفعل';
+                        button.disabled = true;
+                        button.classList.remove('btn-accent');
+                        button.classList.add('btn-secondary');
+                    }
+                }
+            }
+
+            // === حفظ وتحميل البيانات ===
+            saveUserData() {
+                if (this.currentUser) {
+                    localStorage.setItem('triblyUser', JSON.stringify(this.currentUser));
+                }
+            }
+
+            loadUserData() {
+                const savedUser = localStorage.getItem('triblyUser');
+                if (savedUser) {
+                    this.currentUser = JSON.parse(savedUser);
+                    this.updateUIForLoggedInUser();
+                }
+            }
+
+            saveUnlockedCommunities() {
+                localStorage.setItem('triblyUnlockedCommunities', 
+                    JSON.stringify(Array.from(this.unlockedCommunities)));
+            }
+
+            loadUnlockedCommunities() {
+                const saved = localStorage.getItem('triblyUnlockedCommunities');
+                if (saved) {
+                    this.unlockedCommunities = new Set(JSON.parse(saved));
+                    this.unlockedCommunities.forEach(id => this.updateCommunityCard(id, true));
+                }
+            }
+
+            // === سوير (الشرائح) ===
             initSwiper() {
-                // Communities Swiper
-                new Swiper('.communitiesSwiper', {
+                // سوير المجتمعات
+                new Swiper('.communities-slider .swiper', {
                     slidesPerView: 1,
                     spaceBetween: 20,
                     loop: true,
@@ -3091,10 +2707,10 @@
                     },
                 });
 
-                // Testimonials Swiper
-                new Swiper('.testimonialsSwiper', {
+                // سوير التقييمات
+                new Swiper('#testimonials .swiper', {
                     slidesPerView: 1,
-                    spaceBetween: 30,
+                    spaceBetween: 20,
                     loop: true,
                     autoplay: {
                         delay: 5000,
@@ -3104,83 +2720,14 @@
                         el: '.swiper-pagination',
                         clickable: true,
                     },
+                    breakpoints: {
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    },
                 });
             }
 
-            // === INTERACTIVE MAP ===
-            initMap() {
-                const locateBtn = document.getElementById('locateMeBtn');
-                const nearbyMarkers = document.getElementById('nearbyMarkers');
-                
-                if (!locateBtn || !nearbyMarkers) return;
-                
-                // Generate random nearby markers
-                const generateMarkers = () => {
-                    const markers = [];
-                    const markerTypes = [
-                        { icon: 'fas fa-code', color: 'var(--primary)', label: 'تطوير' },
-                        { icon: 'fas fa-music', color: 'var(--secondary)', label: 'موسيقى' },
-                        { icon: 'fas fa-briefcase', color: 'var(--accent)', label: 'أعمال' },
-                        { icon: 'fas fa-heartbeat', color: '#2ECC71', label: 'صحة' },
-                        { icon: 'fas fa-palette', color: '#9B59B6', label: 'فن' },
-                    ];
-                    
-                    for (let i = 0; i < 8; i++) {
-                        const type = markerTypes[Math.floor(Math.random() * markerTypes.length)];
-                        const left = 10 + Math.random() * 80;
-                        const top = 10 + Math.random() * 80;
-                        
-                        markers.push(`
-                            <div style="position: absolute; left: ${left}%; top: ${top}%;
-                                 width: 40px; height: 40px; background: ${type.color};
-                                 border-radius: 50%; cursor: pointer; transition: all 0.3s;
-                                 display: flex; align-items: center; justify-content: center;
-                                 color: white; font-size: 1rem; box-shadow: 0 4px 15px ${type.color}80;
-                                 animation: float ${3 + Math.random() * 2}s ease-in-out infinite alternate;
-                                 transform-origin: center;"
-                                 onmouseover="this.style.transform='scale(1.2) rotate(5deg)';"
-                                 onmouseout="this.style.transform='scale(1) rotate(0deg)';"
-                                 title="${type.label}">
-                                <i class="${type.icon}"></i>
-                            </div>
-                        `);
-                    }
-                    
-                    return markers.join('');
-                };
-                
-                // Initial markers
-                nearbyMarkers.innerHTML = generateMarkers();
-                
-                // Locate button functionality
-                locateBtn.addEventListener('click', () => {
-                    locateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
-                    locateBtn.disabled = true;
-                    
-                    // Simulate location detection
-                    setTimeout(() => {
-                        // Update markers
-                        nearbyMarkers.innerHTML = generateMarkers();
-                        
-                        // Show success
-                        locateBtn.innerHTML = '<i class="fas fa-check-circle"></i> تم تحديد موقعك';
-                        locateBtn.classList.remove('btn-primary');
-                        locateBtn.classList.add('btn-accent');
-                        
-                        this.showNotification('تم تحديد موقعك بنجاح! يتم الآن عرض المجتمعات القريبة.', 'success');
-                        
-                        // Reset button after 3 seconds
-                        setTimeout(() => {
-                            locateBtn.innerHTML = '<i class="fas fa-location-arrow"></i> حدد موقعي';
-                            locateBtn.classList.remove('btn-accent');
-                            locateBtn.classList.add('btn-primary');
-                            locateBtn.disabled = false;
-                        }, 3000);
-                    }, 1500);
-                });
-            }
-
-            // === NOTIFICATION SYSTEM ===
+            // === النظام الإشاري ===
             initNotifications() {
                 this.notificationContainer = document.createElement('div');
                 this.notificationContainer.style.cssText = `
@@ -3191,27 +2738,20 @@
                     display: flex;
                     flex-direction: column;
                     gap: 10px;
-                    max-width: 400px;
+                    max-width: 350px;
                 `;
                 document.body.appendChild(this.notificationContainer);
             }
 
             showNotification(message, type = 'info') {
                 const notification = document.createElement('div');
-                notification.className = 'notification';
+                notification.className = `notification ${type}`;
                 
                 const icons = {
                     success: 'fa-check-circle',
                     error: 'fa-exclamation-circle',
                     warning: 'fa-exclamation-triangle',
                     info: 'fa-info-circle'
-                };
-                
-                const colors = {
-                    success: 'var(--primary)',
-                    error: 'var(--accent)',
-                    warning: '#FF9A3C',
-                    info: 'var(--secondary)'
                 };
                 
                 notification.innerHTML = `
@@ -3226,30 +2766,24 @@
                     </button>
                 `;
                 
-                notification.style.borderLeftColor = colors[type];
-                
                 this.notificationContainer.appendChild(notification);
                 
-                // Show notification
-                setTimeout(() => {
-                    notification.classList.add('show');
-                }, 10);
+                setTimeout(() => notification.classList.add('show'), 10);
                 
-                // Auto remove after 5 seconds
+                // الإغلاق التلقائي
                 setTimeout(() => {
                     notification.classList.remove('show');
                     setTimeout(() => notification.remove(), 300);
                 }, 5000);
                 
-                // Close button
-                const closeBtn = notification.querySelector('.notification-close');
-                closeBtn.addEventListener('click', () => {
+                // زر الإغلاق
+                notification.querySelector('.notification-close').addEventListener('click', () => {
                     notification.classList.remove('show');
                     setTimeout(() => notification.remove(), 300);
                 });
             }
 
-            // === ANIMATED COUNTERS ===
+            // === العدادات المتحركة ===
             initCounters() {
                 const counters = [
                     { element: 'usersCount', target: 52347, duration: 2000 },
@@ -3260,7 +2794,6 @@
                     const element = document.getElementById(counter.element);
                     if (!element) return;
                     
-                    // Start counter when in viewport
                     const observer = new IntersectionObserver((entries) => {
                         if (entries[0].isIntersecting) {
                             this.animateCounter(element, counter.target, counter.duration);
@@ -3287,34 +2820,35 @@
                 updateCounter();
             }
 
-            // === FORM VALIDATION ===
+            // === النماذج ===
             initForms() {
-                const loginForm = document.getElementById('loginForm');
-                const registerForm = document.getElementById('registerForm');
-                const passwordInput = document.getElementById('registerPassword');
-                const registerSubmit = document.getElementById('registerSubmit');
-                
-                // Password validation
-                if (passwordInput) {
-                    passwordInput.addEventListener('input', (e) => {
-                        const password = e.target.value;
-                        this.validatePassword(password);
+                // تبديل إظهار كلمات المرور
+                document.querySelectorAll('.password-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', () => {
+                        const target = toggle.dataset.target;
+                        const input = document.getElementById(target);
+                        const type = input.type === 'password' ? 'text' : 'password';
+                        input.type = type;
+                        toggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
                     });
-                }
-                
-                if (loginForm) {
-                    loginForm.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        this.handleLogin();
-                    });
-                }
-                
-                if (registerForm) {
-                    registerForm.addEventListener('submit', (e) => {
-                        e.preventDefault();
-                        this.handleRegister();
-                    });
-                }
+                });
+
+                // تسجيل الدخول
+                document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+
+                // التسجيل
+                document.getElementById('registerForm')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleRegister();
+                });
+
+                // التحقق من كلمة المرور
+                document.getElementById('registerPassword')?.addEventListener('input', (e) => {
+                    this.validatePassword(e.target.value);
+                });
             }
 
             validatePassword(password) {
@@ -3324,23 +2858,22 @@
                     number: /\d/.test(password)
                 };
                 
-                // Update requirement indicators
-                document.getElementById('reqLength').className = `requirement ${requirements.length ? 'valid' : 'invalid'}`;
-                document.getElementById('reqUppercase').className = `requirement ${requirements.uppercase ? 'valid' : 'invalid'}`;
-                document.getElementById('reqNumber').className = `requirement ${requirements.number ? 'valid' : 'invalid'}`;
+                // تحديث المؤشرات
+                Object.keys(requirements).forEach(req => {
+                    const element = document.querySelector(`[data-requirement="${req}"]`);
+                    if (element) {
+                        const icon = element.querySelector('i');
+                        if (requirements[req]) {
+                            element.style.color = 'var(--primary)';
+                            icon.className = 'fas fa-check-circle';
+                        } else {
+                            element.style.color = 'var(--text-tertiary)';
+                            icon.className = 'fas fa-circle';
+                        }
+                    }
+                });
                 
-                // Update icons
-                const updateIcon = (elementId, isValid) => {
-                    const element = document.getElementById(elementId);
-                    const icon = element.querySelector('i');
-                    icon.className = isValid ? 'fas fa-check-circle' : 'fas fa-circle';
-                };
-                
-                updateIcon('reqLength', requirements.length);
-                updateIcon('reqUppercase', requirements.uppercase);
-                updateIcon('reqNumber', requirements.number);
-                
-                // Check if all requirements are met
+                // تفعيل زر التسجيل
                 const allValid = Object.values(requirements).every(req => req);
                 document.getElementById('registerSubmit').disabled = !allValid;
                 
@@ -3350,32 +2883,32 @@
             handleLogin() {
                 const email = document.getElementById('loginEmail').value;
                 const password = document.getElementById('loginPassword').value;
+                const submitBtn = document.querySelector('#loginForm button[type="submit"]');
                 
-                // Simulate API call
+                // حالة التحميل
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تسجيل الدخول...';
+                submitBtn.disabled = true;
+                
+                // محاكاة API
                 setTimeout(() => {
-                    this.showNotification('تم تسجيل الدخول بنجاح!', 'success');
-                    
-                    // Update user state
                     this.currentUser = {
                         email: email,
                         name: email.split('@')[0]
                     };
                     
-                    // Update UI for logged in user
+                    this.saveUserData();
                     this.updateUIForLoggedInUser();
                     
-                    // Close modal after success
+                    this.showNotification('✅ تم تسجيل الدخول بنجاح!', 'success');
+                    
+                    // إعادة تعيين الزر
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // إغلاق المودال
                     setTimeout(() => {
-                        document.getElementById('authModal').classList.remove('active');
-                        document.body.style.overflow = '';
-                        
-                        // Hide login button
-                        document.getElementById('authOpen').style.display = 'none';
-                        
-                        // Show user menu
-                        const userAvatar = document.querySelector('.user-avatar');
-                        userAvatar.innerHTML = `<i class="fas fa-user-check"></i>`;
-                        userAvatar.style.background = 'var(--primary-gradient)';
+                        this.closeModal(document.getElementById('authModal'));
                     }, 1500);
                 }, 1000);
             }
@@ -3384,118 +2917,81 @@
                 const name = document.getElementById('registerName').value;
                 const email = document.getElementById('registerEmail').value;
                 const password = document.getElementById('registerPassword').value;
+                const submitBtn = document.getElementById('registerSubmit');
                 
-                // Validate password
                 if (!this.validatePassword(password)) {
                     this.showNotification('كلمة المرور لا تلبي المتطلبات', 'error');
                     return;
                 }
                 
-                // Simulate API call
+                // حالة التحميل
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري إنشاء الحساب...';
+                submitBtn.disabled = true;
+                
+                // محاكاة API
                 setTimeout(() => {
-                    this.showNotification(`مرحباً ${name}! تم إنشاء حسابك بنجاح.`, 'success');
-                    
-                    // Update user state
                     this.currentUser = {
                         email: email,
                         name: name
                     };
                     
-                    // Update UI for logged in user
+                    this.saveUserData();
                     this.updateUIForLoggedInUser();
                     
-                    // Close modal after success
+                    this.showNotification(`🎉 مرحباً ${name}! تم إنشاء حسابك بنجاح.`, 'success');
+                    
+                    // إعادة تعيين الزر
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // إغلاق المودال
                     setTimeout(() => {
-                        document.getElementById('authModal').classList.remove('active');
-                        document.body.style.overflow = '';
-                        
-                        // Switch to login tab for next time
-                        document.querySelector('[data-tab="login"]').click();
-                        
-                        // Hide login button
-                        document.getElementById('authOpen').style.display = 'none';
-                        
-                        // Show user menu
-                        const userAvatar = document.querySelector('.user-avatar');
-                        userAvatar.innerHTML = `<i class="fas fa-user-check"></i>`;
-                        userAvatar.style.background = 'var(--primary-gradient)';
+                        this.closeModal(document.getElementById('authModal'));
+                        this.switchAuthTab('login');
                     }, 1500);
                 }, 1000);
             }
 
             updateUIForLoggedInUser() {
-                // Hide registration buttons
-                const registrationButtons = document.querySelectorAll('#ctaRegister, #finalCta');
-                registrationButtons.forEach(btn => {
-                    btn.classList.add('fade-out');
-                    setTimeout(() => {
-                        btn.style.display = 'none';
-                    }, 300);
-                });
+                // إخفاء أزرار التسجيل
+                const authOpen = document.getElementById('authOpen');
+                const ctaRegister = document.getElementById('ctaRegister');
+                const finalCta = document.getElementById('finalCta');
                 
-                // Show welcome message
-                this.showNotification(`مرحباً ${this.currentUser.name}! ابدأ استكشاف المجتمعات الآن.`, 'success');
+                if (authOpen) authOpen.style.display = 'none';
+                if (ctaRegister) ctaRegister.style.display = 'none';
+                if (finalCta) finalCta.style.display = 'none';
+                
+                // إظهار رسالة ترحيب
+                if (this.currentUser) {
+                    this.showNotification(`👋 مرحباً ${this.currentUser.name}!`, 'success');
+                }
             }
 
-            // === EVENT LISTENERS ===
+            // === الأحداث ===
             initEventListeners() {
-                // Join community buttons
+                // أزرار الانضمام للمجتمعات
                 document.querySelectorAll('.join-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         e.stopPropagation();
                         const communityId = parseInt(btn.dataset.community);
-                        const communityCard = btn.closest('.community-card');
-                        const communityName = communityCard.querySelector('.community-title').textContent;
-                        const communityIcon = communityCard.querySelector('.community-avatar i').className.split(' ')[1];
-                        
-                        // Check if user is logged in
-                        if (!this.currentUser) {
-                            this.showNotification('يجب تسجيل الدخول أولاً للانضمام للمجتمعات', 'warning');
-                            document.getElementById('authModal').classList.add('active');
-                            return;
-                        }
-                        
-                        // Open join modal
-                        openJoinModal(communityId, communityName, communityIcon);
+                        openPasswordModal(communityId);
                     });
                 });
-                
-                // Find friends button
-                document.getElementById('findFriendsBtn')?.addEventListener('click', () => {
-                    if (!this.currentUser) {
-                        this.showNotification('سجل الدخول لبدء البحث عن أصدقاء', 'info');
-                        document.getElementById('authModal').classList.add('active');
-                    } else {
-                        this.showNotification('جاري البحث عن أصدقاء يتشاركون معك نفس الاهتمامات...', 'info');
-                        // Simulate finding friends
-                        setTimeout(() => {
-                            this.showNotification('وجدنا 5 أشخاص يتشاركون معك نفس الاهتمامات!', 'success');
-                        }, 2000);
-                    }
-                });
-                
-                // Keyboard shortcuts
+
+                // اختصارات لوحة المفاتيح
                 document.addEventListener('keydown', (e) => {
-                    // Escape key closes modals
                     if (e.key === 'Escape') {
-                        document.getElementById('authModal').classList.remove('active');
-                        document.getElementById('joinModal').classList.remove('active');
-                        document.getElementById('groupsModal').classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                    
-                    // Ctrl/Cmd + K opens search (placeholder)
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                        e.preventDefault();
-                        this.showNotification('🔍 نظام البحث قيد التطوير', 'info');
+                        const modals = document.querySelectorAll('.modal.active');
+                        modals.forEach(modal => this.closeModal(modal));
                     }
                 });
-                
-                // Smooth scroll for anchor links
+
+                // التمرير السلس
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
                         e.preventDefault();
-                        
                         const targetId = this.getAttribute('href');
                         if (targetId === '#') return;
                         
@@ -3508,69 +3004,71 @@
                         }
                     });
                 });
-                
-                // Add hover effects to cards
-                document.querySelectorAll('.feature-card, .community-card, .testimonial-card').forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        card.style.transform = 'translateY(-10px)';
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = 'translateY(0)';
-                    });
-                });
-                
-                // User menu click
-                document.getElementById('userMenu')?.addEventListener('click', () => {
-                    if (this.currentUser) {
-                        this.showNotification(`مرحباً ${this.currentUser.name}!`, 'info');
-                    } else {
-                        document.getElementById('authModal').classList.add('active');
-                    }
-                });
             }
 
-            // === ANIMATIONS ===
-            startAnimations() {
-                // Add floating animation CSS
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes float {
-                        0%, 100% { transform: translateY(0) rotate(0deg); }
-                        50% { transform: translateY(-10px) rotate(180deg); }
-                    }
-                    
-                    @keyframes fadeOut {
-                        from { opacity: 1; transform: translateY(0); }
-                        to { opacity: 0; transform: translateY(-20px); }
-                    }
-                `;
-                document.head.appendChild(style);
+            // === حركات التمرير ===
+            initScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                        }
+                    });
+                }, observerOptions);
+                
+                // مراقبة العناصر المتحركة
+                document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+                    observer.observe(el);
+                });
             }
         }
 
-        // Make openJoinModal available globally
-        let openJoinModal;
+        // === تهيئة التطبيق ===
+        let openPasswordModal;
 
-        // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Prevent FOUC (Flash of Unstyled Content)
+            // منع FOUC
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.3s ease';
             
-            // Initialize app
-            window.tribly = new TriblyUltimate();
+            // تهيئة التطبيق
+            window.tribly = new TriblyApp();
             
-            // Make openJoinModal available
-            openJoinModal = (communityId, communityName, communityIcon) => {
-                window.tribly.openJoinModal(communityId, communityName, communityIcon);
+            // جعل الدوال متاحة عالمياً
+            openPasswordModal = (communityId) => {
+                window.tribly.openPasswordModal(communityId);
             };
             
-            // Show content after initialization
+            // إظهار المحتوى
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
         });
+
+        // === إضافة تأثير الاهتزاز ===
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .fade-in {
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
