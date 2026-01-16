@@ -1,70 +1,138 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark-mode">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tribly | اعثر على مجتمعك - احترافي</title>
+    <title>Tribly | ابحث عن قبيلتك - المنصة الاجتماعية الأذكى</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tribly - المنصة الاجتماعية الذكية التي تربطك بأشخاص يتشاركون معك نفس الاهتمامات والهوايات بالقرب منك. انضم لمجتمعات حقيقية وابنِ علاقات مستدامة.">
+    <meta name="keywords" content="مجتمع، تعارف، أصدقاء، أنشطة، لقاءات، هوايات، مصر، الإسكندرية">
+    <meta name="author" content="Tribly Team">
+    <meta name="theme-color" content="#00D4AA">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tribly | ابحث عن قبيلتك">
+    <meta property="og:description" content="المنصة الاجتماعية الذكية التي تربطك بأشخاص حقيقيين يتشاركون معك نفس الاهتمامات">
+    <meta property="og:image" content="https://tribly.com/og-image.jpg">
+    <meta property="og:url" content="https://tribly.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tribly - المنصة الاجتماعية الذكية">
+    
+    <!-- Icons -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👥</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👥</text></svg>">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate.css -->
+    <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     
-    <!-- 3D Particle Background -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <style>
-        /* ===== MODERN RESET & VARIABLES ===== */
+        /* ===== CSS RESET & VARIABLES ===== */
         :root {
+            /* Primary Colors */
             --primary: #00D4AA;
-            --primary-light: #80FFE5;
             --primary-dark: #00B894;
+            --primary-light: #80FFE5;
+            --primary-gradient: linear-gradient(135deg, var(--primary) 0%, #00C9FF 100%);
+            --primary-gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, #0097CC 100%);
+            
+            /* Secondary Colors */
             --secondary: #6C63FF;
+            --secondary-dark: #5A52D5;
             --secondary-light: #A29FFF;
+            --secondary-gradient: linear-gradient(135deg, var(--secondary) 0%, #9D4EDD 100%);
+            
+            /* Accent Colors */
             --accent: #FF6B8B;
+            --accent-dark: #E55A74;
             --accent-light: #FFA8BC;
-            --dark: #1A1A2E;
-            --dark-light: #2D2D44;
-            --light: #F8F9FA;
-            --gray: #8A8AA3;
-            --gray-light: #E2E2EA;
-            --success: #2ECC71;
-            --warning: #F39C12;
-            --danger: #E74C3C;
+            --accent-gradient: linear-gradient(135deg, var(--accent) 0%, #FF9A3C 100%);
             
-            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #16213E 100%);
-            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #FF9A3C 100%);
+            /* Neutral Colors - Light Mode */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FA;
+            --bg-tertiary: #E9ECEF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #6C757D;
+            --text-tertiary: #8A8AA3;
+            --border-color: #E2E2EA;
+            --shadow-color: rgba(0, 0, 0, 0.08);
             
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
-            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+            /* Dark Mode Colors */
+            --dark-bg-primary: #0F0F1E;
+            --dark-bg-secondary: #1A1A2E;
+            --dark-bg-tertiary: #2D2D44;
+            --dark-text-primary: #FFFFFF;
+            --dark-text-secondary: #B0B0C0;
+            --dark-text-tertiary: #8A8AA3;
+            --dark-border-color: rgba(255, 255, 255, 0.1);
+            --dark-shadow-color: rgba(0, 0, 0, 0.3);
+            
+            /* Effects */
+            --shadow-sm: 0 2px 8px var(--shadow-color);
+            --shadow-md: 0 4px 20px var(--shadow-color);
+            --shadow-lg: 0 10px 40px var(--shadow-color);
+            --shadow-xl: 0 20px 60px var(--shadow-color);
             --shadow-primary: 0 10px 30px rgba(0, 212, 170, 0.3);
             --shadow-secondary: 0 10px 30px rgba(108, 99, 255, 0.3);
+            --shadow-accent: 0 10px 30px rgba(255, 107, 139, 0.3);
             
+            /* Border Radius */
+            --radius-xs: 4px;
             --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
             --radius-full: 9999px;
             
-            --transition-fast: 0.2s ease;
+            /* Transitions */
+            --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             
-            --container-max: 1280px;
+            /* Layout */
             --header-height: 80px;
+            --container-max: 1280px;
+            --section-spacing: 120px;
+            
+            /* Glass Effect */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: blur(20px);
         }
 
-        * {
+        /* Dark Mode Variables */
+        .dark-mode {
+            --bg-primary: var(--dark-bg-primary);
+            --bg-secondary: var(--dark-bg-secondary);
+            --bg-tertiary: var(--dark-bg-tertiary);
+            --text-primary: var(--dark-text-primary);
+            --text-secondary: var(--dark-text-secondary);
+            --text-tertiary: var(--dark-text-tertiary);
+            --border-color: var(--dark-border-color);
+            --shadow-color: var(--dark-shadow-color);
+            --glass-bg: rgba(26, 26, 46, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== BASE STYLES ===== */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -76,30 +144,41 @@
         }
 
         body {
-            font-family: 'Almarai', 'Poppins', sans-serif;
-            background: var(--dark);
-            color: var(--light);
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.7;
             overflow-x: hidden;
+            transition: background-color var(--transition-normal);
+            min-height: 100vh;
             position: relative;
         }
 
-        /* ===== CUSTOM SCROLLBAR ===== */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
+            height: 10px;
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--dark-light);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--bg-secondary);
             border-radius: var(--radius-full);
         }
 
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: var(--radius-full);
+            border: 2px solid var(--bg-secondary);
+        }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--primary-gradient-dark);
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--primary);
+            color: white;
         }
 
         /* ===== TYPOGRAPHY ===== */
@@ -107,25 +186,30 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.2;
+            color: var(--text-primary);
         }
 
         .display-1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(3.5rem, 8vw, 5.5rem);
+            font-weight: 900;
             line-height: 1.1;
+            letter-spacing: -0.02em;
         }
 
         .display-2 {
             font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .display-3 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 700;
         }
 
         .section-title {
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
@@ -138,25 +222,45 @@
             right: 0;
             width: 60px;
             height: 4px;
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             border-radius: var(--radius-full);
         }
 
         .section-subtitle {
             font-size: 1.2rem;
-            color: var(--gray);
+            color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
         }
 
         .text-gradient {
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* ===== LAYOUT ===== */
+        .text-gradient-secondary {
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        /* ===== LAYOUT UTILITIES ===== */
         .container {
             width: 100%;
             max-width: var(--container-max);
@@ -164,45 +268,51 @@
             padding: 0 2rem;
         }
 
+        .container-fluid {
+            width: 100%;
+            padding: 0 2rem;
+        }
+
         .section {
-            padding: 6rem 0;
+            padding: var(--section-spacing) 0;
             position: relative;
         }
 
-        .section-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
+        .section-sm {
+            padding: calc(var(--section-spacing) / 2) 0;
         }
 
-        /* ===== 3D BACKGROUND ===== */
-        #particles-3d {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
+        .text-center {
+            text-align: center;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
         }
 
         /* ===== GLASS MORPHISM ===== */
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
             box-shadow: var(--shadow-lg);
         }
 
-        .glass-dark {
-            background: rgba(26, 26, 46, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .glass-primary {
+            background: rgba(0, 212, 170, 0.1);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+        }
+
+        .glass-secondary {
+            background: rgba(108, 99, 255, 0.1);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(108, 99, 255, 0.2);
         }
 
         /* ===== BUTTONS ===== */
@@ -211,7 +321,7 @@
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
-            padding: 1rem 2.5rem;
+            padding: 0.875rem 2rem;
             border-radius: var(--radius-full);
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -222,23 +332,22 @@
             transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            isolation: isolate;
+            outline: none;
         }
 
         .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
+            inset: 0;
+            background: var(--primary-gradient);
             z-index: -1;
-            transition: var(--transition-normal);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
         }
 
         .btn-primary {
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             color: white;
             box-shadow: var(--shadow-primary);
         }
@@ -248,25 +357,51 @@
             box-shadow: var(--shadow-xl);
         }
 
-        .btn-primary:hover::before {
-            transform: scale(1.05);
+        .btn-primary:active {
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
+            color: var(--text-primary);
             border: 2px solid var(--primary);
         }
 
         .btn-secondary:hover {
             background: var(--primary);
+            color: white;
             transform: translateY(-3px);
             box-shadow: var(--shadow-primary);
         }
 
+        .btn-accent {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: var(--shadow-accent);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
         .btn-lg {
-            padding: 1.25rem 3rem;
+            padding: 1.25rem 2.5rem;
             font-size: 1.1rem;
+        }
+
+        .btn-xl {
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-sm {
+            padding: 0.625rem 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-block {
+            width: 100%;
         }
 
         .btn-icon {
@@ -276,7 +411,13 @@
             border-radius: 50%;
         }
 
-        /* ===== NAVBAR - MODERN ===== */
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== NAVBAR - PREMIUM ===== */
         .navbar {
             position: fixed;
             top: 0;
@@ -284,16 +425,17 @@
             width: 100%;
             height: var(--header-height);
             z-index: 1000;
-            transition: var(--transition-normal);
-            background: rgba(26, 26, 46, 0.9);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
         }
 
         .navbar.scrolled {
             height: 70px;
             box-shadow: var(--shadow-lg);
+            background: var(--bg-secondary);
         }
 
         .nav-container {
@@ -311,29 +453,31 @@
             text-decoration: none;
             font-size: 1.8rem;
             font-weight: 800;
-            color: white;
+            color: var(--text-primary);
+            transition: var(--transition-fast);
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            color: white;
+            font-size: 1.25rem;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-link {
-            color: var(--gray);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
@@ -349,12 +493,12 @@
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             transition: var(--transition-normal);
         }
 
         .nav-link:hover {
-            color: white;
+            color: var(--text-primary);
         }
 
         .nav-link:hover::after {
@@ -362,7 +506,7 @@
         }
 
         .nav-link.active {
-            color: white;
+            color: var(--text-primary);
         }
 
         .nav-link.active::after {
@@ -375,11 +519,17 @@
             gap: 1rem;
         }
 
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
         .user-avatar {
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -388,6 +538,7 @@
             cursor: pointer;
             transition: var(--transition-normal);
             border: 2px solid transparent;
+            overflow: hidden;
         }
 
         .user-avatar:hover {
@@ -395,16 +546,32 @@
             border-color: var(--primary);
         }
 
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .mobile-toggle {
             display: none;
             background: none;
             border: none;
-            color: white;
+            color: var(--text-primary);
             font-size: 1.5rem;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
         }
 
-        /* ===== HERO SECTION - PREMIUM ===== */
+        .mobile-toggle:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* ===== HERO SECTION - ULTRA PREMIUM ===== */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -412,12 +579,16 @@
             position: relative;
             overflow: hidden;
             padding-top: var(--header-height);
+            background: var(--bg-primary);
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
+            max-width: 700px;
         }
 
         .hero-badge {
@@ -428,10 +599,16 @@
             color: var(--primary);
             padding: 0.5rem 1.5rem;
             border-radius: var(--radius-full);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 2rem;
             border: 1px solid rgba(0, 212, 170, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .hero-title {
@@ -439,8 +616,8 @@
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            color: var(--gray);
+            font-size: 1.25rem;
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             max-width: 600px;
         }
@@ -468,7 +645,7 @@
             width: 50px;
             height: 50px;
             background: rgba(0, 212, 170, 0.1);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -483,45 +660,62 @@
         }
 
         .stat-content p {
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
 
         .hero-visual {
             position: absolute;
-            right: 0;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
-            width: 50%;
+            transform: translate(-30%, -50%);
+            width: 60%;
             height: 80%;
             z-index: 1;
+            pointer-events: none;
         }
 
-        .floating-element {
+        .floating-shapes {
             position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
             animation: float 6s ease-in-out infinite;
         }
 
-        .element-1 {
-            top: 20%;
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 10%;
             right: 10%;
-            width: 200px;
-            height: 200px;
-            background: var(--gradient-primary);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             opacity: 0.3;
-            filter: blur(40px);
+            animation-delay: 0s;
         }
 
-        .element-2 {
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
             bottom: 20%;
             right: 30%;
+            opacity: 0.2;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
             width: 150px;
             height: 150px;
-            background: var(--gradient-accent);
-            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-            opacity: 0.2;
-            filter: blur(30px);
+            background: var(--accent);
+            top: 40%;
+            right: 50%;
+            opacity: 0.15;
+            animation-delay: 4s;
         }
 
         @keyframes float {
@@ -531,7 +725,8 @@
 
         /* ===== FEATURES SECTION ===== */
         .features-section {
-            background: var(--dark-light);
+            background: var(--bg-secondary);
+            position: relative;
         }
 
         .features-grid {
@@ -542,10 +737,10 @@
 
         .feature-card {
             padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition-normal);
+            border-radius: var(--radius-xl);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
         }
@@ -554,34 +749,48 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 4px;
+            right: 0;
+            width: 100%;
             height: 100%;
-            background: var(--gradient-primary);
-            transition: var(--transition-normal);
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            z-index: 0;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl);
         }
 
         .feature-card:hover::before {
-            width: 100%;
-            opacity: 0.1;
+            opacity: 0.05;
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
             background: rgba(0, 212, 170, 0.1);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
+            transition: var(--transition-normal);
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
         }
 
         .feature-title {
@@ -590,13 +799,12 @@
         }
 
         .feature-description {
-            color: var(--gray);
+            color: var(--text-secondary);
         }
 
         /* ===== COMMUNITIES SECTION ===== */
         .communities-section {
             position: relative;
-            overflow: hidden;
         }
 
         .communities-slider {
@@ -611,18 +819,18 @@
         .community-card {
             height: 100%;
             padding: 2rem;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-xl);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            transition: var(--transition-normal);
+            transition: all var(--transition-normal);
         }
 
         .community-card:hover {
             transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
             border-color: var(--primary);
+            box-shadow: var(--shadow-xl);
         }
 
         .community-header {
@@ -635,13 +843,14 @@
         .community-avatar {
             width: 60px;
             height: 60px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-md);
+            background: var(--primary-gradient);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             color: white;
+            flex-shrink: 0;
         }
 
         .community-title {
@@ -652,12 +861,12 @@
         .community-meta {
             display: flex;
             gap: 1rem;
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
 
         .community-description {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
             flex: 1;
         }
@@ -671,10 +880,10 @@
 
         .tag {
             padding: 0.25rem 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-tertiary);
             border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            color: var(--gray);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
             transition: var(--transition-fast);
         }
 
@@ -683,57 +892,154 @@
             color: white;
         }
 
+        /* ===== FRIENDS IMAGE SECTION ===== */
+        .friends-section {
+            background: var(--bg-primary);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .friends-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .friends-image {
+            flex: 1;
+            position: relative;
+            min-height: 500px;
+        }
+
+        .friends-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .friends-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            min-height: 500px;
+        }
+
+        .friends-img-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .floating-icons {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            animation: floatAround 20s linear infinite;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 50px) rotate(90deg); }
+            50% { transform: translate(50px, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .floating-icon:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; background: var(--primary); color: white; }
+        .floating-icon:nth-child(2) { top: 40%; right: 30%; animation-delay: -5s; background: var(--secondary); color: white; }
+        .floating-icon:nth-child(3) { bottom: 30%; left: 40%; animation-delay: -10s; background: var(--accent); color: white; }
+        .floating-icon:nth-child(4) { top: 60%; right: 20%; animation-delay: -15s; background: #2ECC71; color: white; }
+        .floating-icon:nth-child(5) { bottom: 40%; left: 20%; animation-delay: -7s; background: #9B59B6; color: white; }
+
+        .friends-content {
+            flex: 1;
+        }
+
         /* ===== MAP SECTION ===== */
         .map-section {
-            background: var(--dark);
+            background: var(--bg-secondary);
         }
 
         .map-container {
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
             position: relative;
+            background: var(--bg-primary);
         }
 
         #tribly-map {
             width: 100%;
             height: 500px;
-            background: var(--dark-light);
+            background: var(--bg-tertiary);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
+            color: var(--text-tertiary);
+            position: relative;
         }
 
         .map-overlay {
             position: absolute;
             bottom: 2rem;
             right: 2rem;
-            background: rgba(26, 26, 46, 0.9);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             padding: 1.5rem;
             max-width: 300px;
+            border: 1px solid var(--glass-border);
+            z-index: 10;
         }
 
-        /* ===== TESTIMONIALS ===== */
+        /* ===== TESTIMONIALS SECTION ===== */
         .testimonials-section {
-            background: var(--dark-light);
+            background: var(--bg-primary);
         }
 
         .testimonial-card {
             padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             margin: 1rem;
+            transition: var(--transition-normal);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
         }
 
         .testimonial-content {
             font-size: 1.1rem;
             font-style: italic;
             margin-bottom: 2rem;
-            color: var(--gray-light);
+            color: var(--text-primary);
+            line-height: 1.8;
         }
 
         .testimonial-author {
@@ -746,7 +1052,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: var(--gradient-primary);
+            background: var(--primary-gradient);
+            flex-shrink: 0;
         }
 
         .author-info h4 {
@@ -755,34 +1062,384 @@
         }
 
         .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        /* ===== AUTH MODAL - WORLD CLASS ===== */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .auth-modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(50px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .auth-header {
+            padding: 2.5rem 2.5rem 0;
+            text-align: center;
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1.25rem;
+            background: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-gradient);
+        }
+
+        .auth-content {
+            padding: 2.5rem;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+            animation: formFadeIn 0.3s ease;
+        }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .form-footer {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .form-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .form-link:hover {
+            text-decoration: underline;
+        }
+
+        .social-auth {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-auth-title {
+            position: relative;
+            margin-bottom: 1.5rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        .social-auth-title::before,
+        .social-auth-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .social-auth-title::before {
+            right: 0;
+        }
+
+        .social-auth-title::after {
+            left: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-btn.facebook:hover {
+            background: #1877F2;
+            color: white;
+            border-color: #1877F2;
+        }
+
+        .social-btn.google:hover {
+            background: #DB4437;
+            color: white;
+            border-color: #DB4437;
+        }
+
+        .social-btn.twitter:hover {
+            background: #1DA1F2;
+            color: white;
+            border-color: #1DA1F2;
+        }
+
+        .auth-close {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .auth-close:hover {
+            background: var(--bg-tertiary);
+            transform: rotate(90deg);
+        }
+
+        /* ===== JOIN MODAL (رمز الدخول) ===== */
+        .join-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .join-modal.active {
+            display: flex;
+        }
+
+        .join-container {
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .join-header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .join-community-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .join-body {
+            padding: 2rem;
+        }
+
+        .code-inputs {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .code-input {
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        .code-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+        }
+
+        .code-input.filled {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: var(--primary);
         }
 
         /* ===== CTA SECTION ===== */
         .cta-section {
             text-align: center;
-            background: var(--gradient-dark);
+            background: var(--primary-gradient);
             position: relative;
             overflow: hidden;
         }
 
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
         .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
         }
 
         .cta-title {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             margin-bottom: 1.5rem;
+            color: white;
         }
 
         .cta-description {
-            font-size: 1.2rem;
-            color: var(--gray);
+            font-size: 1.25rem;
             margin-bottom: 3rem;
+            opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -790,9 +1447,10 @@
 
         /* ===== FOOTER ===== */
         .footer {
-            background: rgba(0, 0, 0, 0.5);
+            background: var(--bg-secondary);
             padding: 5rem 0 2rem;
             position: relative;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer-grid {
@@ -812,11 +1470,13 @@
             gap: 0.75rem;
             margin-bottom: 1.5rem;
             text-decoration: none;
+            color: var(--text-primary);
         }
 
         .footer-description {
-            color: var(--gray);
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
         .social-links {
@@ -827,14 +1487,14 @@
         .social-link {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-tertiary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: var(--transition-fast);
+            transition: all var(--transition-fast);
         }
 
         .social-link:hover {
@@ -846,7 +1506,7 @@
         .footer-title {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            color: white;
+            color: var(--text-primary);
         }
 
         .footer-links {
@@ -858,7 +1518,7 @@
         }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--text-secondary);
             text-decoration: none;
             transition: var(--transition-fast);
             display: flex;
@@ -873,72 +1533,110 @@
 
         .footer-bottom {
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
         }
 
-        .copyright {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* ===== FLOATING CHAT ===== */
-        .floating-chat {
+        /* ===== NOTIFICATION SYSTEM ===== */
+        .notification {
             position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            z-index: 1000;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 3000;
+            transform: translateX(120%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 400px;
         }
 
-        .chat-toggle {
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+
+        .notification-close:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
             width: 60px;
             height: 60px;
-            background: var(--gradient-primary);
-            border: none;
+            border: 3px solid var(--bg-tertiary);
+            border-top-color: var(--primary);
             border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-primary);
-            transition: var(--transition-normal);
-            position: relative;
+            animation: spin 1s linear infinite;
         }
 
-        .chat-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .chat-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 25px;
-            height: 25px;
-            background: var(--accent);
-            border-radius: 50%;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .hero-visual {
-                width: 40%;
+                transform: translate(-20%, -50%);
+            }
+            
+            .friends-container {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 992px) {
             .mobile-toggle {
-                display: block;
+                display: flex;
             }
             
             .nav-menu {
@@ -947,12 +1645,12 @@
                 right: -100%;
                 width: 300px;
                 height: calc(100vh - var(--header-height));
-                background: rgba(26, 26, 46, 0.95);
-                backdrop-filter: blur(20px);
+                background: var(--bg-primary);
                 flex-direction: column;
                 padding: 2rem;
                 transition: var(--transition-normal);
-                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                border-left: 1px solid var(--border-color);
+                box-shadow: var(--shadow-xl);
             }
             
             .nav-menu.active {
@@ -1000,6 +1698,20 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            .auth-container {
+                max-width: 100%;
+            }
+            
+            .join-container {
+                max-width: 100%;
+            }
+            
+            .code-input {
+                width: 40px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1015,70 +1727,338 @@
                 flex-direction: column;
                 gap: 2rem;
             }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            
+            .feature-card,
+            .community-card,
+            .testimonial-card {
+                padding: 1.5rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .code-input {
+                width: 35px;
+                height: 45px;
+                font-size: 1.1rem;
             }
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
+        /* ===== DARK MODE TOGGLE ===== */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
         }
 
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+        }
 
-        /* ===== LOADING ===== */
-        .loading {
+        .dark-mode .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        .dark-mode .theme-toggle .fa-moon {
+            display: block;
+        }
+
+        .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        /* ===== PASSWORD REQUIREMENTS ===== */
+        .password-requirements {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .requirement.valid {
+            color: var(--primary);
+        }
+
+        .requirement.invalid {
+            color: var(--accent);
+        }
+
+        .requirement i {
+            font-size: 0.75rem;
+        }
+
+        /* ===== FADE EFFECT ===== */
+        .fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+
+        /* ===== GROUPS MODAL ===== */
+        .groups-modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--dark);
-            display: flex;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+            padding: 2rem;
         }
 
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .groups-modal.active {
+            display: flex;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .groups-container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .groups-header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .group-item {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .group-item:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+        }
+
+        .group-item.locked {
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .group-item.locked::after {
+            content: '🔒';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.25rem;
         }
     </style>
 </head>
 <body>
-    <!-- 3D Background -->
-    <div id="particles-3d"></div>
-
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-container">
+            <button class="auth-close" id="authClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="auth-header">
+                <a href="#" class="auth-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span>Tribly</span>
+                </a>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">تسجيل الدخول</button>
+                <button class="auth-tab" data-tab="register">إنشاء حساب</button>
+            </div>
+            
+            <div class="auth-content">
+                <!-- Login Form -->
+                <form class="auth-form active" id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label" for="loginEmail">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="example@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="loginPassword">كلمة المرور</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="أدخل كلمة المرور" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="rememberMe" class="form-check-input">
+                            <label for="rememberMe" class="form-check-label">تذكرني</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+                    
+                    <div class="form-footer">
+                        <a href="#forgot" class="form-link">نسيت كلمة المرور؟</a>
+                    </div>
+                </form>
+                
+                <!-- Register Form -->
+                <form class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label" for="registerName">الاسم الكامل</label>
+                        <input type="text" class="form-control" id="registerName" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="registerEmail">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="example@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="registerPassword">كلمة المرور</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="أدخل كلمة المرور" required>
+                        <div class="password-requirements">
+                            <div class="requirement invalid" id="reqLength">
+                                <i class="fas fa-circle"></i>
+                                <span>8 أحرف على الأقل</span>
+                            </div>
+                            <div class="requirement invalid" id="reqUppercase">
+                                <i class="fas fa-circle"></i>
+                                <span>حرف كبير واحد على الأقل</span>
+                            </div>
+                            <div class="requirement invalid" id="reqNumber">
+                                <i class="fas fa-circle"></i>
+                                <span>رقم واحد على الأقل</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="registerConfirm">تأكيد كلمة المرور</label>
+                        <input type="password" class="form-control" id="registerConfirm" placeholder="أعد إدخال كلمة المرور" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="acceptTerms" class="form-check-input" required>
+                            <label for="acceptTerms" class="form-check-label">
+                                أوافق على <a href="#terms" class="form-link">شروط الاستخدام</a> و <a href="#privacy" class="form-link">سياسة الخصوصية</a>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" id="registerSubmit" disabled>إنشاء حساب</button>
+                </form>
+                
+                <div class="social-auth">
+                    <div class="social-auth-title">أو سجل عبر</div>
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button type="button" class="social-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Community Modal -->
+    <div class="join-modal" id="joinModal">
+        <div class="join-container">
+            <button class="auth-close" id="joinClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="join-header">
+                <div class="join-community-avatar" id="joinCommunityIcon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 id="joinCommunityTitle">انضم للمجتمع</h3>
+                <p class="text-secondary">أدخل رمز الدخول للانضمام</p>
+            </div>
+            
+            <div class="join-body">
+                <div class="code-inputs">
+                    <input type="text" class="code-input" maxlength="1" data-index="0">
+                    <input type="text" class="code-input" maxlength="1" data-index="1">
+                    <input type="text" class="code-input" maxlength="1" data-index="2">
+                    <input type="text" class="code-input" maxlength="1" data-index="3">
+                    <span style="align-self: center; margin: 0 0.5rem;">-</span>
+                    <input type="text" class="code-input" maxlength="1" data-index="4">
+                    <input type="text" class="code-input" maxlength="1" data-index="5">
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="joinSubmit" disabled>
+                    <i class="fas fa-door-open"></i>
+                    انضم الآن
+                </button>
+                
+                <div class="form-footer mt-3">
+                    <p class="text-tertiary small">رمز الدخول مكون من 6 أرقام</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groups Modal -->
+    <div class="groups-modal" id="groupsModal">
+        <div class="groups-container">
+            <button class="auth-close" id="groupsClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="groups-header">
+                <h3>جميع المجتمعات المتاحة</h3>
+                <p class="text-secondary">اختر المجتمع الذي تريد الانضام إليه</p>
+            </div>
+            
+            <div class="groups-grid" id="allGroupsList">
+                <!-- Groups will be populated by JavaScript -->
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -1097,6 +2077,7 @@
                 <li><a href="#home" class="nav-link active">الرئيسية</a></li>
                 <li><a href="#features" class="nav-link">المميزات</a></li>
                 <li><a href="#communities" class="nav-link">المجتمعات</a></li>
+                <li><a href="#friends" class="nav-link">الأصدقاء</a></li>
                 <li><a href="#map" class="nav-link">الخريطة</a></li>
                 <li><a href="#testimonials" class="nav-link">التقييمات</a></li>
                 <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
@@ -1104,9 +2085,15 @@
 
             <!-- Actions -->
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-secondary">تسجيل الدخول</a>
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn btn-secondary" id="authOpen">تسجيل الدخول</button>
+                <div class="nav-user">
+                    <div class="user-avatar" id="userMenu">
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
                 <button class="mobile-toggle" id="mobileToggle">
                     <i class="fas fa-bars"></i>
@@ -1117,36 +2104,36 @@
 
     <!-- Hero Section -->
     <section class="hero-section" id="home">
-        <div class="container">
-            <div class="hero-content fade-in-up">
-                <div class="hero-badge animate__animated animate__pulse animate__infinite">
-                    <i class="fas fa-rocket"></i>
-                    <span>النسخة الاحترافية - V2.0</span>
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>النسخة الاحترافية V3.0</span>
                 </div>
                 
-                <h1 class="display-1">
-                    اعثر على <span class="text-gradient">مجتمعك</span><br>
-                    بطريقة <span class="text-gradient">احترافية</span>
+                <h1 class="display-1 hero-title">
+                    اكتشف <span class="text-gradient">مجتمعك</span><br>
+                    بطريقة <span class="text-gradient-secondary">ذكية</span>
                 </h1>
                 
-                <p class="hero-description fade-in-up delay-1">
-                    منصة اجتماعية متطورة تجمع الناس بناءً على اهتماماتهم الحقيقية.
-                    تعرّف على أشخاص جدد، انضم لمجتمعات نشطة، وابني علاقات حقيقية.
+                <p class="hero-description">
+                    منصة اجتماعية متطورة تربطك بأشخاص حقيقيين يتشاركون معك نفس الاهتمامات والهوايات. 
+                    تعرّف على أصدقاء جدد، انضم لمجتمعات نشطة، وابنِ علاقات تستمر مدى الحياة.
                 </p>
                 
-                <div class="hero-actions fade-in-up delay-2">
-                    <a href="#signup" class="btn btn-primary btn-lg">
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="ctaRegister">
                         <i class="fas fa-user-plus"></i>
                         انضم مجاناً
-                    </a>
-                    <a href="#video" class="btn btn-secondary btn-lg">
+                    </button>
+                    <a href="#features" class="btn btn-secondary btn-lg">
                         <i class="fas fa-play-circle"></i>
-                        شاهد الفيديو
+                        تعرف أكثر
                     </a>
                 </div>
                 
-                <div class="hero-stats fade-in-up delay-3">
-                    <div class="stat-item">
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -1156,7 +2143,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-icon">
                             <i class="fas fa-comments"></i>
                         </div>
@@ -1166,7 +2153,7 @@
                         </div>
                     </div>
                     
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-icon">
                             <i class="fas fa-star"></i>
                         </div>
@@ -1179,8 +2166,11 @@
             </div>
             
             <div class="hero-visual">
-                <div class="floating-element element-1"></div>
-                <div class="floating-element element-2"></div>
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -1188,75 +2178,75 @@
     <!-- Features Section -->
     <section class="section features-section" id="features">
         <div class="container">
-            <div class="section-header text-center fade-in-up">
-                <h2 class="section-title">لماذا <span class="text-gradient">Tribly</span>؟</h2>
-                <p class="section-subtitle">منصة اجتماعية ذكية تجمع بين التكنولوجيا والعلاقات الإنسانية</p>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2 class="section-title">لماذا <span class="text-gradient">Tribly</span> مختلف؟</h2>
+                <p class="section-subtitle">منصة ذكية تجمع بين التكنولوجيا الحديثة والعلاقات الإنسانية الحقيقية</p>
             </div>
             
             <div class="features-grid">
                 <!-- Feature 1 -->
-                <div class="feature-card fade-in-up delay-1">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3 class="feature-title">ذكاء اصطناعي متقدم</h3>
                     <p class="feature-description">
-                        نظام توصيات ذكي يحلل اهتماماتك ويقترح أنسب المجتمعات والأشخاص لك بناءً على عدة عوامل.
+                        نظام توصيات ذكي يحلل اهتماماتك، نشاطاتك، وتفاعلاتك لتقديم أفضل الاقتراحات للمجتمعات والأشخاص.
                     </p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="feature-card fade-in-up delay-2">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="feature-title">خريطة تفاعلية</h3>
+                    <h3 class="feature-title">أمان متكامل</h3>
                     <p class="feature-description">
-                        اكتشف المجتمعات والأحداث القريبة منك على خريطة تفاعلية ثلاثية الأبعاد مع تحديثات حية.
+                        نظام حماية متعدد الطبقات مع تحقق الهوية، مراقبة المحتوى، وإعدادات خصوصية متقدمة.
                     </p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="feature-card fade-in-up delay-3">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3 class="feature-title">خصوصية وأمان</h3>
+                    <h3 class="feature-title">خرائط تفاعلية</h3>
                     <p class="feature-description">
-                        نظام حماية متعدد الطبقات مع تحقق من الهوية ومراقبة المحتوى لضمان تجربة آمنة للجميع.
+                        اكتشف المجتمعات والأحداث القريبة منك على خرائط تفاعلية مع تحديثات حية وتنبيهات فورية.
                     </p>
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="feature-card fade-in-up delay-4">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="feature-icon">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="feature-title">فيديو متكامل</h3>
+                    <h3 class="feature-title">تواصل مرئي</h3>
                     <p class="feature-description">
-                        غرف فيديو جماعية، بث مباشر للأحداث، وتواصل مرئي مع جودة عالية وانخفاض في التأخير.
+                        غرف فيديو جماعية، بث مباشر للأحداث، وتواصل مرئي عالي الجودة مع انخفاض في التأخير.
                     </p>
                 </div>
                 
                 <!-- Feature 5 -->
-                <div class="feature-card fade-in-up delay-1">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="feature-icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
-                    <h3 class="feature-title">إدارة الأحداث</h3>
+                    <h3 class="feature-title">إدارة فعاليات</h3>
                     <p class="feature-description">
-                        نظام متكامل لإنشاء وإدارة الأحداث مع تذاكر، حجز، وتنبيهات تلقائية للمشاركين.
+                        أنشئ وأدر فعالياتك بسهولة مع نظام تذاكر، حجوزات، وتنبيهات تلقائية للمشاركين.
                     </p>
                 </div>
                 
                 <!-- Feature 6 -->
-                <div class="feature-card fade-in-up delay-2">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="feature-title">تجربة متعددة المنصات</h3>
+                    <h3 class="feature-title">منصات متعددة</h3>
                     <p class="feature-description">
-                        تطبيقات أصلية لنظامي iOS و Android مع مزامنة فورية وتصميم مخصص لكل منصة.
+                        تطبيقات أصلية لنظامي iOS و Android مع تجربة مخصصة لكل منصة ومزامنة فورية.
                     </p>
                 </div>
             </div>
@@ -1266,17 +2256,17 @@
     <!-- Communities Section -->
     <section class="section communities-section" id="communities">
         <div class="container">
-            <div class="section-header text-center fade-in-up">
-                <h2 class="section-title">أبرز <span class="text-gradient">المجتمعات</span></h2>
-                <p class="section-subtitle">انضم إلى مجتمعات نشطة تشاركك نفس الاهتمامات والشغف</p>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2 class="section-title">استكشف <span class="text-gradient">المجتمعات</span></h2>
+                <p class="section-subtitle">انضم لمجتمعات حقيقية تشاركك نفس الشغف والاهتمامات</p>
             </div>
             
             <div class="communities-slider">
                 <div class="swiper communitiesSwiper">
                     <div class="swiper-wrapper">
                         <!-- Community 1 -->
-                        <div class="swiper-slide">
-                            <div class="community-card">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+                            <div class="community-card" data-community="1">
                                 <div class="community-header">
                                     <div class="community-avatar">
                                         <i class="fas fa-code"></i>
@@ -1284,7 +2274,7 @@
                                     <div>
                                         <h3 class="community-title">مطورو المستقبل</h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 1.2K عضو</span>
+                                            <span><i class="fas fa-users"></i> 1,247 عضو</span>
                                             <span><i class="fas fa-calendar"></i> 48 فعالية</span>
                                         </div>
                                     </div>
@@ -1296,18 +2286,17 @@
                                     <span class="tag">برمجة</span>
                                     <span class="tag">تطوير</span>
                                     <span class="tag">تقنية</span>
-                                    <span class="tag">تعلم</span>
                                 </div>
-                                <a href="#" class="btn btn-primary">
+                                <button class="btn btn-primary join-btn" data-community="1">
                                     <i class="fas fa-door-open"></i>
                                     انضم الآن
-                                </a>
+                                </button>
                             </div>
                         </div>
                         
                         <!-- Community 2 -->
-                        <div class="swiper-slide">
-                            <div class="community-card">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                            <div class="community-card" data-community="2">
                                 <div class="community-header">
                                     <div class="community-avatar">
                                         <i class="fas fa-music"></i>
@@ -1315,7 +2304,7 @@
                                     <div>
                                         <h3 class="community-title">عشاق الموسيقى</h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 850 عضو</span>
+                                            <span><i class="fas fa-users"></i> 856 عضو</span>
                                             <span><i class="fas fa-calendar"></i> 32 فعالية</span>
                                         </div>
                                     </div>
@@ -1327,18 +2316,17 @@
                                     <span class="tag">موسيقى</span>
                                     <span class="tag">فن</span>
                                     <span class="tag">حفلات</span>
-                                    <span class="tag">ثقافة</span>
                                 </div>
-                                <a href="#" class="btn btn-primary">
+                                <button class="btn btn-primary join-btn" data-community="2">
                                     <i class="fas fa-door-open"></i>
                                     انضم الآن
-                                </a>
+                                </button>
                             </div>
                         </div>
                         
                         <!-- Community 3 -->
-                        <div class="swiper-slide">
-                            <div class="community-card">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+                            <div class="community-card" data-community="3">
                                 <div class="community-header">
                                     <div class="community-avatar">
                                         <i class="fas fa-briefcase"></i>
@@ -1346,7 +2334,7 @@
                                     <div>
                                         <h3 class="community-title">ريادة الأعمال</h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 2.1K عضو</span>
+                                            <span><i class="fas fa-users"></i> 2,134 عضو</span>
                                             <span><i class="fas fa-calendar"></i> 76 فعالية</span>
                                         </div>
                                     </div>
@@ -1358,18 +2346,17 @@
                                     <span class="tag">أعمال</span>
                                     <span class="tag">استثمار</span>
                                     <span class="tag">ريادة</span>
-                                    <span class="tag">شبكات</span>
                                 </div>
-                                <a href="#" class="btn btn-primary">
+                                <button class="btn btn-primary join-btn" data-community="3">
                                     <i class="fas fa-door-open"></i>
                                     انضم الآن
-                                </a>
+                                </button>
                             </div>
                         </div>
                         
                         <!-- Community 4 -->
-                        <div class="swiper-slide">
-                            <div class="community-card">
+                        <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                            <div class="community-card" data-community="4">
                                 <div class="community-header">
                                     <div class="community-avatar">
                                         <i class="fas fa-heartbeat"></i>
@@ -1377,7 +2364,7 @@
                                     <div>
                                         <h3 class="community-title">اللياقة والصحة</h3>
                                         <div class="community-meta">
-                                            <span><i class="fas fa-users"></i> 1.5K عضو</span>
+                                            <span><i class="fas fa-users"></i> 1,543 عضو</span>
                                             <span><i class="fas fa-calendar"></i> 54 فعالية</span>
                                         </div>
                                     </div>
@@ -1389,17 +2376,76 @@
                                     <span class="tag">صحة</span>
                                     <span class="tag">رياضة</span>
                                     <span class="tag">تغذية</span>
-                                    <span class="tag">لياقة</span>
                                 </div>
-                                <a href="#" class="btn btn-primary">
+                                <button class="btn btn-primary join-btn" data-community="4">
                                     <i class="fas fa-door-open"></i>
                                     انضم الآن
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+                <button class="btn btn-secondary" id="viewAllGroups">
+                    <i class="fas fa-th-list"></i>
+                    عرض جميع المجتمعات
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Friends Image Section -->
+    <section class="section friends-section" id="friends">
+        <div class="container friends-container">
+            <div class="friends-image" data-aos="fade-right">
+                <div class="friends-img-wrapper">
+                    <div class="friends-img-placeholder">
+                        <div>
+                            <i class="fas fa-users"></i>
+                            <p>صورة أصدقاء يضحكون ويستمتعون</p>
+                        </div>
+                    </div>
+                    <div class="floating-icons">
+                        <div class="floating-icon"><i class="fas fa-heart"></i></div>
+                        <div class="floating-icon"><i class="fas fa-star"></i></div>
+                        <div class="floating-icon"><i class="fas fa-comment"></i></div>
+                        <div class="floating-icon"><i class="fas fa-thumbs-up"></i></div>
+                        <div class="floating-icon"><i class="fas fa-share"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="friends-content" data-aos="fade-left">
+                <h2 class="section-title">تواصل مع <span class="text-gradient">أصدقاء حقيقيين</span></h2>
+                <p class="lead mb-4">
+                    في Tribly، نؤمن بأن الصداقات الحقيقية تبدأ من اهتمامات مشتركة. 
+                    انضم لمجتمعات نشطة حيث يمكنك:
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
+                        <span>التعرف على أشخاص يتشاركون معك نفس الشغف والاهتمامات</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
+                        <span>المشاركة في أنشطة وفعاليات قريبة منك</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
+                        <span>بناء علاقات اجتماعية قوية ومستدامة</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i>
+                        <span>اكتشاف هوايات جديدة مع أصدقاء جدد</span>
+                    </li>
+                </ul>
+                <button class="btn btn-primary btn-lg" id="findFriendsBtn">
+                    <i class="fas fa-user-friends"></i>
+                    ابحث عن أصدقاء
+                </button>
             </div>
         </div>
     </section>
@@ -1407,23 +2453,31 @@
     <!-- Map Section -->
     <section class="section map-section" id="map">
         <div class="container">
-            <div class="section-header text-center fade-in-up">
+            <div class="section-header text-center" data-aos="fade-up">
                 <h2 class="section-title">اكتشف <span class="text-gradient">القريبين</span></h2>
-                <p class="section-subtitle">اعثر على المجتمعات والأحداث القريبة منك على خريطة تفاعلية</p>
+                <p class="section-subtitle">اعثر على المجتمعات والأشخاص القريبين منك على خريطة تفاعلية ذكية</p>
             </div>
             
-            <div class="map-container fade-in-up">
+            <div class="map-container" data-aos="fade-up" data-aos-delay="200">
                 <div id="tribly-map">
-                    <!-- Map will be initialized with JavaScript -->
-                    <div class="loading-map">
-                        <i class="fas fa-map-marked-alt fa-3x"></i>
-                        <p>جاري تحميل الخريطة التفاعلية...</p>
+                    <!-- Interactive Map Visualization -->
+                    <div style="width: 100%; height: 100%; position: relative; background: var(--bg-tertiary); border-radius: var(--radius-xl); overflow: hidden;">
+                        <!-- Map Grid -->
+                        <div style="position: absolute; inset: 0; background-image: linear-gradient(var(--border-color) 1px, transparent 1px), linear-gradient(90deg, var(--border-color) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.3;"></div>
+                        
+                        <!-- User Location -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--primary-gradient); border-radius: 50%; box-shadow: 0 0 0 10px rgba(0, 212, 170, 0.2), 0 0 0 20px rgba(0, 212, 170, 0.1); animation: pulse 2s infinite;"></div>
+                        
+                        <!-- Nearby Communities -->
+                        <div id="nearbyMarkers">
+                            <!-- Markers will be added by JavaScript -->
+                        </div>
                     </div>
                 </div>
                 
-                <div class="map-overlay">
-                    <h3>كيف تعمل الخريطة؟</h3>
-                    <p style="color: var(--gray); margin: 1rem 0;">
+                <div class="map-overlay" data-aos="fade-left" data-aos-delay="400">
+                    <h3 style="margin-bottom: 1rem;">كيف تعمل الخريطة؟</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
                         اضغط على زر تحديد الموقع لرؤية المجتمعات والأشخاص القريبين منك. 
                         الألوان تمثل أنواع الأنشطة المختلفة.
                     </p>
@@ -1439,19 +2493,18 @@
     <!-- Testimonials Section -->
     <section class="section testimonials-section" id="testimonials">
         <div class="container">
-            <div class="section-header text-center fade-in-up">
+            <div class="section-header text-center" data-aos="fade-up">
                 <h2 class="section-title">ماذا يقول <span class="text-gradient">المستخدمون</span>؟</h2>
                 <p class="section-subtitle">انضم لأكثر من 50,000 شخص وجدوا مجتمعاتهم على Tribly</p>
             </div>
             
-            <div class="swiper testimonialsSwiper">
+            <div class="swiper testimonialsSwiper" data-aos="fade-up" data-aos-delay="200">
                 <div class="swiper-wrapper">
                     <!-- Testimonial 1 -->
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-content">
-                                "Tribly غير حياتي الاجتماعية تماماً! وجدت مجتمع المطورين في مدينتي 
-                                وشاركت في عدة فعاليات رائعة. التوصيات الذكية كانت دقيقة جداً."
+                                "Tribly غير حياتي الاجتماعية تماماً! كمطور، وجدت مجتمعاً رائعاً في مدينتي وشاركت في عدة فعاليات تقنية. التوصيات الذكية كانت دقيقة جداً."
                             </div>
                             <div class="testimonial-author">
                                 <div class="author-avatar"></div>
@@ -1467,8 +2520,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-content">
-                                "كأم عزباء، كان من الصعب عليّ تكوين صداقات جديدة. Tribly ساعدني 
-                                في التعرف على أمهات في منطقتي نشارك نفس الاهتمامات والظروف."
+                                "كأم عزباء، كان من الصعب عليّ تكوين صداقات جديدة. Tribly ساعدني في التعرف على أمهات في منطقتي نشارك نفس الاهتمامات والظروف."
                             </div>
                             <div class="testimonial-author">
                                 <div class="author-avatar"></div>
@@ -1484,8 +2536,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-content">
-                                "المنصة الأفضل للتعرف على أشخاص جدد! واجهة مستخدم رائعة، 
-                                خوارزميات ذكية، ومجتمعات نشطة. أنصح بها بشدة لكل من يبحث عن توسيع دائرة معارفه."
+                                "المنصة الأفضل للتعرف على أشخاص جدد! واجهة مستخدم رائعة، خوارزميات ذكية، ومجتمعات نشطة. أنصح بها بشدة لكل من يبحث عن توسيع دائرة معارفه."
                             </div>
                             <div class="testimonial-author">
                                 <div class="author-avatar"></div>
@@ -1503,9 +2554,9 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section cta-section" id="signup">
+    <section class="section cta-section" id="cta">
         <div class="container">
-            <div class="cta-content fade-in-up">
+            <div class="cta-content" data-aos="fade-up">
                 <h2 class="cta-title">جاهز للانضمام إلى مجتمعك؟</h2>
                 <p class="cta-description">
                     انضم لأكثر من 50,000 شخص وجدوا صداقات وأنشطة جديدة بالقرب منهم.
@@ -1513,14 +2564,10 @@
                 </p>
                 
                 <div class="hero-actions" style="justify-content: center;">
-                    <a href="#signup-form" class="btn btn-primary btn-lg">
+                    <button class="btn btn-accent btn-xl" id="finalCta">
                         <i class="fas fa-user-plus"></i>
-                        سجل مجاناً
-                    </a>
-                    <a href="#download" class="btn btn-secondary btn-lg">
-                        <i class="fas fa-download"></i>
-                        حمل التطبيق
-                    </a>
+                        سجل مجاناً الآن
+                    </button>
                 </div>
             </div>
         </div>
@@ -1557,13 +2604,13 @@
                         <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
                         <li><a href="#features"><i class="fas fa-chevron-left"></i> المميزات</a></li>
                         <li><a href="#communities"><i class="fas fa-chevron-left"></i> المجتمعات</a></li>
-                        <li><a href="#pricing"><i class="fas fa-chevron-left"></i> الأسعار</a></li>
+                        <li><a href="#friends"><i class="fas fa-chevron-left"></i> الأصدقاء</a></li>
                     </ul>
                 </div>
 
                 <!-- Legal -->
                 <div class="footer-links">
-                    <h3 class="footer-title">شركة</h3>
+                    <h3 class="footer-title">الشركة</h3>
                     <ul>
                         <li><a href="#about"><i class="fas fa-chevron-left"></i> عنا</a></li>
                         <li><a href="#careers"><i class="fas fa-chevron-left"></i> وظائف</a></li>
@@ -1574,7 +2621,7 @@
 
                 <!-- Contact -->
                 <div class="footer-links">
-                    <h3 class="footer-title">تواصل معنا</h3>
+                    <h3 class="footer-title">التواصل</h3>
                     <ul>
                         <li><a href="mailto:hello@tribly.com"><i class="fas fa-chevron-left"></i> hello@tribly.com</a></li>
                         <li><a href="tel:+201234567890"><i class="fas fa-chevron-left"></i> +20 123 456 7890</a></li>
@@ -1590,58 +2637,86 @@
                     © 2024 Tribly. جميع الحقوق محفوظة.
                 </div>
                 <div class="footer-links">
-                    <a href="#cookies" style="color: var(--gray); font-size: 0.9rem;">ملفات تعريف الارتباط</a>
-                    <a href="#sitemap" style="color: var(--gray); font-size: 0.9rem;">خريطة الموقع</a>
+                    <a href="#cookies" style="color: var(--text-tertiary); font-size: 0.875rem;">ملفات تعريف الارتباط</a>
+                    <a href="#sitemap" style="color: var(--text-tertiary); font-size: 0.875rem;">خريطة الموقع</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Chat -->
-    <div class="floating-chat">
-        <button class="chat-toggle" id="chatToggle">
-            <i class="fas fa-comment-dots"></i>
-            <span class="chat-badge">3</span>
-        </button>
-    </div>
-
-    <!-- JavaScript -->
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <script>
-        // ===== TRIBELY PREMIUM APP =====
-        class TriblyPremium {
+        // ===== TRIBELY ULTIMATE APP =====
+        class TriblyUltimate {
             constructor() {
+                this.currentUser = null;
+                this.communityCodes = {
+                    1: "123456",  // مطورو المستقبل
+                    2: "234567",  // عشاق الموسيقى
+                    3: "345678",  // ريادة الأعمال
+                    4: "456789",  // اللياقة والصحة
+                    5: "567890",  // الفنون التشكيلية
+                    6: "678901",  // القراءة والكتابة
+                    7: "789012",  // السفر والسياحة
+                    8: "890123"   // الطبخ والأكل
+                };
+                
+                this.allCommunities = [
+                    { id: 1, name: "مطورو المستقبل", icon: "fa-code", locked: false },
+                    { id: 2, name: "عشاق الموسيقى", icon: "fa-music", locked: false },
+                    { id: 3, name: "ريادة الأعمال", icon: "fa-briefcase", locked: false },
+                    { id: 4, name: "اللياقة والصحة", icon: "fa-heartbeat", locked: false },
+                    { id: 5, name: "الفنون التشكيلية", icon: "fa-palette", locked: true },
+                    { id: 6, name: "القراءة والكتابة", icon: "fa-book", locked: true },
+                    { id: 7, name: "السفر والسياحة", icon: "fa-plane", locked: true },
+                    { id: 8, name: "الطبخ والأكل", icon: "fa-utensils", locked: true }
+                ];
+                
                 this.init();
             }
 
             async init() {
-                console.log('🚀 Tribly Premium Initialized');
+                console.log('🚀 Tribly Ultimate Initialized');
                 
-                // Initialize components
+                // Initialize AOS (Animate On Scroll)
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    offset: 100
+                });
+
+                // Initialize all components
                 await this.initLoading();
                 this.initNavbar();
                 this.initTheme();
-                this.initCounters();
+                this.initAuthModal();
+                this.initJoinModal();
+                this.initGroupsModal();
                 this.initSwiper();
                 this.initMap();
-                this.initChat();
-                this.initAnimations();
-                this.init3DBackground();
+                this.initNotifications();
+                this.initCounters();
+                this.initForms();
+                this.initEventListeners();
                 
-                // Add event listeners
-                this.addEventListeners();
+                // Start animations
+                this.startAnimations();
                 
-                // Start stats animation
-                this.animateStats();
+                // Show welcome notification
+                setTimeout(() => {
+                    this.showNotification('مرحباً بك في Tribly! ابدأ رحلت الاجتماعية الآن.', 'success');
+                }, 2000);
             }
 
             // === LOADING SCREEN ===
             async initLoading() {
                 const loading = document.getElementById('loading');
                 
-                // Simulate loading time
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Simulate minimum loading time
+                await new Promise(resolve => setTimeout(resolve, 1000));
                 
                 loading.classList.add('hidden');
                 
@@ -1659,12 +2734,25 @@
                 const navLinks = document.querySelectorAll('.nav-link');
 
                 // Scroll effect
+                let lastScroll = 0;
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
+                    const currentScroll = window.pageYOffset;
+                    
+                    // Add/remove scrolled class
+                    if (currentScroll > 50) {
                         navbar.classList.add('scrolled');
                     } else {
                         navbar.classList.remove('scrolled');
                     }
+                    
+                    // Hide/show navbar on scroll
+                    if (currentScroll > lastScroll && currentScroll > 100) {
+                        navbar.style.transform = 'translateY(-100%)';
+                    } else {
+                        navbar.style.transform = 'translateY(0)';
+                    }
+                    
+                    lastScroll = currentScroll;
                 });
 
                 // Mobile menu toggle
@@ -1706,63 +2794,290 @@
                 });
             }
 
-            // === THEME ===
+            // === THEME TOGGLE ===
             initTheme() {
-                // Check for saved theme or prefer color scheme
-                const savedTheme = localStorage.getItem('triblyTheme');
+                const themeToggle = document.getElementById('themeToggle');
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 
-                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                // Check for saved theme
+                const savedTheme = localStorage.getItem('triblyTheme');
+                
+                // Apply theme
+                if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                    document.body.classList.remove('dark-mode');
+                } else {
                     document.body.classList.add('dark-mode');
                 }
-            }
-
-            // === COUNTERS ===
-            initCounters() {
-                this.counters = [
-                    { element: 'usersCount', target: 52347, duration: 2000 },
-                    { element: 'meetupsCount', target: 12843, duration: 2000 }
-                ];
-            }
-
-            animateStats() {
-                this.counters.forEach(counter => {
-                    const element = document.getElementById(counter.element);
-                    if (!element) return;
-
-                    let current = 0;
-                    const increment = counter.target / 100;
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < counter.target) {
-                            element.textContent = Math.floor(current).toLocaleString();
-                            setTimeout(updateCounter, counter.duration / 100);
-                        } else {
-                            element.textContent = counter.target.toLocaleString();
-                        }
-                    };
-
-                    // Start when in viewport
-                    const observer = new IntersectionObserver((entries) => {
-                        if (entries[0].isIntersecting) {
-                            updateCounter();
-                            observer.disconnect();
-                        }
-                    });
-
-                    observer.observe(element);
+                
+                // Toggle theme
+                themeToggle.addEventListener('click', () => {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('triblyTheme', isDark ? 'dark' : 'light');
+                    
+                    this.showNotification(
+                        isDark ? 'تم تفعيل الوضع الداكن' : 'تم تفعيل الوضع الفاتح',
+                        'info'
+                    );
                 });
             }
 
-            // === SWIPER ===
+            // === AUTH MODAL ===
+            initAuthModal() {
+                const authModal = document.getElementById('authModal');
+                const authOpen = document.getElementById('authOpen');
+                const authClose = document.getElementById('authClose');
+                const authTabs = document.querySelectorAll('.auth-tab');
+                const authForms = document.querySelectorAll('.auth-form');
+                const ctaRegister = document.getElementById('ctaRegister');
+                const finalCta = document.getElementById('finalCta');
+
+                // Open modal
+                const openModal = () => {
+                    authModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                // Close modal
+                const closeModal = () => {
+                    authModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+
+                // Switch tabs
+                const switchTab = (tabId) => {
+                    // Update active tab
+                    authTabs.forEach(tab => {
+                        tab.classList.toggle('active', tab.dataset.tab === tabId);
+                    });
+                    
+                    // Update active form
+                    authForms.forEach(form => {
+                        form.classList.toggle('active', form.id === `${tabId}Form`);
+                    });
+                };
+
+                // Event listeners
+                authOpen?.addEventListener('click', () => {
+                    openModal();
+                    switchTab('login');
+                });
+
+                ctaRegister?.addEventListener('click', () => {
+                    openModal();
+                    switchTab('register');
+                });
+
+                finalCta?.addEventListener('click', () => {
+                    openModal();
+                    switchTab('register');
+                });
+
+                authClose?.addEventListener('click', closeModal);
+
+                // Close modal when clicking outside
+                authModal.addEventListener('click', (e) => {
+                    if (e.target === authModal) {
+                        closeModal();
+                    }
+                });
+
+                // Tab switching
+                authTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        switchTab(tab.dataset.tab);
+                    });
+                });
+            }
+
+            // === JOIN MODAL ===
+            initJoinModal() {
+                const joinModal = document.getElementById('joinModal');
+                const joinClose = document.getElementById('joinClose');
+                const codeInputs = document.querySelectorAll('.code-input');
+                const joinSubmit = document.getElementById('joinSubmit');
+                let currentCommunityId = null;
+
+                // Open modal for a specific community
+                window.openJoinModal = (communityId, communityName, communityIcon) => {
+                    currentCommunityId = communityId;
+                    
+                    // Update modal content
+                    document.getElementById('joinCommunityTitle').textContent = `انضم إلى ${communityName}`;
+                    document.getElementById('joinCommunityIcon').innerHTML = `<i class="fas ${communityIcon}"></i>`;
+                    
+                    // Reset inputs
+                    codeInputs.forEach(input => {
+                        input.value = '';
+                        input.classList.remove('filled');
+                    });
+                    
+                    // Focus first input
+                    codeInputs[0].focus();
+                    
+                    // Open modal
+                    joinModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                // Close modal
+                joinClose.addEventListener('click', () => {
+                    joinModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+
+                // Close modal when clicking outside
+                joinModal.addEventListener('click', (e) => {
+                    if (e.target === joinModal) {
+                        joinModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+
+                // Handle code input
+                codeInputs.forEach((input, index) => {
+                    input.addEventListener('input', (e) => {
+                        const value = e.target.value;
+                        
+                        if (value.length === 1 && /[0-9]/.test(value)) {
+                            input.classList.add('filled');
+                            
+                            // Move to next input
+                            if (index < codeInputs.length - 1) {
+                                codeInputs[index + 1].focus();
+                            }
+                        } else if (value.length === 0) {
+                            input.classList.remove('filled');
+                        } else {
+                            input.value = '';
+                        }
+                        
+                        // Check if all inputs are filled
+                        const allFilled = Array.from(codeInputs).every(input => input.value.length === 1);
+                        joinSubmit.disabled = !allFilled;
+                    });
+                    
+                    // Handle backspace
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                            codeInputs[index - 1].focus();
+                        }
+                    });
+                });
+
+                // Handle join submission
+                joinSubmit.addEventListener('click', () => {
+                    const enteredCode = Array.from(codeInputs).map(input => input.value).join('');
+                    const correctCode = this.communityCodes[currentCommunityId];
+                    
+                    if (enteredCode === correctCode) {
+                        // Success
+                        this.showNotification(`مبروك! لقد انضممت للمجتمع بنجاح.`, 'success');
+                        
+                        // Update button state
+                        const joinBtn = document.querySelector(`.join-btn[data-community="${currentCommunityId}"]`);
+                        if (joinBtn) {
+                            joinBtn.innerHTML = '<i class="fas fa-check"></i> عضو بالفعل';
+                            joinBtn.disabled = true;
+                            joinBtn.classList.remove('btn-primary');
+                            joinBtn.classList.add('btn-secondary');
+                        }
+                        
+                        // Close modal
+                        setTimeout(() => {
+                            joinModal.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }, 1500);
+                    } else {
+                        // Error
+                        this.showNotification('رمز الدخول غير صحيح. حاول مرة أخرى.', 'error');
+                        
+                        // Shake animation
+                        codeInputs.forEach(input => {
+                            input.style.animation = 'shake 0.5s ease';
+                            setTimeout(() => {
+                                input.style.animation = '';
+                            }, 500);
+                        });
+                    }
+                });
+
+                // Add shake animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes shake {
+                        0%, 100% { transform: translateX(0); }
+                        25% { transform: translateX(-5px); }
+                        75% { transform: translateX(5px); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // === GROUPS MODAL ===
+            initGroupsModal() {
+                const groupsModal = document.getElementById('groupsModal');
+                const groupsClose = document.getElementById('groupsClose');
+                const viewAllGroupsBtn = document.getElementById('viewAllGroups');
+                const allGroupsList = document.getElementById('allGroupsList');
+
+                // Populate groups list
+                this.allCommunities.forEach(community => {
+                    const groupItem = document.createElement('div');
+                    groupItem.className = `group-item ${community.locked ? 'locked' : ''}`;
+                    groupItem.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas ${community.icon}"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin: 0 0 0.25rem 0;">${community.name}</h4>
+                                <p style="color: var(--text-tertiary); font-size: 0.875rem; margin: 0;">
+                                    ${community.locked ? 'يتطلب رمز دخول' : 'مفتوح للجميع'}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    if (!community.locked) {
+                        groupItem.addEventListener('click', () => {
+                            openJoinModal(community.id, community.name, community.icon);
+                            groupsModal.classList.remove('active');
+                        });
+                    }
+                    
+                    allGroupsList.appendChild(groupItem);
+                });
+
+                // Open modal
+                viewAllGroupsBtn?.addEventListener('click', () => {
+                    groupsModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                // Close modal
+                groupsClose.addEventListener('click', () => {
+                    groupsModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+
+                // Close modal when clicking outside
+                groupsModal.addEventListener('click', (e) => {
+                    if (e.target === groupsModal) {
+                        groupsModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // === SWIPER SLIDERS ===
             initSwiper() {
                 // Communities Swiper
-                const communitiesSwiper = new Swiper('.communitiesSwiper', {
+                new Swiper('.communitiesSwiper', {
                     slidesPerView: 1,
                     spaceBetween: 20,
                     loop: true,
                     autoplay: {
-                        delay: 3000,
+                        delay: 4000,
                         disableOnInteraction: false,
                     },
                     pagination: {
@@ -1772,11 +3087,12 @@
                     breakpoints: {
                         640: { slidesPerView: 2 },
                         1024: { slidesPerView: 3 },
+                        1280: { slidesPerView: 4 },
                     },
                 });
 
                 // Testimonials Swiper
-                const testimonialsSwiper = new Swiper('.testimonialsSwiper', {
+                new Swiper('.testimonialsSwiper', {
                     slidesPerView: 1,
                     spaceBetween: 30,
                     loop: true,
@@ -1791,303 +3107,470 @@
                 });
             }
 
-            // === MAP ===
+            // === INTERACTIVE MAP ===
             initMap() {
-                const mapContainer = document.getElementById('tribly-map');
                 const locateBtn = document.getElementById('locateMeBtn');
-
-                if (!mapContainer || !locateBtn) return;
-
-                // Create interactive map visualization
-                const createMapVisualization = () => {
-                    mapContainer.innerHTML = `
-                        <div style="width: 100%; height: 100%; position: relative;">
-                            <!-- Base Map -->
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                                 background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%); 
-                                 border-radius: var(--radius-lg);">
+                const nearbyMarkers = document.getElementById('nearbyMarkers');
+                
+                if (!locateBtn || !nearbyMarkers) return;
+                
+                // Generate random nearby markers
+                const generateMarkers = () => {
+                    const markers = [];
+                    const markerTypes = [
+                        { icon: 'fas fa-code', color: 'var(--primary)', label: 'تطوير' },
+                        { icon: 'fas fa-music', color: 'var(--secondary)', label: 'موسيقى' },
+                        { icon: 'fas fa-briefcase', color: 'var(--accent)', label: 'أعمال' },
+                        { icon: 'fas fa-heartbeat', color: '#2ECC71', label: 'صحة' },
+                        { icon: 'fas fa-palette', color: '#9B59B6', label: 'فن' },
+                    ];
+                    
+                    for (let i = 0; i < 8; i++) {
+                        const type = markerTypes[Math.floor(Math.random() * markerTypes.length)];
+                        const left = 10 + Math.random() * 80;
+                        const top = 10 + Math.random() * 80;
+                        
+                        markers.push(`
+                            <div style="position: absolute; left: ${left}%; top: ${top}%;
+                                 width: 40px; height: 40px; background: ${type.color};
+                                 border-radius: 50%; cursor: pointer; transition: all 0.3s;
+                                 display: flex; align-items: center; justify-content: center;
+                                 color: white; font-size: 1rem; box-shadow: 0 4px 15px ${type.color}80;
+                                 animation: float ${3 + Math.random() * 2}s ease-in-out infinite alternate;
+                                 transform-origin: center;"
+                                 onmouseover="this.style.transform='scale(1.2) rotate(5deg)';"
+                                 onmouseout="this.style.transform='scale(1) rotate(0deg)';"
+                                 title="${type.label}">
+                                <i class="${type.icon}"></i>
                             </div>
-                            
-                            <!-- Grid Lines -->
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                                 background-image: 
-                                     linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                                     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-                                 background-size: 50px 50px;">
-                            </div>
-                            
-                            <!-- User Location -->
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                                 width: 20px; height: 20px; background: var(--primary); border-radius: 50%;
-                                 box-shadow: 0 0 0 10px rgba(0, 212, 170, 0.2), 0 0 0 20px rgba(0, 212, 170, 0.1);
-                                 animation: pulse 2s infinite;">
-                            </div>
-                            
-                            <!-- Nearby Points -->
-                            ${this.generateNearbyPoints()}
-                            
-                            <!-- Legend -->
-                            <div style="position: absolute; bottom: 20px; left: 20px; 
-                                 background: rgba(26, 26, 46, 0.8); backdrop-filter: blur(10px);
-                                 padding: 15px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
-                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                    <div style="width: 12px; height: 12px; background: var(--primary); border-radius: 50%;"></div>
-                                    <span style="color: var(--gray); font-size: 0.9rem;">أنت هنا</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div style="width: 12px; height: 12px; background: var(--secondary); border-radius: 50%;"></div>
-                                    <span style="color: var(--gray); font-size: 0.9rem;">مجتمعات قريبة</span>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                        `);
+                    }
+                    
+                    return markers.join('');
                 };
-
-                createMapVisualization();
-
+                
+                // Initial markers
+                nearbyMarkers.innerHTML = generateMarkers();
+                
                 // Locate button functionality
                 locateBtn.addEventListener('click', () => {
                     locateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
                     locateBtn.disabled = true;
-
+                    
                     // Simulate location detection
                     setTimeout(() => {
-                        locateBtn.innerHTML = '<i class="fas fa-check-circle"></i> تم تحديد موقعك';
-                        locateBtn.style.background = 'var(--success)';
+                        // Update markers
+                        nearbyMarkers.innerHTML = generateMarkers();
                         
-                        // Show success notification
+                        // Show success
+                        locateBtn.innerHTML = '<i class="fas fa-check-circle"></i> تم تحديد موقعك';
+                        locateBtn.classList.remove('btn-primary');
+                        locateBtn.classList.add('btn-accent');
+                        
                         this.showNotification('تم تحديد موقعك بنجاح! يتم الآن عرض المجتمعات القريبة.', 'success');
                         
                         // Reset button after 3 seconds
                         setTimeout(() => {
                             locateBtn.innerHTML = '<i class="fas fa-location-arrow"></i> حدد موقعي';
-                            locateBtn.style.background = '';
+                            locateBtn.classList.remove('btn-accent');
+                            locateBtn.classList.add('btn-primary');
                             locateBtn.disabled = false;
                         }, 3000);
                     }, 1500);
                 });
             }
 
-            generateNearbyPoints() {
-                let pointsHTML = '';
-                const colors = ['var(--secondary)', 'var(--accent)', 'var(--warning)', 'var(--success)'];
-                
-                for (let i = 0; i < 15; i++) {
-                    const left = 10 + Math.random() * 80;
-                    const top = 10 + Math.random() * 80;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const size = 8 + Math.random() * 12;
-                    
-                    pointsHTML += `
-                        <div style="position: absolute; left: ${left}%; top: ${top}%;
-                             width: ${size}px; height: ${size}px; background: ${color};
-                             border-radius: 50%; cursor: pointer; transition: all 0.3s;
-                             animation: float ${2 + Math.random() * 3}s ease-in-out infinite alternate;
-                             box-shadow: 0 0 ${size}px ${color};"
-                             onmouseover="this.style.transform='scale(1.5)';"
-                             onmouseout="this.style.transform='scale(1)';">
-                        </div>
-                    `;
-                }
-                
-                return pointsHTML;
+            // === NOTIFICATION SYSTEM ===
+            initNotifications() {
+                this.notificationContainer = document.createElement('div');
+                this.notificationContainer.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 3000;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    max-width: 400px;
+                `;
+                document.body.appendChild(this.notificationContainer);
             }
 
-            // === CHAT ===
-            initChat() {
-                const chatToggle = document.getElementById('chatToggle');
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
                 
-                chatToggle.addEventListener('click', () => {
-                    this.showNotification('نظام الدردشة قيد التطوير. سيتم إطلاقه قريباً!', 'info');
+                const icons = {
+                    success: 'fa-check-circle',
+                    error: 'fa-exclamation-circle',
+                    warning: 'fa-exclamation-triangle',
+                    info: 'fa-info-circle'
+                };
+                
+                const colors = {
+                    success: 'var(--primary)',
+                    error: 'var(--accent)',
+                    warning: '#FF9A3C',
+                    info: 'var(--secondary)'
+                };
+                
+                notification.innerHTML = `
+                    <div class="notification-icon">
+                        <i class="fas ${icons[type]}"></i>
+                    </div>
+                    <div class="notification-content">
+                        ${message}
+                    </div>
+                    <button class="notification-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                notification.style.borderLeftColor = colors[type];
+                
+                this.notificationContainer.appendChild(notification);
+                
+                // Show notification
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 5000);
+                
+                // Close button
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.addEventListener('click', () => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                });
+            }
+
+            // === ANIMATED COUNTERS ===
+            initCounters() {
+                const counters = [
+                    { element: 'usersCount', target: 52347, duration: 2000 },
+                    { element: 'meetupsCount', target: 12843, duration: 2000 }
+                ];
+                
+                counters.forEach(counter => {
+                    const element = document.getElementById(counter.element);
+                    if (!element) return;
+                    
+                    // Start counter when in viewport
+                    const observer = new IntersectionObserver((entries) => {
+                        if (entries[0].isIntersecting) {
+                            this.animateCounter(element, counter.target, counter.duration);
+                            observer.disconnect();
+                        }
+                    }, { threshold: 0.5 });
+                    
+                    observer.observe(element);
+                });
+            }
+
+            animateCounter(element, target, duration) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const updateCounter = () => {
+                    start += increment;
+                    if (start < target) {
+                        element.textContent = Math.floor(start).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        element.textContent = target.toLocaleString();
+                    }
+                };
+                updateCounter();
+            }
+
+            // === FORM VALIDATION ===
+            initForms() {
+                const loginForm = document.getElementById('loginForm');
+                const registerForm = document.getElementById('registerForm');
+                const passwordInput = document.getElementById('registerPassword');
+                const registerSubmit = document.getElementById('registerSubmit');
+                
+                // Password validation
+                if (passwordInput) {
+                    passwordInput.addEventListener('input', (e) => {
+                        const password = e.target.value;
+                        this.validatePassword(password);
+                    });
+                }
+                
+                if (loginForm) {
+                    loginForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.handleLogin();
+                    });
+                }
+                
+                if (registerForm) {
+                    registerForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        this.handleRegister();
+                    });
+                }
+            }
+
+            validatePassword(password) {
+                const requirements = {
+                    length: password.length >= 8,
+                    uppercase: /[A-Z]/.test(password),
+                    number: /\d/.test(password)
+                };
+                
+                // Update requirement indicators
+                document.getElementById('reqLength').className = `requirement ${requirements.length ? 'valid' : 'invalid'}`;
+                document.getElementById('reqUppercase').className = `requirement ${requirements.uppercase ? 'valid' : 'invalid'}`;
+                document.getElementById('reqNumber').className = `requirement ${requirements.number ? 'valid' : 'invalid'}`;
+                
+                // Update icons
+                const updateIcon = (elementId, isValid) => {
+                    const element = document.getElementById(elementId);
+                    const icon = element.querySelector('i');
+                    icon.className = isValid ? 'fas fa-check-circle' : 'fas fa-circle';
+                };
+                
+                updateIcon('reqLength', requirements.length);
+                updateIcon('reqUppercase', requirements.uppercase);
+                updateIcon('reqNumber', requirements.number);
+                
+                // Check if all requirements are met
+                const allValid = Object.values(requirements).every(req => req);
+                document.getElementById('registerSubmit').disabled = !allValid;
+                
+                return allValid;
+            }
+
+            handleLogin() {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    this.showNotification('تم تسجيل الدخول بنجاح!', 'success');
+                    
+                    // Update user state
+                    this.currentUser = {
+                        email: email,
+                        name: email.split('@')[0]
+                    };
+                    
+                    // Update UI for logged in user
+                    this.updateUIForLoggedInUser();
+                    
+                    // Close modal after success
+                    setTimeout(() => {
+                        document.getElementById('authModal').classList.remove('active');
+                        document.body.style.overflow = '';
+                        
+                        // Hide login button
+                        document.getElementById('authOpen').style.display = 'none';
+                        
+                        // Show user menu
+                        const userAvatar = document.querySelector('.user-avatar');
+                        userAvatar.innerHTML = `<i class="fas fa-user-check"></i>`;
+                        userAvatar.style.background = 'var(--primary-gradient)';
+                    }, 1500);
+                }, 1000);
+            }
+
+            handleRegister() {
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                
+                // Validate password
+                if (!this.validatePassword(password)) {
+                    this.showNotification('كلمة المرور لا تلبي المتطلبات', 'error');
+                    return;
+                }
+                
+                // Simulate API call
+                setTimeout(() => {
+                    this.showNotification(`مرحباً ${name}! تم إنشاء حسابك بنجاح.`, 'success');
+                    
+                    // Update user state
+                    this.currentUser = {
+                        email: email,
+                        name: name
+                    };
+                    
+                    // Update UI for logged in user
+                    this.updateUIForLoggedInUser();
+                    
+                    // Close modal after success
+                    setTimeout(() => {
+                        document.getElementById('authModal').classList.remove('active');
+                        document.body.style.overflow = '';
+                        
+                        // Switch to login tab for next time
+                        document.querySelector('[data-tab="login"]').click();
+                        
+                        // Hide login button
+                        document.getElementById('authOpen').style.display = 'none';
+                        
+                        // Show user menu
+                        const userAvatar = document.querySelector('.user-avatar');
+                        userAvatar.innerHTML = `<i class="fas fa-user-check"></i>`;
+                        userAvatar.style.background = 'var(--primary-gradient)';
+                    }, 1500);
+                }, 1000);
+            }
+
+            updateUIForLoggedInUser() {
+                // Hide registration buttons
+                const registrationButtons = document.querySelectorAll('#ctaRegister, #finalCta');
+                registrationButtons.forEach(btn => {
+                    btn.classList.add('fade-out');
+                    setTimeout(() => {
+                        btn.style.display = 'none';
+                    }, 300);
+                });
+                
+                // Show welcome message
+                this.showNotification(`مرحباً ${this.currentUser.name}! ابدأ استكشاف المجتمعات الآن.`, 'success');
+            }
+
+            // === EVENT LISTENERS ===
+            initEventListeners() {
+                // Join community buttons
+                document.querySelectorAll('.join-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const communityId = parseInt(btn.dataset.community);
+                        const communityCard = btn.closest('.community-card');
+                        const communityName = communityCard.querySelector('.community-title').textContent;
+                        const communityIcon = communityCard.querySelector('.community-avatar i').className.split(' ')[1];
+                        
+                        // Check if user is logged in
+                        if (!this.currentUser) {
+                            this.showNotification('يجب تسجيل الدخول أولاً للانضمام للمجتمعات', 'warning');
+                            document.getElementById('authModal').classList.add('active');
+                            return;
+                        }
+                        
+                        // Open join modal
+                        openJoinModal(communityId, communityName, communityIcon);
+                    });
+                });
+                
+                // Find friends button
+                document.getElementById('findFriendsBtn')?.addEventListener('click', () => {
+                    if (!this.currentUser) {
+                        this.showNotification('سجل الدخول لبدء البحث عن أصدقاء', 'info');
+                        document.getElementById('authModal').classList.add('active');
+                    } else {
+                        this.showNotification('جاري البحث عن أصدقاء يتشاركون معك نفس الاهتمامات...', 'info');
+                        // Simulate finding friends
+                        setTimeout(() => {
+                            this.showNotification('وجدنا 5 أشخاص يتشاركون معك نفس الاهتمامات!', 'success');
+                        }, 2000);
+                    }
+                });
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    // Escape key closes modals
+                    if (e.key === 'Escape') {
+                        document.getElementById('authModal').classList.remove('active');
+                        document.getElementById('joinModal').classList.remove('active');
+                        document.getElementById('groupsModal').classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                    
+                    // Ctrl/Cmd + K opens search (placeholder)
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                        e.preventDefault();
+                        this.showNotification('🔍 نظام البحث قيد التطوير', 'info');
+                    }
+                });
+                
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Add hover effects to cards
+                document.querySelectorAll('.feature-card, .community-card, .testimonial-card').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0)';
+                    });
+                });
+                
+                // User menu click
+                document.getElementById('userMenu')?.addEventListener('click', () => {
+                    if (this.currentUser) {
+                        this.showNotification(`مرحباً ${this.currentUser.name}!`, 'info');
+                    } else {
+                        document.getElementById('authModal').classList.add('active');
+                    }
                 });
             }
 
             // === ANIMATIONS ===
-            initAnimations() {
-                // Add animation classes to elements when they come into view
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-
-                // Observe elements
-                document.querySelectorAll('.feature-card, .community-card, .testimonial-card').forEach(el => {
-                    observer.observe(el);
-                });
-
-                // Add floating animation to elements
-                this.addFloatingAnimation();
-            }
-
-            addFloatingAnimation() {
+            startAnimations() {
+                // Add floating animation CSS
                 const style = document.createElement('style');
                 style.textContent = `
-                    @keyframes pulse {
-                        0%, 100% { transform: translate(-50%, -50%) scale(1); }
-                        50% { transform: translate(-50%, -50%) scale(1.1); }
-                    }
                     @keyframes float {
-                        0% { transform: translateY(0px); }
-                        100% { transform: translateY(-10px); }
+                        0%, 100% { transform: translateY(0) rotate(0deg); }
+                        50% { transform: translateY(-10px) rotate(180deg); }
+                    }
+                    
+                    @keyframes fadeOut {
+                        from { opacity: 1; transform: translateY(0); }
+                        to { opacity: 0; transform: translateY(-20px); }
                     }
                 `;
                 document.head.appendChild(style);
             }
-
-            // === 3D BACKGROUND ===
-            init3DBackground() {
-                const container = document.getElementById('particles-3d');
-                
-                if (!container || !THREE) return;
-                
-                // Basic Three.js setup for particles
-                try {
-                    const scene = new THREE.Scene();
-                    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                    
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    renderer.setClearColor(0x000000, 0);
-                    container.appendChild(renderer.domElement);
-                    
-                    // Create particles
-                    const particlesGeometry = new THREE.BufferGeometry();
-                    const particlesCount = 1000;
-                    const posArray = new Float32Array(particlesCount * 3);
-                    
-                    for (let i = 0; i < particlesCount * 3; i++) {
-                        posArray[i] = (Math.random() - 0.5) * 10;
-                    }
-                    
-                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-                    
-                    const particlesMaterial = new THREE.PointsMaterial({
-                        size: 0.02,
-                        color: 0x00D4AA,
-                        transparent: true,
-                        opacity: 0.5
-                    });
-                    
-                    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-                    scene.add(particlesMesh);
-                    
-                    camera.position.z = 5;
-                    
-                    // Animation
-                    const animate = () => {
-                        requestAnimationFrame(animate);
-                        
-                        particlesMesh.rotation.x += 0.0005;
-                        particlesMesh.rotation.y += 0.001;
-                        
-                        renderer.render(scene, camera);
-                    };
-                    
-                    animate();
-                    
-                    // Handle resize
-                    window.addEventListener('resize', () => {
-                        camera.aspect = window.innerWidth / window.innerHeight;
-                        camera.updateProjectionMatrix();
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-                    });
-                } catch (error) {
-                    console.log('3D background not supported, falling back to CSS');
-                    container.innerHTML = `
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-                             background: radial-gradient(circle at 20% 50%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
-                                        radial-gradient(circle at 80% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 50%);
-                             animation: gradientShift 20s ease infinite;">
-                        </div>
-                    `;
-                }
-            }
-
-            // === NOTIFICATION SYSTEM ===
-            showNotification(message, type = 'info') {
-                const notification = document.createElement('div');
-                notification.className = 'notification';
-                notification.innerHTML = `
-                    <div style="position: fixed; top: 20px; right: 20px; 
-                         background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--danger)' : 'var(--secondary)'};
-                         color: white; padding: 1rem 1.5rem; border-radius: var(--radius-md);
-                         box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 1rem;
-                         z-index: 9999; animation: slideIn 0.3s ease;">
-                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                        <span>${message}</span>
-                    </div>
-                `;
-                
-                document.body.appendChild(notification);
-                
-                // Remove after 3 seconds
-                setTimeout(() => {
-                    notification.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => notification.remove(), 300);
-                }, 3000);
-            }
-
-            // === EVENT LISTENERS ===
-            addEventListeners() {
-                // Add keyboard shortcuts
-                document.addEventListener('keydown', (e) => {
-                    if (e.ctrlKey && e.key === 'k') {
-                        e.preventDefault();
-                        this.showNotification('🔍 افتح شريط البحث', 'info');
-                    }
-                });
-
-                // Add intersection observer for all animated elements
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }
-                    });
-                });
-
-                document.querySelectorAll('.fade-in-up').forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                    el.style.transition = 'all 0.6s ease';
-                    observer.observe(el);
-                });
-            }
         }
 
-        // Initialize the app
+        // Make openJoinModal available globally
+        let openJoinModal;
+
+        // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            window.tribly = new TriblyPremium();
+            // Prevent FOUC (Flash of Unstyled Content)
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            
+            // Initialize app
+            window.tribly = new TriblyUltimate();
+            
+            // Make openJoinModal available
+            openJoinModal = (communityId, communityName, communityIcon) => {
+                window.tribly.openJoinModal(communityId, communityName, communityIcon);
+            };
+            
+            // Show content after initialization
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
     </script>
-    
-    <style>
-        /* Additional animations */
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .notification {
-            animation: slideIn 0.3s ease;
-        }
-    </style>
 </body>
 </html>
